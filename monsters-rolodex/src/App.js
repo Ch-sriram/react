@@ -1,8 +1,8 @@
 /**
  * Learnings:
- * 1. How are components defined and imported.
- * 2. What are props and props.children.
- * 3. How to pass in attributes to the component, and use them using props in the component.
+ * 1. How to send the state using props.
+ * 2. Why should we make certain code specific to certain components.
+ * 3. How to nest a component inside another component.
  */
 
 // Look into card-list.component.jsx to understand the comments.
@@ -33,43 +33,38 @@ class App extends Component {
   }
 
   /**
-   * We can see the usage of CardList component with a prop
-   * passed into it which is 'name' with a value of "Sriram".
-   *  <CardList name="Sriram" />
-   *
-   * Any attribute we send into the CardList component will be
-   * termed as a property in the props object.
+   * Earlier, we were just passing props.children in between 
+   * the div element inside the CardList component. The props.
+   * children contained what we sent in this App component 
+   * into the CardList component.
    * 
-   * One of the main property inside the props object is known 
-   * as 'children' and we can refer to it in the actual 
-   * component using props.children.
+   * But in general, we never do that because right now, the 
+   * App component is responsible for rendering all the names 
+   * in the state (monster object). We never give that kind of 
+   * a responsibility to the App component, but we give that 
+   * kind of a responsibility to the CardList component 
+   * because that's how we separate concerns into components, 
+   * and also the CardList component should be responsible to 
+   * render the monsters' names in the first place.
    * 
-   * The props.children by default is null valued. But it 
-   * contains data whenever there are children inside the 
-   * component. Anything inside the CardList component is 
-   * considered to be a child element of the CardList 
-   * Component, and so, we generally refer to the children in 
-   * the CardList component using props.children in the actual 
-   * jsx file where the CardList component is defined.
+   * Therefore, what we do is, we send in the monster object 
+   * through to the CardList component as a prop as follows:
    * 
-   * In our example below, the Child prop is <h1>Ramki</h1>.
-   * To render it onto the webpage, we have to refer to 
-   * props.children in the CardList component.
+   *    <CardList monsters={this.state.monsters} />
    * 
-   *    <CardList name="Sriram"><h1>Ramki</h1></CardList>
+   * Now we can see that the functionality of generating the 
+   * names has been delegated to the CardList component (Look 
+   * into the CardList component for more information).
    * 
-   * Instead of just an h1 element, we will now send in the 
-   * entire render the entire monster object as seen below.
+   * Because of what we did, the App component need not worry 
+   * about rendering the monster cards, it will be taken care 
+   * by the CardList component.
    */
   
   render() {
     return (
       <div className="App">
-        <CardList name="Sriram">
-          {this.state.monsters.map((monster) => (
-            <h1 key={monster.id}>{monster.name}</h1>
-          ))}
-        </CardList>
+        <CardList monsters={this.state.monsters} />
       </div>
     );
   }

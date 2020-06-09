@@ -1,14 +1,35 @@
 import React from 'react';
 import './card-list.styles.css';
 
-// This is a functional component
-// There are 2 ways of creating a component, the class component, and the functional component.
-// This is a functional component using the arrow function syntax. 
-// export const CardList = () => <div></div>;
+/**
+ * We no longer need to render the list as props.children. We 
+ * can simply use the props object to get the list of monsters.
+ */
 
-// One of the big things about components is that they take in a parameter known as 'props'.
-// We will just see the contents of props parameter using the console.log() as follows:
-export const CardList = props => {
-    console.log(props);
-    return <div className="card-list">{props.children}</div>;
-}
+// export const CardList = props => (
+//     <div className="card-list">
+//         {props.monsters.map(monster => (
+//             <h1 key={monster.id}> {monster.name} </h1>
+//         ))}
+//     </div>
+// );
+
+/**
+ * Now, our CardList component only renders the monster cards 
+ * onto the front-end, but it doesn't take care of the styling 
+ * of each monster card. So for that reason, we'll delegate 
+ * the work to be done on a single monster card, to the Card 
+ * component.
+ * 
+ * For that to work, we need to import the Card component.
+ */
+
+import { Card } from '../card/card.component';
+
+export const CardList = props => (
+    <div className="card-list">
+        {props.monsters.map(monster => (
+            <Card key={monster.id} monster={monster} />
+        ))}
+    </div>
+);
