@@ -12,7 +12,7 @@ export const Card = props => (
     <div className="card-container">
         <img
             alt="monster"
-            src={`https://robohash.org/${props.monster.name}.png?size=180x180`}
+            src={`https://robohash.org/${props.monster.name}.png?size=256x256`}
         />
 
         <h2> {props.monster.name} </h2>

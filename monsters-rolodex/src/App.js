@@ -1,7 +1,8 @@
 /**
  * Learnings:
- * 1. Reinforcement of destructuring, filter() and map() in JS.
- * 2. Dynamic Rendering of view due to render() being called by setState() every time the onChange event occurs.
+ * 1. Difference between .js and .jsx files.
+ * 2. When and how to use functional components and class components.
+ * 3. Destructuring props object in function component as a parameter.
  */
 
 // Look into card-list.component.jsx to understand the comments.
@@ -9,6 +10,7 @@
 
 import React, { Component } from 'react';
 import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search-box/search-box.component';
 
 
 import './App.css';
@@ -33,19 +35,22 @@ class App extends Component {
   }
 
   /**
-   * Now that we have searchField value stored in our state, 
-   * we can use it to filter out the monsters whose name 
-   * doesn't match the searchField.
+   * Now that we have our search component, we might want to be
+   * able to use the component multiple times and for that, we 
+   * can simply make a new component, say SearchBox defined in 
+   * search-box.component.jsx.
    * 
-   * We will do this inside the render() method by copying the 
-   * searchField and monsters object from the state and then 
-   * using the filter() and includes() method to filter out 
-   * the monsters which do not match the value in the 
-   * searchField.
+   * Why is that some of our files have the extension of .jsx 
+   * and why some others have .js?
+   * We know that create-react-app command hides a lot of the 
+   * configuration done using webpack and babel. And so, what 
+   * babel does is help transform any of the modern JS 
+   * including the files with .jsx extension into older 
+   * versions of javascript in the public directory when we 
+   * run our 'build' script from our "scripts" of package.json 
+   * file.
    * 
-   * Then, we can simply pass in the filteredMonsters object 
-   * as a prop to the CardList property instead of the 
-   * original monsters object.
+   * We will use the SearchBox component
    */
 
   render() {
@@ -56,25 +61,14 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          type="search"
-          placeholder="search monsters"
-          onChange={event => this.setState({ searchField: event.target.value })}
+        <SearchBox
+          placeholder='search monsters'
+          handleChange={event => this.setState({searchField: event.target.value})}
         />
-
         <CardList monsters={filteredMonsters} />
       </div>
     );
   }
-
-  /**
-   * This kind of behaviour is achievable because we used 
-   * setState() method onChange event for the searchField, and 
-   * every time when the setState() is called, render() method 
-   * is called again, thereby executing the render() method 
-   * again and creating the filteredMonsters and then 
-   * returning the components and so on...
-   */
 }
 
 export default App;
