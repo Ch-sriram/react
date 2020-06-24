@@ -13,7 +13,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ## Table of Contents
 
-#### React Basics (Making Monsters Rolodex Project)
+### React Basics [Making Monsters Rolodex Project]
 
 1. How to use `create-react-app` to initialize a react project: **[Tutorial here](https://github.com/Ch-sriram/react/tree/2d7171fc2ed9630763add888d05055dd2c1b84cd)** | **[Files that are added after first init](https://github.com/Ch-sriram/react/commit/2d7171fc2ed9630763add888d05055dd2c1b84cd)**
 2. First Change in the React App: [Changes Made](https://github.com/Ch-sriram/react/commit/e4e33f5a09623ccadb2a2c81040f2a2cfc78edae)
