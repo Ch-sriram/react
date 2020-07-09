@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        We are going to add in the div that we first saw in 
+        index.html file after we ran create-react-app command.
+        That div is known with the id of "root".
+     -->
+    <div id="root">React NOT Rendered!</div>
+
+    <!-- 
+        In index.js file (from when we create the react app 
+        using create-react-app command), we render the <App/> 
+        component on the "root" div, and to do that same 
+        thing, what we do is, we import React and ReactDOM 
+        javascript files into our app.
+        
+        We are going to include the 2 packages React and 
+        ReactDOM using the <script> tag using the "unpkg 
+        react" and "unpkg react-dom" (google them) CDN links 
+        from: https://reactjs.org/docs/cdn-links.html
+     -->
+     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
+    
+    <!-- 
+        Now we've both React and ReactDOM packages ready for 
+        use in our project. But why do we need both the 
+        packages?
+        
+        The thing is, the package for React is just the API, but the package that is actually used to render elements out to the the DOM is ReactDOM, and the reason for this is that, React is kind of like an view-engine, which means that, we can have same kind of engine for many different kind of views.
+        
+        Different views => ReactDOM is for Web, ReactNative is for Native Android/iOS Mobile Applications, React360 is used to build 3D/VR Apps.
+        
+        All of the sub-packages use the React package as the base package as a view-engine of sorts.
+     -->
+
+<!-- ////////////////////////////////////////////////////// -->
+     
+    <!-- 
+        Whenever we render the <App/> component from index.js, 
+        we replace the content inside the "root" div with 
+        whatever React produces in the <App/> component.
+
+        Now, if we run this file without rendering any 
+        components on to the "root" div, we'll see in the 
+        Chrome Dev Console that we have access to the React 
+        and ReactDOM objects/classes in our global javascript 
+        namespace, and this is pretty much what we do when we 
+        import in React from "react" and ReactDOM from 
+        "react-dom" into our .jsx/.js files.
+
+        Now, we'll add our own script tag and inside that, 
+        we'll write javascript, which is rendered after the 
+        jsx gets compiled internally by react.
+    -->
+
+    <script>
+    /*  
+        First, we'll write a functional component which known
+        as "App" but this time, we are going to return
+        React.createElement() which is a function that's
+        called internally by react to actually create the
+        elements that we return in React.
+    */
+    /*  const App = () => {
+            // React.createElement(element, [{props}, child_elements]) 
+            // where:
+            // 1. element is a string parameter for an HTML element like "div", "h1", "p", etc; 
+            // 2. {props} are class/id or anything that can be sent as a prop in jsx; 
+            // 3. child_elements can be a list of elements or a single element that are/is the child element(s) that we want to nest inside our element/div being rendered onto the view.
+            // - Note that both {props} and child_elements are optional and that's why they're inside the braces[]
+            
+            
+            // Example Usage
+            return React.createElement("div", {}, 
+                React.createElement(
+                    "h1", 
+                    {}, 
+                    "REACT IS RENDERED!!!"
+                )
+            );
+        } 
+
+        
+        // Now to render the App functional component above, 
+        // we literally do what we've seen being done inside 
+        // an auto-generated index.js file by the 
+        // create-react-app command and that is, the following:
+        
+
+        // What we usually write using jsx:
+        //ReactDOM.render(
+        //    <App/>, 
+        //    document.getElementById("root")
+        //);
+
+        // What React internally converts jsx into
+        ReactDOM.render(
+            React.createElement(App), 
+            document.getElementById("root")
+        ); 
+    */
+
+    /*
+        // Uncomment lines 71 -> 108 to see the changes
+
+        // Now, let's take this a step further by making a 
+        // functional component that can be used inside our 
+        // App component that we just made above.
+        const Person = () => {
+            return React.createElement("div", {}, [
+                React.createElement("h1", {}, "Sriram"),
+                React.createElement("p", {}, "Developer")
+            ]);
+        }
+
+        // Now, instead of only rendering the text "REACT IS 
+        // RENDERED!!!", we can also render the Person 
+        // component created above, inside the App component 
+        // that we'll write below, i.e.,
+
+        const App = () => {
+            return React.createElement(
+                "div",
+                {},
+                [
+                    React.createElement("h1", {}, "REACT IS RENDERED!!!"),
+                    React.createElement(Person),
+                    React.createElement(Person),
+                    React.createElement(Person)
+                ]
+            );
+        }
+
+        // What React internally converts jsx into
+        ReactDOM.render(
+            React.createElement(App),
+            document.getElementById("root")
+        ); 
+
+        // Now when we run our application, we can see that we 
+        // have successfully rendered the Person component 3 
+        // times, although we hard-coded the values inside the 
+        // Person component. Next: using props
+    */
+        // Uncomment lines 110 -> 151 to see how the code is rendered
+
+///////////////////////////////////////////////////////////////
+
+        // Now, if we want to use props, we'll see how they 
+        // work below: 
+        // Like in jsx, we'll pass the props object to the 
+        // functional component and we'll assume that the 
+        // required fields are passed onto the props object 
+        // and use them here.
+        const Person = (props) => {
+            return React.createElement("div", {}, [
+                React.createElement("h1", {}, props.name),
+                React.createElement("p", {}, props.occupation)
+            ]);
+        }
+
+        // Now that we've made the Person component using 
+        // fields from that we get from the props that are 
+        // sent from the App component, we can make our App 
+        // also, a class component and send in the props to 
+        // the Person component as follows:
+
+        class App extends React.Component {
+            render() {
+                return React.createElement("div", {}, [
+                    React.createElement("h1", {}, "REACT IS RENDERED!!!"),
+                    React.createElement(Person, {name: "Sriram", occupation: "Software Engineer"}),
+                    React.createElement(Person, {name: "Swaroop", occupation: "Game QA"}),
+                    React.createElement(Person, {name: "Arobind", occupation: "Software Engineer"})
+                ]);
+            }
+        }
+
+        // Render the App component onto the DOM
+        ReactDOM.render(
+            React.createElement(App),
+            document.querySelector("#root")
+        );
+
+        /*
+            This is all React does for us, it just helps us 
+            build out these views efficiently & securely.
+        */
+
+    </script>
+</body>
+</html>
