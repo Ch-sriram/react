@@ -29,4 +29,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ### React Core Concepts
 
-1. What does `create-react-app` command actually does? An in-depth understanding of `React` & `ReactDOM`: **[Commit Changes Here](abc)**
+1. What does `create-react-app` command actually does? An in-depth understanding of `React` & `ReactDOM`: **[Commit Changes Here](https://github.com/Ch-sriram/react/commit/cec0bbd55d40359ad89cdb36431ad515683b080b)**
