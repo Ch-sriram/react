@@ -6,6 +6,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 - **[ReactJS Docs](https://reactjs.org/docs/getting-started.html)**
 - **[MOOC by Andrei Neagoie & Yihua Zhang](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/)**
+- [MOOC by Academind, taught by Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)
 
 ## Child Repositories & Deployments
 
