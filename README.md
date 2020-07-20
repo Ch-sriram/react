@@ -1,12 +1,12 @@
 # React &mdash; Proof of Concept
 
-In this repository, I've implemented (or implementing) all the concepts related to React and its related technologies (like Redux, Context API & GraphQL) through making an E-commerce website. Please feel free to go through this repository for your own learning/revision as I'll be doing the same if I ever need to revise/reinforce my knowledge on React (or it's related technologies).
+In this repository, I've implemented (or implementing) all the concepts related to React and its related technologies (like Redux, Context API & GraphQL). Please feel free to go through this repository for your own learning/revision as I'll be doing the same if I ever need to revise/reinforce my knowledge on React (or it's related technologies).
 
 ## Resources
 
 - **[ReactJS Docs](https://reactjs.org/docs/getting-started.html)**
 - **[MOOC by Andrei Neagoie & Yihua Zhang](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/)**
-- [MOOC by Academind, taught by Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)
+- **[MOOC by Academind, taught by Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)**
 
 ## Child Repositories & Deployments
 
@@ -16,7 +16,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ### React Basics [Making Monsters Rolodex Project]
 
-1. How to use `create-react-app` to initialize a react project: **[Tutorial here](https://github.com/Ch-sriram/react/tree/2d7171fc2ed9630763add888d05055dd2c1b84cd)** | **[Files that are added after first init](https://github.com/Ch-sriram/react/commit/2d7171fc2ed9630763add888d05055dd2c1b84cd)**
+1. How to use `create-react-app` to initialize a react project: **[Tutorial here](https://create-react-app.dev/docs/getting-started/)** | **[Files that are added after first init](https://github.com/Ch-sriram/react/commit/2d7171fc2ed9630763add888d05055dd2c1b84cd)**
 2. First Change in the React App: [Changes Made](https://github.com/Ch-sriram/react/commit/e4e33f5a09623ccadb2a2c81040f2a2cfc78edae)
 3. Class Components, Initializing State in `constructor()` & Using `setState()` on an HTML Element in JSX: [Changes Made](https://github.com/Ch-sriram/react/commit/6ba9039e690b03f81d8626ca17838a3376668e4d)
 4. Rendering a list of items in react using `key` prop: [Changes Made](https://github.com/Ch-sriram/react/commit/64cf86beee99dcc3457918be5e3240546dc68b57)
