@@ -34,3 +34,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 2. Wrapping all the basics in one example &mdash; `props`, `props.children`, `setState()`, `state`, `React.Component`, `event-handling`, etc: [Commit Changes](https://github.com/Ch-sriram/react/commit/502f6498ae510a2f4f9587360ca5f7103162268c)
 3. Using the `useState()` Hook for State Manipulation: [Commit Changes](https://github.com/Ch-sriram/react/commit/9fc62c6a1789475185a03fde1f3bbdea30eb6006)
 4. Passing Method References b/w Components: [Commit Changes](https://github.com/Ch-sriram/react/commit/26932a76eddc8cae3dfcba44c1ff17cbca39257c)
+5. Adding Two Way Binding: [Commit Details]()

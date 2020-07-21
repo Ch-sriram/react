@@ -3,7 +3,6 @@ import './App.css';
 import { Person } from './components/person/person.component';
 
 class App extends Component {
-  // state now can be defined like this in ES7
   state = {
     persons: [
       { name: 'Ram', age: 28 },
@@ -13,11 +12,7 @@ class App extends Component {
     otherState: "This has some value"
   }
 
-  // we can also send arguments to a event handler function
   switchNameHandler = (newName) => {
-    // console.log('Was clicked');
-    // DON'T DO THIS: this.state.persons[0].name = 'Milo';
-
     this.setState({
       persons: [
         { name: newName, age: 82 },
@@ -27,8 +22,28 @@ class App extends Component {
     });
   }
 
-  // switchNameHandler's reference is passed to the click attribute inside the 2nd Person's component.
-  // We can open Person component defined as person.component.jsx to see the props.click being used for onClick event.
+  /**
+   * If we want to change the name for say, the 2nd Person, then
+   * we can take input from the user dynamically to change the 
+   * 2nd Person's name, where we will handle the onChange event
+   * at the Person component located in person.component.jsx
+   * 
+   * We will handle the name change using nameChangedHandler 
+   * method as follows:
+   */
+
+  nameChangedHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: "Mar", age: 82 },
+        { name: event.target.value, age: 92 },
+        { name: "Xam", age: 82 },
+      ],
+    });
+  }
+  
+
+  // the handler defined above can be sent as a prop to 2nd Person component as follows (defined in line 68)
   render() {
     return (
       <div className="App">
@@ -50,6 +65,7 @@ class App extends Component {
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
           click={this.switchNameHandler.bind(this, "Einstein")}
+          changed={this.nameChangedHandler}
         >
           My Hobbies: Racing
         </Person>
@@ -63,16 +79,9 @@ class App extends Component {
   }
 
   /**
-   * Note that there are two ways to pass an argument to a 
-   * handler method.
-   *  1. To the reference of the handler method, we bind the 
-   *     "this" context and we pass in the argument we want, as 
-   *     seen in line 52.
-   *  2. To pass in an arrow function from which we return the 
-   *     result of the call on the handler whilst passing the 
-   *     required argument.
+   * the nameChangedHandler is called in the Person component
+   * for an onChange event on an input (type="text") element.
    */
-
 }
 
 export default App;
