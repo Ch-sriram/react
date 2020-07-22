@@ -41,4 +41,5 @@ In this repository, I've implemented (or implementing) all the concepts related 
 ### Working with Lists & Conditionals
 
 1. Rendering Content Conditionally
-   1. Using the ternary operator: [Commit Details]()
+   1. Using the ternary operator: [Commit Details](https://github.com/Ch-sriram/react/commit/5dc2b1ad364b6f8923eff44af488a93a5472684d)
+   2. Using control flow `if-else` (recommended way): [Commit Details]()
