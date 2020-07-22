@@ -13,16 +13,6 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = newName => {
-    this.setState({
-      persons: [
-        { name: newName, age: 82 },
-        { name: "Poor", age: 92 },
-        { name: "Xam", age: 82 },
-      ],
-    });
-  }
-
   nameChangedHandler = event => {
     this.setState({
       persons: [
@@ -33,10 +23,17 @@ class App extends Component {
     });
   }
   
+  // this approach has a flaw, which will be fixed later
+  deletePersonHandler = (personIndex) => {
+    const personsList = this.state.persons;
+    personsList.splice(personIndex, 1); // remove 1 element from starting from personIndex
+    this.setState({ persons: personsList });
+  }
+
   togglePersonsHandler = () => {
     this.setState({ showPersons: !this.state.showPersons });
   }
-  
+
   render() {
     // Inline Styling for the <button> in .App component
     const style = {
@@ -52,18 +49,22 @@ class App extends Component {
     
     if (this.state.showPersons) {
       /**
-       * Instead of manually generating each and every Person
-       * Component, we can loop through each person in 
-       * state.persons using the map() method and return
-       * a Person component for each of the person inside
-       * the state.persons array.
+       * Now, we'll just add a handler to every Person 
+       * component, which will delete that respective component
+       * when the name of the respective component is clicked.
+       * 
+       * For this, the handler (which is deletePersonHandler)
+       * should know which Person component to delete before
+       * actually deleting it. And so, for that, we'll use the
+       * `index` given as the 2nd parameter in the map() method
+       * and do the following with it:
        */
-      
       persons = (
         <div>
-          {this.state.persons.map(person => {
+          {this.state.persons.map((person, index) => {
             return (
               <Person
+                click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
               />
