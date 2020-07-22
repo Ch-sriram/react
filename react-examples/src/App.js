@@ -9,10 +9,11 @@ class App extends Component {
       { name: 'Roop', age: 29 },
       { name: 'Max', age: 28 }
     ],
-    otherState: "This has some value"
+    otherState: "This has some value",
+    showPersons: false
   }
 
-  switchNameHandler = (newName) => {
+  switchNameHandler = newName => {
     this.setState({
       persons: [
         { name: newName, age: 82 },
@@ -22,7 +23,7 @@ class App extends Component {
     });
   }
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = event => {
     this.setState({
       persons: [
         { name: "Mar", age: 82 },
@@ -32,62 +33,63 @@ class App extends Component {
     });
   }
   
-  
+  togglePersonsHandler = () => {
+    this.setState({ showPersons: !this.state.showPersons });
+  }
   
   render() {
-    
-    // Inline Styling Example
-    const style = { // applied in line 56. explanation after line 82
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
+    const style = {
+      // Inline Styling
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer",
+    };
 
     return (
       <div className="App">
         <h1>This is a React Example</h1>
         <p>This is really working!</p>
         
-        <button onClick={
-          () => this.switchNameHandler("Crazy Ram")
-        }
+        <button
+          onClick={this.togglePersonsHandler}
           style={style}
         >
-          Switch Name
+          Toggle Persons
         </button>
         
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, "Einstein")}
-          changed={this.nameChangedHandler}
-        >
-          My Hobbies: Racing
-        </Person>
-
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
+        {
+          /**
+           * we can use a ternary operator to conditionally
+           * render a list/component depending on the truth 
+           * value of the predicate
+           */
+          this.state.showPersons ?
+            <div>  
+              <Person
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age}
+              />  
+              
+              <Person
+                name={this.state.persons[1].name}
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this, "Einstein")}
+                changed={this.nameChangedHandler}
+              >
+                My Hobbies: Racing
+              </Person>
+      
+              <Person
+                name={this.state.persons[2].name}
+                age={this.state.persons[2].age}
+              />
+            </div> : null
+        }
       </div>
     )
   }
 }
-
-/**
- * Using Inline Styling, the style will be applied directly 
- * and only to the component, and not to the global context, 
- * which is to all the components.
- * 
- * Using Inline Styling w. JSX, it is pretty hard to implement
- * the pseudo-class/element features, but it is doable.
- */
 
 export default App;
