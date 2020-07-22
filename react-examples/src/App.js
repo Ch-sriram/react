@@ -22,16 +22,6 @@ class App extends Component {
     });
   }
 
-  /**
-   * If we want to change the name for say, the 2nd Person, then
-   * we can take input from the user dynamically to change the 
-   * 2nd Person's name, where we will handle the onChange event
-   * at the Person component located in person.component.jsx
-   * 
-   * We will handle the name change using nameChangedHandler 
-   * method as follows:
-   */
-
   nameChangedHandler = (event) => {
     this.setState({
       persons: [
@@ -42,9 +32,19 @@ class App extends Component {
     });
   }
   
-
-  // the handler defined above can be sent as a prop to 2nd Person component as follows (defined in line 68)
+  
+  
   render() {
+    
+    // Inline Styling Example
+    const style = { // applied in line 56. explanation after line 82
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
         <h1>This is a React Example</h1>
@@ -52,7 +52,9 @@ class App extends Component {
         
         <button onClick={
           () => this.switchNameHandler("Crazy Ram")
-        }>
+        }
+          style={style}
+        >
           Switch Name
         </button>
         
@@ -77,11 +79,15 @@ class App extends Component {
       </div>
     )
   }
-
-  /**
-   * the nameChangedHandler is called in the Person component
-   * for an onChange event on an input (type="text") element.
-   */
 }
+
+/**
+ * Using Inline Styling, the style will be applied directly 
+ * and only to the component, and not to the global context, 
+ * which is to all the components.
+ * 
+ * Using Inline Styling w. JSX, it is pretty hard to implement
+ * the pseudo-class/element features, but it is doable.
+ */
 
 export default App;
