@@ -44,4 +44,6 @@ In this repository, I've implemented (or implementing) all the concepts related 
    1. Using the ternary operator: [Commit Details](https://github.com/Ch-sriram/react/commit/5dc2b1ad364b6f8923eff44af488a93a5472684d)
    2. Using control flow `if-else` \[*recommended way*\]: [Commit Details](https://github.com/Ch-sriram/react/commit/d36965daf7737f04325c67d6fb9ce889d2d8f089)
 2. Outputting Components in a List using `map()`: [Commit Details](https://github.com/Ch-sriram/react/commit/4b3d246804331808d6fbc9fb4ef077277e39cc8a)
-3. Affecting `state` from a generated list of components: [Commit Details]()
+3. Affecting `state` from a generated List of Components
+   1. Updating State Directly (*flawed approach, can lead to unknown behaviour of the apps*): [Commit Details](https://github.com/Ch-sriram/react/commit/91c6424f4bdce8b71542c0a6cdb396475c6adff7)
+   2. Updating State Immutably (correction to the flawed approach) using `splice()` or `...` [Spread Operator]: [Commit Details]()

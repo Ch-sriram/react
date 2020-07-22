@@ -23,9 +23,29 @@ class App extends Component {
     });
   }
   
-  // this approach has a flaw, which will be fixed later
   deletePersonHandler = (personIndex) => {
-    const personsList = this.state.persons;
+    // const personsList = this.state.persons;
+
+    /**
+     * What's happening in line 27 ?
+     * When we assigned this.state.persons to personsList, 
+     * as we know in JS, we always assign references when it 
+     * comes to object assignments, and so, because of this, 
+     * whenever we make changes in `personsList`, it is 
+     * actually affecting `state.persons` itself, which is not
+     * what we want. And so, we always have to get a new copy 
+     * of the contents in `state`, not the reference.
+     * 
+     * For that, we can use `splice()` or the `...` spread 
+     * operator as shown below. 
+     * 
+     * Note that before ES6 update, slice() was used, and now, 
+     * the spread operator is being used to achieve the 
+     * aforementioned.
+     */
+
+    // const personsList = this.state.persons.slice();
+    const personsList = [...this.state.persons];
     personsList.splice(personIndex, 1); // remove 1 element from starting from personIndex
     this.setState({ persons: personsList });
   }
