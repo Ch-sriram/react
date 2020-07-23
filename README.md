@@ -49,4 +49,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    2. Updating State Immutably (correction to the flawed approach) using `splice()` or `...` [Spread Operator]: [Commit Details](https://github.com/Ch-sriram/react/commit/0936c2c3b540f808a7139ec400bfe1dbab9de76e)
 4. Lists & Keys &mdash; using `key` prop 
    1. The *incorrect* way: [Commit Details](https://github.com/Ch-sriram/react/commit/52235c6906dfd14d20103adb78378881ac2c6b2d)
-   2. The *correct* way \[making lists flexible\]: [Commit Details]()
+   2. The *correct* way \[making lists flexible\]: [Commit Details](https://github.com/Ch-sriram/react/commit/dd55f73a1ef6a0d44cc1b6a3bb33df31b357a47e)
