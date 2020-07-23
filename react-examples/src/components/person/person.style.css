@@ -6,7 +6,7 @@
   padding: 16px;
 }
 
-.person .person__input > input[type=text] {
+.person input[type=text] {
   text-align: center;
   width: 30%;
 }

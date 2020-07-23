@@ -5,29 +5,49 @@ import { Person } from './components/person/person.component';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Ram', age: 28 },
-      { name: 'Roop', age: 29 },
-      { name: 'Max', age: 28 }
+      { name: 'Ram', age: 28, id: 'a1' },
+      { name: 'Roop', age: 29, id: 'a2' },
+      { name: 'Max', age: 28, id: 'a3' }
     ],
     otherState: "This has some value",
     showPersons: false
   }
 
-  nameChangedHandler = event => {
-    this.setState({
-      persons: [
-        { id: 'abc1', name: "Mar", age: 82 },
-        { id: 'abc2', name: event.target.value, age: 92 },
-        { id: 'abc3', name: "Xam", age: 82 },
-      ],
-    });
+  nameChangedHandler = (event, id) => {
+    // we'll only update the state of the person for which
+    // the input field was changed, and so, we first need to
+    // find the index of the Person where the input field was
+    // changed in the DOM
+
+    const personIndex = this.state.persons.findIndex(
+      person => person.id === id
+    );
+
+    // We can get the person we want to be modified from the
+    // state now, but we DON'T want to get it the foll. way:
+    
+    // const person = this.state.persons[personIndex]; // this will directly mutate the actual person in the state, which should not be done directly, only by the setState() method.
+
+    // In ES5:
+    // const person = Object.assign({}, this.state.persons[personIndex]);
+
+    // In ES6:
+    const person = { ...this.state.persons[personIndex] };
+
+    // now we're manipulating a copy of the original state
+    person.name = event.target.value;
+
+    const personsList = [...this.state.persons];
+    personsList[personIndex] = person;
+
+    this.setState({persons: personsList});
   }
   
   deletePersonHandler = (personIndex) => {
-    // DON'T DO THIS:
+    // DON'T DO THIS, as this mutates the state directly
     // const personsList = this.state.persons;
 
-    // DO THIS:
+    // DO THIS, as this mutates a copy of the state
     // const personsList = this.state.persons.slice();
     const personsList = [...this.state.persons];
     personsList.splice(personIndex, 1); // remove 1 element from starting from personIndex
@@ -48,41 +68,6 @@ class App extends Component {
       cursor: "pointer",
     };
 
-    /**
-     * In React, we always have to have a key prop defined for
-     * a component/element that's generated as a list. This
-     * is not mandatory, but it is highly recommended because
-     * of the way React renders lists. It compares the changes
-     * of the list-items in the list with how they were before 
-     * the state change. This identification is done using the 
-     * `key` prop in React.
-     * 
-     * The `key` prop for a component in the list can be any 
-     * unique identifier (numeric/alpha-numeric/etc), main 
-     * take-away being "unique". Two components in the same 
-     * list cannot have the same `key` prop, they definitely 
-     * should only have 1 unique key each.
-     * 
-     * To maintain uniqueness of `key` prop, we can use the 
-     * index of the element in the array, but that's not a 
-     * good way to store keys as everything might not be 
-     * fetched from an array, they can also be fetched from
-     * some API and the list-items need not be having an index.
-     * 
-     * If the list-items are fetched from some API, then they
-     * most definitely have some unique ID to identify each
-     * item uniquely. For now, we might just define an 'id'
-     * of our own for each Person, but that's just for the 
-     * demonstration of `key` props.
-     * 
-     * We will see that we still get the following warning:
-     *  "Each child in a list should have a unique `key` prop."
-     * 
-     * But why does this happen? We'll see what to do, in the 
-     * next commit.
-     */
-
-
     // we can always refer to JSX using simple JS variables
     let persons = null;
     
@@ -96,6 +81,7 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 key={person.id}
+                changed={event => this.nameChangedHandler(event, person.id)}
               />
             );
           })}
