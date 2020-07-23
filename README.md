@@ -47,6 +47,6 @@ In this repository, I've implemented (or implementing) all the concepts related 
 3. Affecting `state` from a generated List of Components
    1. Updating State Directly (*flawed approach, can lead to unknown behaviour of the apps*): [Commit Details](https://github.com/Ch-sriram/react/commit/91c6424f4bdce8b71542c0a6cdb396475c6adff7)
    2. Updating State Immutably (correction to the flawed approach) using `splice()` or `...` [Spread Operator]: [Commit Details](https://github.com/Ch-sriram/react/commit/0936c2c3b540f808a7139ec400bfe1dbab9de76e)
-4. Lists & Keys &mdash; using `key` prop 
-   1. The *incorrect* way: [Commit Details](https://github.com/Ch-sriram/react/commit/52235c6906dfd14d20103adb78378881ac2c6b2d)
-   2. The *correct* way \[making lists flexible\]: [Commit Details](https://github.com/Ch-sriram/react/commit/dd55f73a1ef6a0d44cc1b6a3bb33df31b357a47e)
+4. Lists & Keys
+   1. Usage of `key` prop: [Commit Details](https://github.com/Ch-sriram/react/commit/52235c6906dfd14d20103adb78378881ac2c6b2d)
+   2. Making Lists Flexible w. `<input>` element inside the component: [Commit Details](https://github.com/Ch-sriram/react/commit/dd55f73a1ef6a0d44cc1b6a3bb33df31b357a47e)
