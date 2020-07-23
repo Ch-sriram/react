@@ -16,34 +16,18 @@ class App extends Component {
   nameChangedHandler = event => {
     this.setState({
       persons: [
-        { name: "Mar", age: 82 },
-        { name: event.target.value, age: 92 },
-        { name: "Xam", age: 82 },
+        { id: 'abc1', name: "Mar", age: 82 },
+        { id: 'abc2', name: event.target.value, age: 92 },
+        { id: 'abc3', name: "Xam", age: 82 },
       ],
     });
   }
   
   deletePersonHandler = (personIndex) => {
+    // DON'T DO THIS:
     // const personsList = this.state.persons;
 
-    /**
-     * What's happening in line 27 ?
-     * When we assigned this.state.persons to personsList, 
-     * as we know in JS, we always assign references when it 
-     * comes to object assignments, and so, because of this, 
-     * whenever we make changes in `personsList`, it is 
-     * actually affecting `state.persons` itself, which is not
-     * what we want. And so, we always have to get a new copy 
-     * of the contents in `state`, not the reference.
-     * 
-     * For that, we can use `splice()` or the `...` spread 
-     * operator as shown below. 
-     * 
-     * Note that before ES6 update, slice() was used, and now, 
-     * the spread operator is being used to achieve the 
-     * aforementioned.
-     */
-
+    // DO THIS:
     // const personsList = this.state.persons.slice();
     const personsList = [...this.state.persons];
     personsList.splice(personIndex, 1); // remove 1 element from starting from personIndex
@@ -64,21 +48,45 @@ class App extends Component {
       cursor: "pointer",
     };
 
+    /**
+     * In React, we always have to have a key prop defined for
+     * a component/element that's generated as a list. This
+     * is not mandatory, but it is highly recommended because
+     * of the way React renders lists. It compares the changes
+     * of the list-items in the list with how they were before 
+     * the state change. This identification is done using the 
+     * `key` prop in React.
+     * 
+     * The `key` prop for a component in the list can be any 
+     * unique identifier (numeric/alpha-numeric/etc), main 
+     * take-away being "unique". Two components in the same 
+     * list cannot have the same `key` prop, they definitely 
+     * should only have 1 unique key each.
+     * 
+     * To maintain uniqueness of `key` prop, we can use the 
+     * index of the element in the array, but that's not a 
+     * good way to store keys as everything might not be 
+     * fetched from an array, they can also be fetched from
+     * some API and the list-items need not be having an index.
+     * 
+     * If the list-items are fetched from some API, then they
+     * most definitely have some unique ID to identify each
+     * item uniquely. For now, we might just define an 'id'
+     * of our own for each Person, but that's just for the 
+     * demonstration of `key` props.
+     * 
+     * We will see that we still get the following warning:
+     *  "Each child in a list should have a unique `key` prop."
+     * 
+     * But why does this happen? We'll see what to do, in the 
+     * next commit.
+     */
+
+
     // we can always refer to JSX using simple JS variables
     let persons = null;
     
     if (this.state.showPersons) {
-      /**
-       * Now, we'll just add a handler to every Person 
-       * component, which will delete that respective component
-       * when the name of the respective component is clicked.
-       * 
-       * For this, the handler (which is deletePersonHandler)
-       * should know which Person component to delete before
-       * actually deleting it. And so, for that, we'll use the
-       * `index` given as the 2nd parameter in the map() method
-       * and do the following with it:
-       */
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
@@ -87,6 +95,7 @@ class App extends Component {
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
+                key={person.id}
               />
             );
           })}
@@ -110,10 +119,5 @@ class App extends Component {
     );
   }
 }
-
-/**
- * In line 88, we can simply render the list of Persons
- * using the `persons` variable.
- */
 
 export default App;

@@ -47,3 +47,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 3. Affecting `state` from a generated List of Components
    1. Updating State Directly (*flawed approach, can lead to unknown behaviour of the apps*): [Commit Details](https://github.com/Ch-sriram/react/commit/91c6424f4bdce8b71542c0a6cdb396475c6adff7)
    2. Updating State Immutably (correction to the flawed approach) using `splice()` or `...` [Spread Operator]: [Commit Details](https://github.com/Ch-sriram/react/commit/0936c2c3b540f808a7139ec400bfe1dbab9de76e)
+4. Lists & Keys &mdash; using `key` prop: [Commit Details]()
