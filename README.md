@@ -64,4 +64,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    2. How `styled-components` library generates the CSS required for the respective component: [Commit Details](https://github.com/Ch-sriram/react/commit/d9129cd0692a88d143b3c76adb995b0033090da0)
    3. Dynamic styling with `props` inside a tagged template string: [Commit Details](https://github.com/Ch-sriram/react/commit/55bceb0995517afb22f04d569f308fb69d9d041b)
 5. Working with CSS Modules
-   1. Why do we need CSS Modules? [Commit Details]()
+   1. Why do we need CSS Modules? [Commit Details](https://github.com/Ch-sriram/react/commit/bb869417d81ec0bf0eaa55ec6458165ad76a1080)
