@@ -54,4 +54,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ### Styling React Components & Elements
 
-1. Setting Styles Dynamically: [Commit Details]()
+1. Setting Styles Dynamically: [Commit Details](https://github.com/Ch-sriram/react/commit/059ada885e7f271fbb75699f6c9d6cd474659971)
