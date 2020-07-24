@@ -36,15 +36,6 @@ class App extends Component {
     this.setState({ showPersons: !this.state.showPersons });
   }
 
-  /**
-   * 
-   * Let's say that the button "Toggle Persons" should turn
-   * 'red' if we click on it to show the list of Persons, and
-   * it should turn 'green' if we click it again, and so on.
-   * 
-   * We can do it as shown in line 78.
-   */
-
   render() {
     const style = {
       color: "white",
@@ -78,10 +69,35 @@ class App extends Component {
       style.backgroundColor = "red";
     }
 
+    /**
+     * If we want to add new class list to a particular
+     * component/element in the app that changes colour of the
+     * text depending on the defined class in App.css, then
+     * we can do it as follows:
+     */
+
+    const classes = [];
+
+    if (this.state.persons.length <= 2 && classes.indexOf('red') === -1) {
+      classes.push('red');
+    }
+    
+    if (this.state.persons.length <= 1 && classes.indexOf('bold') === -1) {
+      classes.push('bold');
+    }
+
+    /**
+     * We can see that we use the classes applied in the 
+     * `classes` variable as the className for <p> element
+     * as seen below in line 98. 
+     */
+
     return (
       <div className="App">
         <h1>This is a React Example</h1>
-        <p>This is really working!</p>
+        <p className={classes.join(" ")}>
+          This is really working!
+        </p>
         
         <button
           onClick={this.togglePersonsHandler}
