@@ -1,37 +1,57 @@
 import React from 'react';
-import Radium from 'radium';
+import styled from 'styled-components';
 
 /**
- * CSS code that is imported from an external script is applied
- * to all the components globally, as webpack includes the code
- * in a global sense.
+ * In order for us to use CSS in JS using styled-components
+ * library, we use the concept of Tagged Templates, which
+ * looks a little weird, but is actually extremely intuitive.
  * 
- * But whenever we write CSS code using JSX, it is only 
- * limited to the particular component where the CSS script
- * is written in.
+ * We send in a template string to a function (in this case, 
+ * the function is imported from styled-components library),
+ * and the function executes depending on the template that 
+ * has been sent in, this is the usage of a tagged template.
+ * 
+ * When using the styled object's tagged template(s), we
+ * generally get a React Component as the returned object.
+ * 
+ * In the tagged template of styled object's tagged template
+ * methods, we define normal CSS rules for that particular 
+ * component, and it only applies to that particular 
+ * component and not to the global context of the app.
+ * 
+ * Because of this approach, we can get rid of the class/id
+ * selectors when defining a style for a particular 
+ * component. Instead, we simply focus on styling of the 
+ * component individually.
+ * 
+ * Demonstration of `styled from styled-components` below:
  */
 
-import './person.style.css';  // applicable to all the components
+const StyledDiv = styled.div`
+  width: 60%;
+  margin: 10px auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 16px;
+
+  input[type="text"] {
+    text-align: center;
+    width: 30%;
+  }
+
+  @media (min-width: 500px) {
+    width: "450px";
+  }
+`;
 
 const person = (props) => {
   /**
-   * To the person component, we can add media queries with
-   * Radium as shown below.
+   * Now, we can get rid of the <div className="person"> we 
+   * previously had, and wrap the children elements into 
+   * StyledDiv which we defined above.
    */
-  const style = {
-    '@media (min-width: 500px)': {
-      width: '450px'
-    }
-  }
-
-  /**
-   * For this style to be applied, we need to wrap the App 
-   * component's returned JSX inside a <StyleRoot> imported 
-   * from 'radium' as a named import in App component.
-   */
-  
   return (
-    <div className="person" style={style}>
+    <StyledDiv>
       <p onClick={props.click}>
         I'm {props.name} and I'm {props.age} years old!
       </p>
@@ -40,8 +60,8 @@ const person = (props) => {
         onChange={props.changed}
         value={props.name}
       />
-    </div>
+    </StyledDiv>
   );
 }
 
-export default Radium(person);
+export default person;

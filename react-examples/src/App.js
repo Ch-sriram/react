@@ -1,7 +1,6 @@
 // Required Packages/Dependencies
 import React, { Component } from 'react';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
 
 // Custom Components
 import Person from './components/person/person.component';
@@ -48,6 +47,7 @@ class App extends Component {
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
+      transition: "all .2s",
       // to use radium, we can add the `hover` state as follows
       ':hover': {
         backgroundColor: "lightgreen",
@@ -95,19 +95,17 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>This is a React Example</h1>
-          <p className={classes.join(" ")}>This is really working!</p>
+      <div className="App">
+        <h1>This is a React Example</h1>
+        <p className={classes.join(" ")}>This is really working!</p>
 
-          <button onClick={this.togglePersonsHandler} style={style}>
-            Toggle Persons
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+        <button onClick={this.togglePersonsHandler} style={style}>
+          Toggle Persons
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
