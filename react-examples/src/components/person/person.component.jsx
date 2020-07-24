@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 
 /**
  * CSS code that is imported from an external script is applied
@@ -12,7 +13,7 @@ import React from 'react';
 
 import './person.style.css';  // applicable to all the components
 
-export const Person = (props) => {
+const person = (props) => {
   return (
     <div className="person">
       <p onClick={props.click}>
@@ -26,3 +27,5 @@ export const Person = (props) => {
     </div>
   );
 }
+
+export default Radium(person);

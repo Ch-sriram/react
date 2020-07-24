@@ -56,3 +56,5 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 1. Setting Styles Dynamically: [Commit Details](https://github.com/Ch-sriram/react/commit/059ada885e7f271fbb75699f6c9d6cd474659971)
 2. Setting Class Names Dynamically: [Commit Details](https://github.com/Ch-sriram/react/commit/c90a8f0b7d98099ceca69ad49345cbbbd7655da4)
+3. Adding & Using `Radium`
+   1. Implementing pseudo-selectors like `:hover`: [Commit Details]()

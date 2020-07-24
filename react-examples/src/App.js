@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Person } from './components/person/person.component';
+import Radium from 'radium';
+import Person from './components/person/person.component';
 
 class App extends Component {
   state = {
@@ -37,6 +38,36 @@ class App extends Component {
   }
 
   render() {
+    /**
+     * We can always style anything for a component inside a
+     * CSS file and then import it for the component.
+     * 
+     * But the problem with that is that, the styling is 
+     * applied in a global context, meaning, it will also 
+     * apply to all other components after webpack/babel 
+     * combine the code for the production/testing, and this
+     * can lead to some unnecessary styling bugs in the app,
+     * if we don't write the global styles carefully.
+     * 
+     * Therefore, what we do is, we use a library called 
+     * 'radium', which lets us use pseudo-classes and media 
+     * queries when defining inline styling using JSX for 
+     * a specific component.
+     * 
+     * To use 'radium', we have to install the dependency
+     * with `--save` prefix in node_modules and package.json.
+     * `npm i --save radium` is the command to install the 
+     * 'radium' package. And then we import as shown at the 
+     * top of this commit.
+     * 
+     * 
+     * When we export App.js, we can see that we pass-in App
+     * component to Radium, as Radium is HOC (Higher Order 
+     * Component). HOC is a component which wraps over another
+     * component and injects its own functionalities onto the
+     * component it wraps. We'll look into HOC later. 
+     */
+
     const style = {
       color: "white",
       backgroundColor: "green",
@@ -44,6 +75,11 @@ class App extends Component {
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
+      // to use radium, we can add the `hover` state as follows
+      ':hover': {
+        backgroundColor: "lightgreen",
+        color: "rgba(0, 0, 0, .9)"
+      }
     };
 
     let persons = null;
@@ -67,14 +103,13 @@ class App extends Component {
       
       // this is how we dynamically change the styling
       style.backgroundColor = "red";
-    }
 
-    /**
-     * If we want to add new class list to a particular
-     * component/element in the app that changes colour of the
-     * text depending on the defined class in App.css, then
-     * we can do it as follows:
-     */
+      // making use of radium for assigning :hover rules
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'rgba(0, 0, 0, .9)'
+      };
+    }
 
     const classes = [];
 
@@ -85,12 +120,6 @@ class App extends Component {
     if (this.state.persons.length <= 1 && classes.indexOf('bold') === -1) {
       classes.push('bold');
     }
-
-    /**
-     * We can see that we use the classes applied in the 
-     * `classes` variable as the className for <p> element
-     * as seen below in line 98. 
-     */
 
     return (
       <div className="App">
@@ -111,4 +140,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
