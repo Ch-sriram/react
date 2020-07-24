@@ -7,8 +7,17 @@ import styled from 'styled-components';
 import Person from './components/person/person.component';
 
 /**
- * We can see that we are making use of the template string as much as possible, because here, the background-color in both the normal
- * state and hover state are conditionally rendered depending on the truth value of the prop showPersons.
+ * Quite often, we want to make sure that we don't want to 
+ * apply our styling (from external scripts) to all the 
+ * components, but we would like to only apply the styling to
+ * specific components of the app. 
+ * 
+ * For example, we can copy the code below, and add it into
+ * (let's say) .button class in App.css (as shown in App.css)
+ * 
+ * The CSS rules in App.css would be definitely valid and
+ * correct, but now everything that has the class called 
+ * .button would have the rules applied to them.
  */
 
 const StyledButton = styled.button`
@@ -80,19 +89,6 @@ class App extends Component {
           })}
         </div>
       );
-      
-      /**
-       * Instead of handling the styling directly over here, 
-       * we can simply send state.showPersons' truth value
-       * as a prop to the <StyledButton>, and then inside the
-       * inside the definition of the StyledButton tagged 
-       * template, we need to handle that condition by using 
-       * the feature of a template string where we can use the
-       * `${}` sequence to write JavaScript code inside there, 
-       * where we can write an arrow function to generate the 
-       * required rule's value depending on the prop sent into
-       * the <StyledButton>.
-       */
     }
 
     const classes = [];
@@ -105,17 +101,25 @@ class App extends Component {
       classes.push('bold');
     }
 
+    /**
+     * This is not what we want, where the <button> is using
+     * the .button class that we imported from the .button
+     * class. 
+     * 
+     * We want our component to only use styles that are scoped
+     * only to it and no other component, and for that, we 
+     * have to change certain webpack configurations, which
+     * we will see next.
+     */
+
     return (
       <div className="App">
         <h1>This is a React Example</h1>
         <p className={classes.join(" ")}>This is really working!</p>
 
-        <StyledButton
-          showPersons={this.state.showPersons}
-          onClick={this.togglePersonsHandler}
-        >
+        <button className="button" onClick={this.togglePersonsHandler}>
           Toggle Persons
-        </StyledButton>
+        </button>
         {persons}
       </div>
     );
