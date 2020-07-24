@@ -60,4 +60,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    1. Implementing pseudo-classes like `:hover`: [Commit Details](https://github.com/Ch-sriram/react/commit/38a692d77d9a570af38d8a09f3749532ded7b50e)
    2. Implementing Media Queries `@media` using `{StyleRoot} from 'radium'`: [Commit Details](https://github.com/Ch-sriram/react/commit/74f0f476ae0005ddb5758b0211ac72d2be325e3a)
 4. Adding & Using **[Styled Component](https://styled-components.com/)** &mdash; `npm i --save styled-components`
-   1. Styling components using `[Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates)` with `styled-components` library: [Commit Details](https://github.com/Ch-sriram/react/commit/8ef490f993bd392b6476629545d2b0fc7e5eb32c)
+   1. Styling components using **[Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates)** with `styled-components` library: [Commit Details](https://github.com/Ch-sriram/react/commit/8ef490f993bd392b6476629545d2b0fc7e5eb32c)
