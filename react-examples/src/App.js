@@ -14,27 +14,10 @@ class App extends Component {
   }
 
   nameChangedHandler = (event, id) => {
-    // we'll only update the state of the person for which
-    // the input field was changed, and so, we first need to
-    // find the index of the Person where the input field was
-    // changed in the DOM
-
     const personIndex = this.state.persons.findIndex(
       person => person.id === id
     );
-
-    // We can get the person we want to be modified from the
-    // state now, but we DON'T want to get it the foll. way:
-    
-    // const person = this.state.persons[personIndex]; // this will directly mutate the actual person in the state, which should not be done directly, only by the setState() method.
-
-    // In ES5:
-    // const person = Object.assign({}, this.state.persons[personIndex]);
-
-    // In ES6:
     const person = { ...this.state.persons[personIndex] };
-
-    // now we're manipulating a copy of the original state
     person.name = event.target.value;
 
     const personsList = [...this.state.persons];
@@ -44,13 +27,8 @@ class App extends Component {
   }
   
   deletePersonHandler = (personIndex) => {
-    // DON'T DO THIS, as this mutates the state directly
-    // const personsList = this.state.persons;
-
-    // DO THIS, as this mutates a copy of the state
-    // const personsList = this.state.persons.slice();
     const personsList = [...this.state.persons];
-    personsList.splice(personIndex, 1); // remove 1 element from starting from personIndex
+    personsList.splice(personIndex, 1);
     this.setState({ persons: personsList });
   }
 
@@ -58,17 +36,25 @@ class App extends Component {
     this.setState({ showPersons: !this.state.showPersons });
   }
 
+  /**
+   * 
+   * Let's say that the button "Toggle Persons" should turn
+   * 'red' if we click on it to show the list of Persons, and
+   * it should turn 'green' if we click it again, and so on.
+   * 
+   * We can do it as shown in line 78.
+   */
+
   render() {
-    // Inline Styling for the <button> in .App component
     const style = {
-      backgroundColor: "white",
+      color: "white",
+      backgroundColor: "green",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
     };
 
-    // we can always refer to JSX using simple JS variables
     let persons = null;
     
     if (this.state.showPersons) {
@@ -87,6 +73,9 @@ class App extends Component {
           })}
         </div>
       );
+      
+      // this is how we dynamically change the styling
+      style.backgroundColor = "red";
     }
 
     return (
