@@ -6,20 +6,21 @@ import styled from 'styled-components';
 // Custom Components
 import Person from './components/person/person.component';
 
-// we can always store our styled components in separate files
-// and import them to use them whenever we want to.
-// But for now, we will define the styled-component right here.
+/**
+ * We can see that we are making use of the template string as much as possible, because here, the background-color in both the normal
+ * state and hover state are conditionally rendered depending on the truth value of the prop showPersons.
+ */
 
 const StyledButton = styled.button`
   color: white;
-  background-color: green;
+  background-color: ${props => props.showPersons ? "red" : "green"};
   font: inherit;
   border: 1px solid blue;
   padding: 8px;
   cursor: pointer;
   transition: all .2s;
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.showPersons ? "salmon" : "lightgreen"};
     color: rgba(0, 0, 0, .9);
   }
 `;
@@ -59,21 +60,6 @@ class App extends Component {
     this.setState({ showPersons: !this.state.showPersons });
   }
 
-  /**
-   * The styles that we add using the styled-components library
-   * doesn't add styling inline to the component, but it 
-   * generates the styles that we added into internally
-   * generated CSS class selectors, and then adds those CSS 
-   * class(s) to the head of the document and then just adds
-   * the appropriate class selector to the component we 
-   * actually generated from the `styled` object.
-   * 
-   * Therefore, styled-components do NOT generate inline 
-   * styles, but they automatically generate and manage regular
-   * CSS classes for us.
-   * 
-   */
-
   render() {
 
     let persons = null;
@@ -95,14 +81,18 @@ class App extends Component {
         </div>
       );
       
-      // // this is how we dynamically change the styling
-      // style.backgroundColor = "red";
-
-      // // making use of radium for assigning :hover rules
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'rgba(0, 0, 0, .9)'
-      // };
+      /**
+       * Instead of handling the styling directly over here, 
+       * we can simply send state.showPersons' truth value
+       * as a prop to the <StyledButton>, and then inside the
+       * inside the definition of the StyledButton tagged 
+       * template, we need to handle that condition by using 
+       * the feature of a template string where we can use the
+       * `${}` sequence to write JavaScript code inside there, 
+       * where we can write an arrow function to generate the 
+       * required rule's value depending on the prop sent into
+       * the <StyledButton>.
+       */
     }
 
     const classes = [];
@@ -115,17 +105,15 @@ class App extends Component {
       classes.push('bold');
     }
 
-    /**
-     * Now we can simply use a <StyledButton> instead of a 
-     * normal <button>. The <StyledButton> is defined above.
-     */
-
     return (
       <div className="App">
         <h1>This is a React Example</h1>
         <p className={classes.join(" ")}>This is really working!</p>
 
-        <StyledButton onClick={this.togglePersonsHandler}>
+        <StyledButton
+          showPersons={this.state.showPersons}
+          onClick={this.togglePersonsHandler}
+        >
           Toggle Persons
         </StyledButton>
         {persons}

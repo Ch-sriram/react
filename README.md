@@ -62,3 +62,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 4. Adding & Using **[Styled Component](https://styled-components.com/)** &mdash; `npm i --save styled-components`
    1. Styling components using **[Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates)** with `styled-components` library: [Commit Details](https://github.com/Ch-sriram/react/commit/8ef490f993bd392b6476629545d2b0fc7e5eb32c)
    2. How `styled-components` library generates the CSS required for the respective component: [Commit Details](https://github.com/Ch-sriram/react/commit/d9129cd0692a88d143b3c76adb995b0033090da0)
+   3. Dynamic Styling: [Commit Details]()
