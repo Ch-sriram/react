@@ -71,4 +71,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ### Deep Dive Into Components & React Internals
 
-1. A Better Project Directory Structure: [Commit Details]()
+1. A Better Project Directory Structure: [Commit Details](https://github.com/Ch-sriram/react/commit/e22fac77ab7417f37594b68f1aa1217b794d19e1)
