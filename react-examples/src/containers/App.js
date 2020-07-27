@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import AppStyleClasses from './App.module.css';
 
 // Custom Components
-import Person from './components/person/person.component';
-import ErrorBoundary from './components/error-boundary/error-boundary.component';
+import Person from '../components/Persons/Person/Person.component';
+// import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary.component';
 
 
 class App extends Component {
@@ -46,28 +46,17 @@ class App extends Component {
     let btnAppStyleClasses = [AppStyleClasses.Button];
     
     if (this.state.showPersons) {
-      /**
-       * ErrorBoundary is a Higher Order Component (HOC), which
-       * is basically a component which wraps another component
-       * with some kind of a goal (in this case, the HOC, which
-       * is ErrorBoundary, handles any error caused when
-       * rendering the Person component). 
-       * 
-       * And also, the `key` prop is now given to ErrorBoundary 
-       * component as that's the top-level component now.
-       */
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <ErrorBoundary key={person.id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)}
-                  name={person.name}
-                  age={person.age}
-                  changed={event => this.nameChangedHandler(event, person.id)}
-                />
-              </ErrorBoundary>
+              <Person
+                key={person.id}
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                changed={event => this.nameChangedHandler(event, person.id)}
+              />
             );
           })}
         </div>
