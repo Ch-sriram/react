@@ -1,7 +1,25 @@
 // Required Packages/Dependencies
 import React, { Component } from 'react';
-import './App.css';
-import styled from 'styled-components';
+// import './App.css';
+
+/**
+ * Instead of importing App.css as shown above, we can import 
+ * it as follows:
+ */
+import AppStyleClasses from './App.module.css';
+
+/**
+ * AppStyleClasses object we have above is mapped to every 
+ * class/id/element selector inside App.css with a unique 
+ * mapper (which is basically a Map object with keys having 
+ * the name as the selector's name and the object's value 
+ * would be taken as an object with defined rules. Note that 
+ * the selectors in the CSS file will be converted to unique 
+ * random names which can be seen in the final output (index.
+ * html file)), and the rules that were in those class/id/
+ * element selectors inside App.css are the values for these
+ * mapped keys which we can access in this App component.
+ */
 
 // Custom Components
 import Person from './components/person/person.component';
@@ -19,21 +37,6 @@ import Person from './components/person/person.component';
  * correct, but now everything that has the class called 
  * .button would have the rules applied to them.
  */
-
-const StyledButton = styled.button`
-  color: white;
-  background-color: ${props => props.showPersons ? "red" : "green"};
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-  transition: all .2s;
-  &:hover {
-    background-color: ${props => props.showPersons ? "salmon" : "lightgreen"};
-    color: rgba(0, 0, 0, .9);
-  }
-`;
-
 
 class App extends Component {
   state = {
@@ -70,8 +73,9 @@ class App extends Component {
   }
 
   render() {
-
     let persons = null;
+    let btnAppStyleClasses = [AppStyleClasses.Button];
+    console.log(btnAppStyleClasses);
     
     if (this.state.showPersons) {
       persons = (
@@ -89,35 +93,26 @@ class App extends Component {
           })}
         </div>
       );
+
+      btnAppStyleClasses.push(AppStyleClasses.Red);
     }
 
     const classes = [];
 
     if (this.state.persons.length <= 2 && classes.indexOf('red') === -1) {
-      classes.push('red');
+      classes.push(AppStyleClasses.red);
     }
     
     if (this.state.persons.length <= 1 && classes.indexOf('bold') === -1) {
-      classes.push('bold');
+      classes.push(AppStyleClasses.bold);
     }
 
-    /**
-     * This is not what we want, where the <button> is using
-     * the .button class that we imported from the .button
-     * class. 
-     * 
-     * We want our component to only use styles that are scoped
-     * only to it and no other component, and for that, we 
-     * have to change certain webpack configurations, which
-     * we will see next.
-     */
-
     return (
-      <div className="App">
+      <div className={AppStyleClasses.App}>
         <h1>This is a React Example</h1>
         <p className={classes.join(" ")}>This is really working!</p>
 
-        <button className="button" onClick={this.togglePersonsHandler}>
+        <button className={btnAppStyleClasses.join(" ")} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
