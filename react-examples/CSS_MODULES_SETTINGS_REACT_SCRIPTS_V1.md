@@ -27,7 +27,7 @@ These are step-by-step instructions to enable CSS modules in a react application
 
 4. The only additions made would be the properties `options.modules` and `options.localIdentName` in both the files mentioned in point 2. After that, when we re-run our dev-server using `npm start`, we should be able to run our app without any problem.
 
-Now, because of these settings, we can import the `App.css` file into a React component as JavaScript object. See the example in this **[Commit]()** for more details.
+Now, because of these settings, we can import the `App.css` file into a React component as JavaScript object. See the example in this **[Commit](https://github.com/Ch-sriram/react/commit/d5f38daabc91f707bee2246bfb060ea8cbe59e76)** for more details.
 
 **NOTE**: In case if your react app is already using `react-scripts` v2.0 or greater, then we need not do all of these manual webpack configuration settings. We just need to import each and every CSS file as follows:
 

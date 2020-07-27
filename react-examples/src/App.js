@@ -99,11 +99,11 @@ class App extends Component {
 
     const classes = [];
 
-    if (this.state.persons.length <= 2 && classes.indexOf('red') === -1) {
+    if (this.state.persons.length <= 2 && classes.indexOf(AppStyleClasses.red) === -1) {
       classes.push(AppStyleClasses.red);
     }
     
-    if (this.state.persons.length <= 1 && classes.indexOf('bold') === -1) {
+    if (this.state.persons.length <= 1 && classes.indexOf(AppStyleClasses.bold) === -1) {
       classes.push(AppStyleClasses.bold);
     }
 
