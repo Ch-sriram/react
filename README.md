@@ -66,3 +66,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 5. Working with CSS Modules
    1. Why do we need CSS Modules? [Commit Details](https://github.com/Ch-sriram/react/commit/bb869417d81ec0bf0eaa55ec6458165ad76a1080)
    2. Using CSS Modules: **[SETTINGS_README.md](https://github.com/Ch-sriram/react/blob/dev/react-examples/CSS_MODULES_SETTINGS_REACT_SCRIPTS_V1.md)** & [Commit Details](https://github.com/Ch-sriram/react/commit/d5f38daabc91f707bee2246bfb060ea8cbe59e76)
+   3. Media Queries using CSS Modules: [Commit Details](https://github.com/Ch-sriram/react/commit/b430521e24e2caf066a59e0c98805b9b77caecb6)
