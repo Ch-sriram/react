@@ -73,3 +73,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 1. A Better Project Directory Structure: [Commit Details](https://github.com/Ch-sriram/react/commit/e22fac77ab7417f37594b68f1aa1217b794d19e1)
 2. Splitting an App into Components for cleaner structure/readability: [Commit Details](https://github.com/Ch-sriram/react/commit/13c56fe01c5b4b754951e1a1a839a0135f01c124)
+3. Sending `props` to `<App/>` component: [Commit Details]()
