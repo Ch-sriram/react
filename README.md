@@ -76,4 +76,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 3. Sending `props` to `<App/>` component: [Commit Details](https://github.com/Ch-sriram/react/commit/c579e1958d8f9d6b3e98aea53b8600af73c74cc8)
 4. Component Creation Lifecycle in Action: [Commit Details](https://github.com/Ch-sriram/react/commit/9f703990f9a54c7fe1caeb7fe806cf9d3c07d553)
 5. Component Update Lifecycle
-   1. When `props` change: [Commit Details]()
+   1. When `props` change: [Commit Details](https://github.com/Ch-sriram/react/commit/4dc01643a51e2456d42ba9b88d1956185e00bbe3)
