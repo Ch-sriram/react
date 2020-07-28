@@ -2,6 +2,7 @@ import React from 'react';
 import CockpitStyleClasses from './Cockpit-style.module.css';
 
 const Cockpit = props => {
+  console.log("[Cockpit.jsx] rendering...");
   const classes = [];
   let btnCockpitStyleClasses = "";
 

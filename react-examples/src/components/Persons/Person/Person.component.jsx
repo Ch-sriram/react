@@ -2,6 +2,7 @@ import React from 'react';
 import PersonStyleClasses from './Person-style.module.css';
 
 const Person = props => {
+  console.log("[Person.jsx] rendering...");
   return (
     <div className={PersonStyleClasses.Person}>
       <p onClick={props.click}>
