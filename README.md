@@ -78,4 +78,6 @@ In this repository, I've implemented (or implementing) all the concepts related 
 5. Component Update Lifecycle
    1. When `props` change: [Commit Details](https://github.com/Ch-sriram/react/commit/4dc01643a51e2456d42ba9b88d1956185e00bbe3)
    2. When `state` changes: [Commit Details](https://github.com/Ch-sriram/react/commit/d69afffa5c2ca4dec8f915f966c22a8d59ff6066)
-6. Using `useEffect()` in Functional Components: [Commit Details](https://github.com/Ch-sriram/react/commit/2c3f31c936f0fa3185ba6c7dffff1225b33d0d0b)
+6. `useEffect()` and its uses
+   1. Usage inside a functional component: [Commit Details](https://github.com/Ch-sriram/react/commit/2c3f31c936f0fa3185ba6c7dffff1225b33d0d0b)
+   2. Controlling the Behaviour of `useEffect()`: [Commit Details]()

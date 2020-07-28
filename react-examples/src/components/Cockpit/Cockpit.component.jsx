@@ -2,35 +2,71 @@ import React, { useEffect } from 'react';
 import CockpitStyleClasses from './Cockpit-style.module.css';
 
 /**
- * Since the Cockpit component is a functional component, we
- * can go ahead and use a React hook here.
+ * useEffect() in its previous implementation where we simply
+ * logged to the console, ran every time - the Cockpit
+ * component was rendered because of changes in the state/props
+ * of the parent component.
  * 
- * Note that, in a functional component, we can't add 
- * lifecycle methods that the class based components use, such
- * as componentDidMount(), componentDidUpdate(), etc. But we
- * can still add react hooks here.
- * 
- * useEffect() hook is the 2nd most important react hook we can
- * use, after useState() hook because useEffect() combines the
- * functionality (or the use-cases we can cover) of all the 
- * class based component's lifecycle methods into a single
- * hook.
- * 
- * We can add useEffect() hook anywhere in our functional 
- * functional component's body and useEffect(), by default
- * takes in an empty function, inside which we can do anything
- * we want. The body of the function is executed every time the
- * Cockpit component is rendered onto the view.
- * 
- * Basically, useEffect() react hook in functional components 
- * replaces componentDidUpdate() & componentDidMount() in shot.
+ * Now, what if we want to send an HttpRequest inside the 
+ * useEffect() lifecycle method, but only want to do it when 
+ * the component is rendered for the first time, and not for
+ * every re-render cycle.
  */
 
 const Cockpit = props => {
 
-  useEffect(() => { 
-    console.log("[Cockpit.jsx] useEffect");
-  });
+  // useEffect(() => { 
+  //   console.log("[Cockpit.jsx] useEffect");
+  //   // Dummy HttpRequest using setTimeout()
+  //   setTimeout(() => {
+  //     alert("Saved data to cloud!");  // executes after 1000ms
+  //   }, 1000);
+  // });
+
+  /**
+   * The above useEffect() executes after every re-render, and
+   * that's a hassle, because we only want the useEffect() hook
+   * for this component run, only when there's some change
+   * to the props we receive for this component.
+   * 
+   * Therefore, if we only trigger useEffect() method when our
+   * this.state.persons changes in <App/> component (which is
+   * referred as props.persons in here), then for that, we will
+   * send in a second argument to the useEffect() lifecycle
+   * hook, which is some array of data that can change, and 
+   * when that data changes, depending on the change, the 
+   * useeEffect() lifecycle hook executes.
+   * 
+   * We can see its implementation below
+   */
+
+  // useEffect(() => { 
+  //   console.log("[Cockpit.jsx] useEffect");
+  //   // Dummy HttpRequest using setTimeout()
+  //   setTimeout(() => {
+  //     alert("Saved data to cloud!");  // executes after 1000ms
+  //   }, 1000);
+  // }, [props.persons]);
+
+  /**
+   * Now, if we want to execute the useEffect() hook only when
+   * the component renders the first time, in that case, we 
+   * would send in an empty array [] as the 2nd argument to 
+   * the useEffect() lifecycle hook. Here, we are trying to
+   * augment componentDidMount()'s usage using useEffect() 
+   * lifecycle hook.
+   * 
+   * This below useEffect() implementation runs only once, when
+   * the app starts, after that, it never runs again.
+   */
+
+  useEffect(() => {
+    console.log("[Cockpit.jsx] iseEffect");
+    // Dummy HttpRequest using setTimeout()
+    setTimeout(() => {
+      alert("Saved data to cloud!");  // executes after 1s
+    }, 1000);
+  }, []);
 
   const classes = [];
   let btnCockpitStyleClasses = "";
