@@ -77,4 +77,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 4. Component Creation Lifecycle in Action: [Commit Details](https://github.com/Ch-sriram/react/commit/9f703990f9a54c7fe1caeb7fe806cf9d3c07d553)
 5. Component Update Lifecycle
    1. When `props` change: [Commit Details](https://github.com/Ch-sriram/react/commit/4dc01643a51e2456d42ba9b88d1956185e00bbe3)
-   2. When `state` changes: [Commit Details]()
+   2. When `state` changes: [Commit Details](https://github.com/Ch-sriram/react/commit/d69afffa5c2ca4dec8f915f966c22a8d59ff6066)
