@@ -9,64 +9,99 @@ import Cockpit from '../components/Cockpit/Cockpit.component';
 import AppStyleClasses from './App.module.css';
 
 /**
- * Component Creation Lifecycle in Action:
- * ---------------------------------------
+ * Component Update Lifecycle:
+ * ---------------------------
  * 
- * Order of execution of methods/functions in creation of a 
- * component is the following:
- *  1. constructor(): this is where we set initial state of 
- *                    our app.
- *  2. getDerivedStateFromProps: a static method which takes in
- *                               props and state as the 2
- *                               parameters. We generally 
- *                               return the state from this 
- *                               lifecycle method.
- *  3. render(): the top-level component is only rendered after
- *               the bottom-level components have finished
- *               their respective lifecycle.
- *  4. componentDidMount(): this will tell react that the top
- *                          level component has been rendered
- *                          properly onto the view.
+ * Just as we have lifecycle for the component creation, we 
+ * also have a lifecycle when a component gets updated.
+ * 
+ * When the props or state of a component change (which are 
+ * the 2 triggers we've for a component to be re-evaluated
+ * by react), then a different lifecycle method execution 
+ * occurs.
+ * 
+ * The order of the lifecycle methods that are called when a 
+ * component is updated are the following:
  *  
- * Note: Before componentDidMount(), another method, which is
- * known as componentWillMount() runs. This method has 
- * officially been discouraged to use because the React team
- * has officially termed this method to be a legacy lifecycle
- * method and therefore, it isn't recommended to use the 
- * method in production. The method, componentWillMount() will
- * be deprecated in the future.
+ *  1. `static getDerivedStateFromProps(props, state)`
+ *     A lifecycle method that we won't use too often, but we
+ *     will use it to initialize the state of a component
+ *     which gets updated based on the updated `props` the 
+ *     component is getting. This lifecycle hook is not needed
+ *     that often because there's always a better/more-elegant
+ *     way to update/initialize the state of the component when
+ *     there's occurrence of an update.
+ *      Example: It could be for some form control, which gets
+ *               some external properties and then we 
+ *               internally want to handle user input, but 
+ *               initialize/update our state based on outside 
+ *               changes.
+ *  
+ *  2. `shouldComponentUpdate(nextProps, nextState)`
+ *     This lifecycle method is interesting because it allows 
+ *     us to cancel the updating process altogether, if the
+ *     this method sends a false truth value. Therefore, based
+ *     on some condition, we can always try to choose to render
+ *     a component or not, using this method. This lifecycle
+ *     method should be used extremely carefully because it can
+ *     break other components.
+ * 
+ *  3. `render()`
+ *     React goes through the JSX code, evaluates it and 
+ *     constructs its Virtual DOM for us and also sees whether
+ *     it needs to update the real DOM.
+ * 
+ *  3.5. Updation of Child Component Props
+ *       Every child component rendered inside the render()
+ *       method also gets through the same Component Updation
+ *       Lifecycle.
+ * 
+ *  4. `getSnapshotBeforeUpdate(prevProps, preState)`
+ *     This is a lifecycle hook that takes the previous props
+ *     and takes the previous state as input and it actually
+ *     returns a snapshot object which we can freely configure.
+ *     This also is a niche lifecycle hook which we'll not use
+ *     too much, but it is very useful for Last-minute DOM ops 
+ *     (not changes to the DOM, but something like getting the
+ *     current scroll position of the user).
+ * 
+ *  5. `componentDidUpdate()`
+ *     After the component is updated, this lifecycle method is
+ *     called, which is a lifecycle hook that signals react
+ *     that we're now done with the component updation process
+ *     and that the render() method has been executed. In this
+ *     lifecycle hook, we can cause side-effects by making some
+ *     kind of an (say) HTTP request by getting it back and
+ *     then updating the our component back inside here and the
+ *     lifecycle for Component Update restarts and goes on 
+ *     forever.
+ * 
+ * 
+ * To see these methods being called, we'll convert our 
+ * functional components like Persons and Person component, 
+ * into Class based components.
  */
 
 class App extends Component {
   /**
    * Component Lifecycle Execution Order: 1
    */
-
   // ES6 way of initializing state
   constructor(props) {
     super(props); // w/o this line, the app won't get compiled.
     console.log("[App.js] constructor");
-    this.state = {
-      persons: [
-        { name: "Ram", age: 28, id: "a1" },
-        { name: "Roop", age: 29, id: "a2" },
-        { name: "Max", age: 28, id: "a3" },
-      ],
-      otherState: "This has some value",
-      showPersons: false,
-    };
   }
 
   // ES7 way of initializing state (constructor() called internally)
-  // state = {
-  //   persons: [
-  //     { name: 'Ram', age: 28, id: 'a1' },
-  //     { name: 'Roop', age: 29, id: 'a2' },
-  //     { name: 'Max', age: 28, id: 'a3' }
-  //   ],
-  //   otherState: "This has some value",
-  //   showPersons: false
-  // }
+  state = {
+    persons: [
+      { name: 'Ram', age: 28, id: 'a1' },
+      { name: 'Roop', age: 29, id: 'a2' },
+      { name: 'Max', age: 28, id: 'a3' }
+    ],
+    otherState: "This has some value",
+    showPersons: false
+  }
 
   /**
    * Component Lifecycle Execution Order: 2
