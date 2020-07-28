@@ -9,8 +9,8 @@ import Cockpit from '../components/Cockpit/Cockpit.component';
 import AppStyleClasses from './App.module.css';
 
 /**
- * Component Update Lifecycle:
- * ---------------------------
+ * Component Update Lifecycle (when props change)
+ * ----------------------------------------------
  * 
  * Just as we have lifecycle for the component creation, we 
  * also have a lifecycle when a component gets updated.
@@ -125,6 +125,44 @@ class App extends Component {
     console.log("[App.js] componentDidMount");
   }
 
+  /**
+   * Component Update Lifecycle Methods (when state changes)
+   * -------------------------------------------------------
+   * 
+   * The most important takeaway when we use the lifecycle 
+   * methods while updating the component due to its props is 
+   * the componentDidUpdate() lifecycle method.
+   *  Example: After the component's update, we might want to
+   *           fetch new data from the backend, in that case, 
+   *           we would simply write code related to fetching
+   *           data after component updation, inside the 
+   *           componentDidUpdate() lifecycle.
+   * 
+   * Our state changes whenever something is inputted from the
+   * <input> field present in the Person component, which is 
+   * handled by the nameChangedHandler defined below.
+   * 
+   * And so, we can use componentDidUpdate() for doing 
+   * something after the state of the component changes.
+   * 
+   * Now, before the component renders, we can always define 
+   * what we want to do in shouldComponentUpdate() lifecycle 
+   * method.
+   */
+
+  shouldComponentUpdate(nextProp, nextState) {
+    /**
+     * This method has to return some truth value, either true 
+     * or false. If it returns true, then the render() on the
+     * the updation of the component's state/prop will go 
+     * ahead, otherwise, the child component won't update.
+     */
+    console.log("[App.js] shouldComponentUpdate");
+    if (Math.random() > 0.5)
+      return true;
+    return false;
+  }
+
   // EVENT HANDLERS
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(
@@ -189,30 +227,31 @@ export default App;
  * -----------------------------
  * 
  * [App.js] constructor
- * [App.js] constructor
- * [App.js] getDerivedStateFromProps Object
- *  > {title: "Person Manager"}
- * [App.js] getDerivedStateFromProps Object
- *  > {title: "Person Manager"}
- * [App.js] rendering...
+ * [App.js] getDerivedStateFromProps {title: "Person Manager"}
  * [App.js] rendering...
  * [Cockpit.jsx] rendering...
  * [App.js] componentDidMount
  * 
  * 
+ * Output (when "Toggle Persons" button is clicked and Math.random() <= 0.5)
+ * -------------------------------------------------------------------------------
  * 
- * Output: (clicking on "Toggle Persons" button)
- * ---------------------------------------------
- * 
- * [App.js] getDerivedStateFromProps Object
- *  > {title: "Person Manager"}
- * [App.js] getDerivedStateFromProps Object
- *  > {title: "Person Manager"}
+ * [App.js] getDerivedStateFromProps {title: "Person Manager"}
+ * [App.js] shouldComponentUpdate
  * [App.js] rendering...
+ * [Cockpit.jsx] rendering...
+ * 
+ * 
+ * Output (when "Toggle Persons" button is clicked and Math.random() > 0.5)
+ * -----------------------------------------------------------------------------
+ * 
+ * [App.js] getDerivedStateFromProps {title: "Person Manager"}
+ * [App.js] shouldComponentUpdate
  * [App.js] rendering...
  * [Cockpit.jsx] rendering...
  * [Persons.jsx] rendering...
  * [Person.jsx] rendering...
  * [Person.jsx] rendering...
  * [Person.jsx] rendering...
+ * 
  */
