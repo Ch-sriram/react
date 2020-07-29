@@ -38,15 +38,35 @@ class Persons extends Component {
    * Component Updation Lifecycle Execution Order: 2
    */
   shouldComponentUpdate(nextProps, nextState) {
-    /**
-     * We have to return a truth value, either true or false.
-     * If React continues with the update, we return true,
-     * otherwise, we return false.
-     */
-
     console.log("[Persons.jsx] shouldComponentUpdate");
-    if (Math.random() > 0.5) return true;
-    else return false;
+    /**
+    * Now, instead of always returning true, we can try to 
+     * make this update of the Persons component possible
+     * only when the Persons component is updated, and for 
+     * that, we need to compare the references of the current
+     * persons list from App.js and the upcoming one using 
+     * a simple if-else statement as follows:
+     */
+    if (nextProps.persons !== this.props.persons)
+      return true;
+    return false;
+
+    /**
+     * Here, the if-statement in line 50 works because the 
+     * persons list inside the state of App component, we 
+     * always copy the persons array and then make changes to 
+     * the copy and then again setState of the older persons
+     * to be the newly copied persons.
+     * 
+     * And because of that, the references change and there can
+     * now be a shallow comparison (reference comparison) b/w
+     * both the nextProps.persons and this.props.persons 
+     * because if the state changed, then the references 
+     * actually changed due to the way we set the state in 
+     * nameChangedHandler & deletePersonHandler by copying it
+     * and not directly changing the state without the 
+     * setState() method being called.
+     */
   }
 
   /**
@@ -106,12 +126,37 @@ export default Persons;
  * remove <React.strictMode> HOC that wraps the <App/> 
  * component in index.js to run each lifecycle hook once.
  * 
- * Output (after clicking the "Toggle Persons" button when the list of Persons are listed on the view)
- * ---------------------------------------------------------------------------------------------------
+ * Output (after clicking the "Remove Cockpit" button)
+ * ---------------------------------------------------
  * 
  * [App.js] getDerivedStateFromProps {title: "Person Manager"}
  * [App.js] shouldComponentUpdate
  * [App.js] rendering...
- * [Persons.js] componentWillUnmount
+ * [Persons.jsx] shouldComponentUpdate
+ * [Cockpit.js] cleanup work in useEffect
+ * [Cockpit.jsx] cleanup work in 2nd useEffect
+ * 
+ * 
+ * READ THE FOLLOWING AS MANY TIMES AS POSSIBLE!!
+ * ----------------------------------------------
+ * 
+ * We can clearly see that the Persons component is not
+ * rendered again from scratch because shouldComponentUpdate 
+ * returns a false value based on the condition that the state
+ * of the Persons component didn't change.
+ * 
+ * Now, the Persons component has nothing to do with Cockpit
+ * component and so, this is the optimization we are talking 
+ * about, which is possible in React.
+ * 
+ * Although, all of these changes are only internal, in the 
+ * sense that these are optimizations done at the Virtual DOM
+ * level. The updation(s) of the real DOM is still done w/o
+ * needing this internal check, in an extremely optimized way.
+ * 
+ * But this internal checking of the component whether React
+ * should even go and check this particular component to be 
+ * rendered or not, we can even handle that using the 
+ * shouldComponentUpdate lifecycle method.
  * 
  */

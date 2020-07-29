@@ -159,9 +159,10 @@ class App extends Component {
      * ahead, otherwise, the child component won't update.
      */
     console.log("[App.js] shouldComponentUpdate");
-    if (Math.random() > 0.5)
-      return true;
-    return false;
+    // if (Math.random() > 0.5)
+    //   return true;
+    // return false;
+    return true;
   }
 
   // EVENT HANDLERS
