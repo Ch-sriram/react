@@ -83,4 +83,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    2. Controlling the Behaviour of `useEffect()`: [Commit Details](https://github.com/Ch-sriram/react/commit/fe890d24d62d9948acc5807c5ca69a5017a94189)
 7. Lifecycle Methods for Cleanup Work in class-based components using `componentWillUnmount()` & in functional components using `useEffect()`: [Commit Details](https://github.com/Ch-sriram/react/commit/5db978383c4e82130e1ba82752206a73e5049ebe)
 8. Optimization in React
-   1. Using Lifecycle Method - `shouldComponentUpdate()`: [Commit Details]()
+   1. Using Lifecycle Method - `shouldComponentUpdate()`: [Commit Details](https://github.com/Ch-sriram/react/commit/dcf7bb7d302ec04b29699dbe31fa616d9f4f123f)
