@@ -86,3 +86,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    1. Using Lifecycle Method - `shouldComponentUpdate()`: [Commit Details](https://github.com/Ch-sriram/react/commit/dcf7bb7d302ec04b29699dbe31fa616d9f4f123f)
    2. Using `React.memo()` for optimizing functional components: [Commit Details](https://github.com/Ch-sriram/react/commit/0b5aecceb6914057e212a9901131b54c180e63b5)
    3. Checking all the `props` info using `shouldComponentUpdate`: [Commit Details](https://github.com/Ch-sriram/react/commit/6dec77afa3170c223fc833adf04bd72ed34d3006)
+   4. Delegating the task done in 8.3 to a `PureComponent` by extending a `PureComponent`: [Commit Details]()

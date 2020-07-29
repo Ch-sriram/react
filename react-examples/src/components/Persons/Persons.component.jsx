@@ -1,38 +1,31 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person.component';
 
-class Persons extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("[Persons.jsx] shouldComponentUpdate");
-    /**
-     * Now, if we want to check all the input given to this 
-     * particular component (i.e., all the `props`) and then
-     * see whether we want to render this component or not, 
-     * for that, we can simply check all the `props` related
-     * to this component based on what the nextProps can be
-     * inside the shouldComponentUpdate() method.
-     * 
-     * And for that, we can go with making the check of all
-     * the relevant `props` compulsory as shown below.
-     * 
-     * The relevant `props` for the <Persons/> component are
-     * (relevant => the `props` that make a change possible
-     * inside/to the <Persons/> component directly):
-     * this.props.persons, this.props.clicked & 
-     * this.props.nameChanged
-     * 
-     * With these being checked for every render trigger/cycle
-     * of <Persons/>, we would essentially make it a strict 
-     * kind of a component
-     */
-    if (
-      nextProps.persons !== this.props.persons ||
-      nextProps.clicked !== this.props.clicked ||
-      nextProps.nameChanged !== this.props.nameChanged
-    )
-      return true;
-    return false;
-  }
+class Persons extends PureComponent {
+  /**
+   * Instead of verifying all the `props` that are in this
+   * component, we can simply make this a PureComponent by
+   * extending this component as PureComponent. 
+   * 
+   * The code below will be implicitly written by React itself,
+   * i.e., we need not check all the `props` inside the 
+   * shouldComponentUpdate() lifecycle method, it will be done
+   * internally by react, on its own.
+   * 
+   * Therefore, we can comment the code related to 
+   * shouldComponentUpdate() below for this component, as it 
+   * is now extending PureComponent.
+   */
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("[Persons.jsx] shouldComponentUpdate");
+  //   if (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.clicked !== this.props.clicked ||
+  //     nextProps.nameChanged !== this.props.nameChanged
+  //   )
+  //     return true;
+  //   return false;
+  // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log("[Persons.jsx] getSnapshotBeforeUpdate");
@@ -76,14 +69,13 @@ export default Persons;
  * [App.js] getDerivedStateFromProps {title: "Person Manager"}
  * [App.js] shouldComponentUpdate
  * [App.js] rendering...
- * [Persons.jsx] shouldComponentUpdate
  * [Cockpit.js] cleanup work in useEffect
  * [Cockpit.jsx] cleanup work in 2nd useEffect
  * 
- * We can see in the <Persons/> component that the 
- * shouldComponentUpdate() lifecycle method is running before
- * rendering the <Persons/> component onto the view and that's
- * precisely running only because <Persons/> component makes
- * a check of whether any of the info provided in the `props` 
- * of Persons component is changing or not.
+ * As we can see, here the <Persons/> component didn't even
+ * show any update as it wasn't even touched, at the virtual
+ * DOM level, because all these optimizations are at the 
+ * Virtual DOM level, which might be minor, but addon to the 
+ * overall rendering/processing of components and make it more
+ * efficient and snappy.
  */
