@@ -67,6 +67,22 @@ class Persons extends Component {
     console.log(snapshot);
   }
 
+  /**
+   * In an app where we have some kind of a live connection to 
+   * some backend, then we've a very realistic scenario where we
+   * do have to cleanup some opened connection or some other 
+   * stuff. And for things like that, we use the lifecycle method
+   * known as componentWillUnmount() for a class based component.
+   */
+
+  componentWillUnmount() {
+    /**
+     * In here, we can have any code that runs right before the
+     * component is removed.
+     */
+    console.log("[Persons.js] componentWillUnmount");
+  }
+
   render() {
     console.log("[Persons.jsx] rendering...");
     return this.props.persons.map((person, index) => {
@@ -90,46 +106,12 @@ export default Persons;
  * remove <React.strictMode> HOC that wraps the <App/> 
  * component in index.js to run each lifecycle hook once.
  * 
- * Output (before clicking the "Toggle Persons" button):
- * -----------------------------------------------------
- * 
- * [App.js] constructor
- * [App.js] getDerivedStateFromProps {title: "Person Manager"}
- * [App.js] rendering...
- * [Cockpit.jsx] rendering...
- * componentDidMount
- * 
- * 
- * Output (after clicking "Toggle Persons" button)
- * -----------------------------------------------
+ * Output (after clicking the "Toggle Persons" button when the list of Persons are listed on the view)
+ * ---------------------------------------------------------------------------------------------------
  * 
  * [App.js] getDerivedStateFromProps {title: "Person Manager"}
+ * [App.js] shouldComponentUpdate
  * [App.js] rendering...
- * [Cockpit.jsx] rendering...
- * [Persons.jsx] rendering...
- * [Person.jsx] rendering...
- * 
- * 
- * Output (when changing a name of some person, and when the Math.random() > 0.5)
- * -----------------------------------------------------------------------------------
- * 
- * [App.js] getDerivedStateFromProps {title: "Person Manager"}
- * [App.js] rendering...
- * [Cockpit.jsx] rendering...
- * [Persons.jsx] shouldComponentUpdate
- * [Persons.jsx] rendering...
- * [Person.jsx] rendering...
- * [Persons.jsx] getSnapshotBeforeUpdate
- * [Persons.jsx] componentDidUpdate
- * > {message: "Hello 🖖 🖖 from getSnapshotBeforeUpdate()"}
- * 
- * 
- * Output (when changing a name of some person, and when the Math.random() <= 0.5)
- * ------------------------------------------------------------------------------------
- * 
- * [App.js] getDerivedStateFromProps {title: "Person Manager"}
- * [App.js] rendering...
- * [Cockpit.jsx] rendering...
- * [Persons.jsx] shouldComponentUpdate
+ * [Persons.js] componentWillUnmount
  * 
  */

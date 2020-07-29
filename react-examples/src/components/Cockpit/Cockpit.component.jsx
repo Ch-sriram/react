@@ -2,71 +2,62 @@ import React, { useEffect } from 'react';
 import CockpitStyleClasses from './Cockpit-style.module.css';
 
 /**
- * useEffect() in its previous implementation where we simply
- * logged to the console, ran every time - the Cockpit
- * component was rendered because of changes in the state/props
- * of the parent component.
- * 
- * Now, what if we want to send an HttpRequest inside the 
- * useEffect() lifecycle method, but only want to do it when 
- * the component is rendered for the first time, and not for
- * every re-render cycle.
+ * Now, if we are using useEffect() hook to handle the
+ * functionality of componentWillUnmount() class-based 
+ * lifecycle method in a functional component, in that case, 
+ * in our useEffect() lifecycle hook, we can always return 
+ * either nothing, or, we can return an anonymous function,
+ * which runs (and this is important) BEFORE whatever is there
+ * in the useEffect(), but this behaviour of running before 
+ * the useEffect() hook, is only in-effect AFTER the (first) 
+ * render cycle only.
  */
 
 const Cockpit = props => {
-
-  // useEffect(() => { 
-  //   console.log("[Cockpit.jsx] useEffect");
-  //   // Dummy HttpRequest using setTimeout()
-  //   setTimeout(() => {
-  //     alert("Saved data to cloud!");  // executes after 1000ms
-  //   }, 1000);
-  // });
+  useEffect(() => {
+    console.log("[Cockpit.jsx] useEffect");
+    // Dummy HttpRequest using setTimeout()
+    const timer = setTimeout(() => {
+      alert("Saved data to cloud!");  // executes after 1s
+    }, 1000);
+    return () => {
+      // whenever this cleanup code is executed, we don't 
+      // want the alert to showup, and so, we simply clear
+      // the timeout as shown below.
+      clearTimeout(timer);
+      console.log("[Cockpit.js] cleanup work in useEffect");
+    }
+  }, []);
 
   /**
-   * The above useEffect() executes after every re-render, and
-   * that's a hassle, because we only want the useEffect() hook
-   * for this component run, only when there's some change
-   * to the props we receive for this component.
+   * Even with the useEffect() hook defined with the cleanup
+   * code being returned, we'll never see that cleanup code 
+   * being executed, until the respective component actually 
+   * is removed from the view.
    * 
-   * Therefore, if we only trigger useEffect() method when our
-   * this.state.persons changes in <App/> component (which is
-   * referred as props.persons in here), then for that, we will
-   * send in a second argument to the useEffect() lifecycle
-   * hook, which is some array of data that can change, and 
-   * when that data changes, depending on the change, the 
-   * useeEffect() lifecycle hook executes.
-   * 
-   * We can see its implementation below
+   * In this case, the Cockpit component has to be removed from
+   * App.js component (parent component), onClick of some 
+   * button and so on... (which is handled in App.js)
    */
 
-  // useEffect(() => { 
-  //   console.log("[Cockpit.jsx] useEffect");
-  //   // Dummy HttpRequest using setTimeout()
-  //   setTimeout(() => {
-  //     alert("Saved data to cloud!");  // executes after 1000ms
-  //   }, 1000);
-  // }, [props.persons]);
-
   /**
-   * Now, if we want to execute the useEffect() hook only when
-   * the component renders the first time, in that case, we 
-   * would send in an empty array [] as the 2nd argument to 
-   * the useEffect() lifecycle hook. Here, we are trying to
-   * augment componentDidMount()'s usage using useEffect() 
-   * lifecycle hook.
-   * 
-   * This below useEffect() implementation runs only once, when
-   * the app starts, after that, it never runs again.
+   * In case we want the cleanup to be done on every render 
+   * cycle of the app, in that case, we don't send any 2nd 
+   * argument to the useEffect() lifecycle hook.
    */
 
   useEffect(() => {
-    console.log("[Cockpit.jsx] iseEffect");
-    // Dummy HttpRequest using setTimeout()
-    setTimeout(() => {
-      alert("Saved data to cloud!");  // executes after 1s
-    }, 1000);
-  }, []);
+    console.log("[Cockpit.jsx] 2nd useEffect");
+    return () => {
+      console.log("[Cockpit.jsx] cleanup work in 2nd useEffect");
+    };
+  });
+
+  /**
+   * This above useEffect() will be called every time the
+   * Persons component is rendered on to the view as the 2nd
+   * argument is missing.
+   */
 
   const classes = [];
   let btnCockpitStyleClasses = "";

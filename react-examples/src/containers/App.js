@@ -100,7 +100,8 @@ class App extends Component {
       { name: 'Max', age: 28, id: 'a3' }
     ],
     otherState: "This has some value",
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   }
 
   /**
@@ -207,12 +208,24 @@ class App extends Component {
 
     return (
       <div className={AppStyleClasses.App}>
-        <Cockpit
-          title={this.props.title}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons}
-          clicked={this.togglePersonsHandler}
-        />
+        <button
+          onClick={() => {
+            this.setState({
+              showCockpit: !this.state.showCockpit,
+            });
+          }}
+        >
+          {this.state.showCockpit ? "Remove Cockpit" : "Show Cockpit"}
+        </button>
+        {
+          this.state.showCockpit ?   
+            <Cockpit
+              title={this.props.title}
+              showPersons={this.state.showPersons}
+              persons={this.state.persons}
+              clicked={this.togglePersonsHandler}
+            /> : null
+        }
         {persons}
       </div>
     );
@@ -223,35 +236,20 @@ export default App;
 
 
 /**
- * Output: (on starting the app)
- * -----------------------------
- * 
- * [App.js] constructor
- * [App.js] getDerivedStateFromProps {title: "Person Manager"}
- * [App.js] rendering...
- * [Cockpit.jsx] rendering...
- * [App.js] componentDidMount
- * 
- * 
- * Output (when "Toggle Persons" button is clicked and Math.random() <= 0.5)
- * -------------------------------------------------------------------------------
+ * Output (when we press "Remove Cockpit" button and Math.random() > 0.5 in shouldComponentUpdate() lifecycle method inside Persons component)
+ * -------------------------------------------------------------------------------------------------------------------------------------------
  * 
  * [App.js] getDerivedStateFromProps {title: "Person Manager"}
  * [App.js] shouldComponentUpdate
  * [App.js] rendering...
- * [Cockpit.jsx] rendering...
+ * [Cockpit.js] cleanup work in useEffect
  * 
- * 
- * Output (when "Toggle Persons" button is clicked and Math.random() > 0.5)
- * -----------------------------------------------------------------------------
- * 
- * [App.js] getDerivedStateFromProps {title: "Person Manager"}
- * [App.js] shouldComponentUpdate
- * [App.js] rendering...
- * [Cockpit.jsx] rendering...
- * [Persons.jsx] rendering...
- * [Person.jsx] rendering...
- * [Person.jsx] rendering...
- * [Person.jsx] rendering...
- * 
+ */
+
+
+/**
+ * We can clearly see that useEffect() lifecycle hook's actual
+ * body is not executed inside Cockpit component, only the 
+ * returned anonymous function from useEffect is executed 
+ * defined in line 23 of the Cockpit component. 
  */
