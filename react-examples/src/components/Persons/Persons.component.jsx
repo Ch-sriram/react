@@ -45,6 +45,18 @@ class Persons extends PureComponent {
 
   render() {
     console.log("[Persons.jsx] rendering...");
+    /**
+     * Here, we are returning a list of <Person/> components, 
+     * not components which are wrapped inside a <div>, and so
+     * in React, this is absolutely possible.
+     * 
+     * Therefore, from any kind of a component, we can actually
+     * just return a single <div> or a list of components as we
+     * have done below.
+     * 
+     * This same approach will be used to render the components
+     * of the <Person/> component.
+     */
     return this.props.persons.map((person, index) => {
       return (
         <Person
