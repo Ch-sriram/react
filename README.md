@@ -84,4 +84,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 7. Lifecycle Methods for Cleanup Work in class-based components using `componentWillUnmount()` & in functional components using `useEffect()`: [Commit Details](https://github.com/Ch-sriram/react/commit/5db978383c4e82130e1ba82752206a73e5049ebe)
 8. Optimization in React
    1. Using Lifecycle Method - `shouldComponentUpdate()`: [Commit Details](https://github.com/Ch-sriram/react/commit/dcf7bb7d302ec04b29699dbe31fa616d9f4f123f)
-   2. Using `React.memo()` for optimizing functional components: [Commit Details]()
+   2. Using `React.memo()` for optimizing functional components: [Commit Details](https://github.com/Ch-sriram/react/commit/0b5aecceb6914057e212a9901131b54c180e63b5)
