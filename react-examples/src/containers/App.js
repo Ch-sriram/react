@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 // Custom Components
 import Persons from '../components/Persons/Persons.component';
 import Cockpit from '../components/Cockpit/Cockpit.component';
-import WithClass from '../hoc/WithClass/WithClass.hoc';
+// import WithClass from '../hoc/WithClass/withClass.closureHOC';
+import withClass from '../hoc/WithClass/withClass.closureHOC';
+import Aux from '../hoc/Auxiliary/Auxiliary.hoc';
 
 // Required Styles
 import AppStyleClasses from './App.module.css';
@@ -79,17 +81,18 @@ class App extends Component {
     }
 
     /**
-     * Instead of returning a <div>, here we can create our
-     * own component which takes in some styling props and then
-     * applies them to the child components. 
+     * Instead of using the <WithClass/> HOC to wrap the child
+     * components, we can simply use the <Aux/> or 
+     * <React.Fragment/> to wrap the child components, and
+     * when exporting this App component, we can call 
+     * `withClass(App, AppStyleClass.App)` as shown at the end.
      * 
-     * These components are a.k.a Higher Order Components, 
-     * which are generally used to add some more functionality
-     * to the wrapped components under that component.
+     * That closureHOC function returns a component with the
+     * styles applied to the App component inside a <div>.
      */
 
     return (
-      <WithClass styleClasses={AppStyleClasses.App}>
+      <Aux>
         <button
           onClick={() => {
             this.setState({
@@ -109,9 +112,16 @@ class App extends Component {
             /> : null
         }
         {persons}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, AppStyleClasses.App);
+
+/**
+ * Both ways of using a HOC are popular, if we want more
+ * control over the component in question, we go for the HOC 
+ * with the closure approach, which is simply called as 
+ * function.
+ */
