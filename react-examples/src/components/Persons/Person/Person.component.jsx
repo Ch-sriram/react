@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import PersonStyleClasses from './Person-style.module.css';
+// import PersonStyleClasses from './Person-style.module.css';
+import Aux from '../../../hoc/Auxiliary/Auxiliary';
 
 class Person extends Component {
   render() {
     console.log("[Person.jsx] rendering...");
     /**
-     * What we have to take care when we return a list of 
-     * components as JSX, in that case, we have to give a `key`
-     * property to every component inside the list.
+     * We are wrapping all the components inside the <Aux> 
+     * component. <Aux> component is a HOC that simply returns
+     * the child components back as the output.
      */
-    return [
-      <p key="comp1" onClick={this.props.click}>
-        I'm {this.props.name} and I'm {this.props.age} years old!
-      </p>,
-      <p key={"comp2"}>{this.props.children}</p>,
-      <input
-        key="comp3"
-        type="text"
-        onChange={this.props.changed}
-        value={this.props.name}
-      />
-    ];
+    return (
+      <Aux>
+        <p key="comp1" onClick={this.props.click}>
+          I'm {this.props.name} and I'm {this.props.age} years old!
+        </p>
+        <input
+          type="text"
+          onChange={this.props.changed}
+          value={this.props.name}
+        />
+      </Aux>
+    );
   }
 }
 
