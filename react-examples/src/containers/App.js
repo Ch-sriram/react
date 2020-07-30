@@ -20,7 +20,7 @@ class App extends Component {
   state = {
     persons: [
       { name: 'Ram', age: 28, id: 'a1' },
-      { name: 'Roop', age: 29, id: 'a2' },
+      { name: 'Roop', age: "29", id: 'a2' },
       { name: 'Max', age: 28, id: 'a3' }
     ],
     otherState: "This has some value",
