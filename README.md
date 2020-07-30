@@ -92,4 +92,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    2. Using a HOC (like say, `<Auxiliary />` component): [Commit Details](https://github.com/Ch-sriram/react/commit/849b614df6421fe6e9ac7534b5caf53482a28bb1)
    3. Using a built-in HOC for wrapping/rendering JSX elements &mdash; `<React.Fragment>`: [Commit Details](https://github.com/Ch-sriram/react/commit/90b069fc586be544e5a071d626a50bbb40830867)
 10. Higher Order Components (HOC)
-    1. Introduction to HOC: [Commit Details]()
+    1. Introduction to HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/8a9645adc5ba6f86d24aaee6f988eae9a5f99ef7)
