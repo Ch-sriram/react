@@ -1,21 +1,17 @@
 /**
- * Another way of writing a HOC does not work by returning a 
- * JSX component, but instead, it works by using a regular JS
- * function, where the 1st argument would actually be the 
- * component called "WrappedComponent", the 2nd argument 
- * depends on the HOC we are creating, in this case, let's 
- * say we want to take in a 2nd argument which is the 
- * "className". This HOC we're creating is specifically used 
- * to add a <div> with a certain CSS class around any element
- * that's being sent to this HOC.
+ * Although, this HOC using Closure works for the <App/> 
+ * component, but it doesn't work for the <Person/> component.
  * 
- * Of course, we can also accept as many arguments as we want, 
- * based on what our HOC wants. 
+ * There's a reason why it doesn't work for the <Person/> 
+ * component, and it is because the <Person/> component uses
+ * its `props` when rendering some dynamic content onto the 
+ * view and those `props` aren't mentioned inside the 
+ * <WrappedComponent /> in this HOC using Closure.
  * 
- * NOTE: now this HOC is simply a function that returns a 
- * function, so we rename it w.r.t to the conventions of a 
- * function and also, import this module as a function inside 
- * the App component.
+ * The `props` in this HOC using Closure has to be 
+ * de-structured inside the <WrappedComponent /> as those
+ * will automatically expanded using the spread (...) operator
+ * as shown below.
  */
 
 import React from 'react'
@@ -23,9 +19,18 @@ import React from 'react'
 const withClass = (WrappedComponent, className) => {
   return props => (
     <div className={className}>
-      <WrappedComponent />
+      <WrappedComponent {...props} />
     </div>
   );
 }
 
 export default withClass;
+
+
+/**
+ * Without the inclusion of {...props} in line 22, the 
+ * <WrappedComponent /> that we are trying to render onto the
+ * screen, won't be rendered properly, if that respective 
+ * <WrappedComponent /> uses the `props` when rendering the 
+ * JSX components onto the view.
+ */
