@@ -88,4 +88,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    3. Checking all the `props` info using `shouldComponentUpdate`: [Commit Details](https://github.com/Ch-sriram/react/commit/6dec77afa3170c223fc833adf04bd72ed34d3006)
    4. Delegating the task done in 8.3 to a `PureComponent` by extending a `PureComponent`: [Commit Details](https://github.com/Ch-sriram/react/commit/8efc19ec3559c40a96ac32e13588c3aa04f2e4ae)
 9. Rendering Adjacent JSX Elements
-   1. Using JS Arrays/Lists: [Commit Details]()
+   1. Using JS Arrays/Lists: [Commit Details](https://github.com/Ch-sriram/react/commit/a5cc7dc50d4a639981e4fd3e8db9541d89d40f73)
