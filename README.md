@@ -93,4 +93,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
    3. Using a built-in HOC for wrapping/rendering JSX elements &mdash; `<React.Fragment>`: [Commit Details](https://github.com/Ch-sriram/react/commit/90b069fc586be544e5a071d626a50bbb40830867)
 10. Higher Order Components (HOC)
     1. Introduction to HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/8a9645adc5ba6f86d24aaee6f988eae9a5f99ef7)
-    2. Another form of HOC using Closure: [Commit Details]()
+    2. Another form of HOC using Closure: [Commit Details](https://github.com/Ch-sriram/react/commit/208eda2591e9ade27f53878b107fddb6f139c05f)
