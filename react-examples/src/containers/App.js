@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Custom Components
 import Persons from '../components/Persons/Persons.component';
 import Cockpit from '../components/Cockpit/Cockpit.component';
-// import WithClass from '../hoc/WithClass/withClass.closureHOC';
+// import WithClass from '../hoc/WithClass/withClass.hoc';
 import withClass from '../hoc/WithClass/withClass.closureHOC';
 import Aux from '../hoc/Auxiliary/Auxiliary.hoc';
 
@@ -25,7 +25,8 @@ class App extends Component {
     ],
     otherState: "This has some value",
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    inputKeyPressCounter: 0
   }
 
   static getDerivedStateFromProps = (props, state) => {
@@ -50,10 +51,55 @@ class App extends Component {
     const person = { ...this.state.persons[personIndex] };
     person.name = event.target.value;
 
-    const personsList = [...this.state.persons];
-    personsList[personIndex] = person;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
 
-    this.setState({ persons: personsList });
+    // THIS WAY OF SETTING STATE WHERE THE STATE DEPENDS ON
+    // THE PREVIOUS STATE is INCORRECT, although it might work
+    // for a really small app like ours.
+    // this.setState({
+    //   persons,
+    //   inputKeyPressCounter: this.state.inputKeyPressCounter + 1
+    // });
+
+    /**
+     * The way of setting state above, where one part of the 
+     * new state depends on some guaranteed updated value in 
+     * the previous state, in that case, this approach can 
+     * get us into trouble by introducing inconsistent state.
+     * 
+     * This happens because React, behind-the-scenes, doesn't
+     * immediately trigger a an update of the state of the 
+     * respective component and the re-render cycle.
+     * 
+     * Instead, it's internally scheduled by React and so, 
+     * React will perform the state update(s) and re-render 
+     * cycle when it has the available resources to do it after
+     * it follows its internal scheduling for state updation 
+     * and re-render cycles.
+     * 
+     * In simple apps like this one, the way prescribed above
+     * where we set the state as shown, may work, but in a big
+     * app, something like the aforementioned way of setting
+     * the state won't work, and so, we have to set the state
+     * using the previous state as follows:
+     * 
+     * NOTE that setState() takes in a function with 2 args, 
+     * 1st arg is `prevState` and the 2nd arg is `props`.
+     */
+
+    this.setState((prevState, props) => {
+      return {
+        persons,
+        inputKeyPressCounter: prevState.inputKeyPressCounter + 1
+      };
+    });
+
+    /** 
+     * The aforementioned way of updating the state is safe
+     * when the current state itself is dependent on the 
+     * previous state.
+     */
   };
 
   deletePersonHandler = (personIndex) => {
@@ -79,17 +125,6 @@ class App extends Component {
         />
       );
     }
-
-    /**
-     * Instead of using the <WithClass/> HOC to wrap the child
-     * components, we can simply use the <Aux/> or 
-     * <React.Fragment/> to wrap the child components, and
-     * when exporting this App component, we can call 
-     * `withClass(App, AppStyleClass.App)` as shown at the end.
-     * 
-     * That closureHOC function returns a component with the
-     * styles applied to the App component inside a <div>.
-     */
 
     return (
       <Aux>
@@ -118,10 +153,3 @@ class App extends Component {
 }
 
 export default withClass(App, AppStyleClasses.App);
-
-/**
- * Both ways of using a HOC are popular, if we want more
- * control over the component in question, we go for the HOC 
- * with the closure approach, which is simply called as 
- * function.
- */
