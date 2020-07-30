@@ -90,3 +90,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 9. Rendering Adjacent JSX Elements
    1. Using JS Arrays/Lists: [Commit Details](https://github.com/Ch-sriram/react/commit/a5cc7dc50d4a639981e4fd3e8db9541d89d40f73)
    2. Using a HOC (like say, `<Auxiliary />` component): [Commit Details](https://github.com/Ch-sriram/react/commit/849b614df6421fe6e9ac7534b5caf53482a28bb1)
+   3. Using a built-in HOC for wrapping/rendering JSX elements &mdash; `<React.Fragment>`: [Commit Details]()
