@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import PersonStyleClasses from './Person-style.module.css';
 import Aux from '../../../hoc/Auxiliary/Auxiliary.hoc';
 import withClass from '../../../hoc/WithClass/withClass.closureHOC';
+import AuthContext from '../../../context/auth/auth.context';
 
 class Person extends PureComponent {
   inputElementRef = React.createRef();
@@ -14,19 +15,28 @@ class Person extends PureComponent {
     this.inputElementRef.current.focus();
   }
 
+  /**
+   * Wherever we need to use the context object, we have to 
+   * always consume it, so we'll consume it here as shown below.
+   * 
+   * Here, we can see that the content wrapped inside 
+   * <AuthContext.Consumer/> is executing a function
+   * which takes in an argument, which is the `context` 
+   * variable, through which, we can directly access the 
+   * context variable or the context function.
+   */
+  
   render() {
     console.log("[Person.jsx] rendering...");
     return (
       <Aux>
-        {
-          this.props.isAuth ?
-            <p>Authenticated</p> :
-            <p>Please Log In</p>
-        }
+        <AuthContext.Consumer>
+          {context => context.authenticated ? <p>Authenticated</p> : <p>Please Log In</p>}
+        </AuthContext.Consumer>
         <p onClick={this.props.click}>
           I'm {this.props.name} and I'm {this.props.age} years old!
         </p>
-        <input 
+        <input
           ref={this.inputElementRef}
           type="text"
           onChange={this.props.changed}

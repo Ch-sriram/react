@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import CockpitStyleClasses from './Cockpit-style.module.css';
+import AuthContext from '../../context/auth/auth.context';
 
 const Cockpit = props => {
   const togglePersonsBtnRef = useRef(null);
@@ -27,6 +28,13 @@ const Cockpit = props => {
     classes.push(CockpitStyleClasses.bold);
   }
 
+  /**
+   * We will wrap the required button inside the 
+   * <AuthContext/> context component where we return the
+   * button by passing in the function with the `context` 
+   * variable.
+   */
+
   return (
     <div className={CockpitStyleClasses.Cockpit}>
       <h1>{props.title}</h1>
@@ -39,9 +47,16 @@ const Cockpit = props => {
       >
         Toggle Persons
       </button>
-      <button onClick={props.login}>{"Log In/Out"}</button>
+      <AuthContext.Consumer>
+        {(context) => <button onClick={context.login}>{"Log In/Out"}</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };
 
 export default React.memo(Cockpit);
+
+/**
+ * Because of this, we don't need to send the `loginHandler()`
+ * as a prop to the <Cockpit/> component.
+ */

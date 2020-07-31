@@ -7,41 +7,10 @@ import Cockpit from '../components/Cockpit/Cockpit.component';
 // import WithClass from '../hoc/WithClass/withClass.hoc';
 import withClass from '../hoc/WithClass/withClass.closureHOC';
 import Aux from '../hoc/Auxiliary/Auxiliary.hoc';
+import AuthContext from '../context/auth/auth.context';
 
 // Required Styles
 import AppStyleClasses from './App.module.css';
-
-/**
- * Assume that, for the <Person/> component, we want to add 
- * in a dummy authentication whose handler is written inside
- * the <App/> component, and it is invoked from the <Cockpit/>
- * component. The <Cockpit/> component receives the 
- * loginHandler() function's reference as a `prop` from App
- * component.
- * 
- * Now, the loginHandler() event handler, which is invoked from
- * the <Cockpit/> component, will simply change some state 
- * object, let's say we have a new state variable called 
- * `authenticated`, which is initially false.
- * 
- * Inside the loginHandler() function, we can call setState and
- * set `authenticated` to true, and this loginHandler()'s 
- * reference is sent to the <Cockpit/> component as a property
- * called `login`.
- * 
- * Now, we also want to get the information whether every 
- * <Person/> component is authenticated or not. And since the
- * state of the authentication status, which is `authenticated`
- * is stored at <App/> component, and also, since the App
- * component only has access to the <Persons/> component, we 
- * can send in the state value of `authenticated` as a property
- * to the <Persons/> component (let's say `isAuthenticated` 
- * prop). Inside the <Persons/> component, we can pass the 
- * `isAuthenticated` property to each <Person/> as (say) 
- * `isAuth` property. And inside the <Person/> component, we
- * can print information on each <Person/> whether it is 
- * "Authenticated" or "Not Authenticated".
- */
 
 class App extends Component {
   constructor(props) {
@@ -115,16 +84,48 @@ class App extends Component {
     console.log("[App.js] rendering...");
     let persons = null;
 
+    /**
+     * Because of context object, we need not send information
+     * on `state.authenticated` as a prop.
+     */
+
     if (this.state.showPersons) {
       persons = (
         <Persons
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           nameChanged={this.nameChangedHandler}
-          isAuthenticated={this.state.authenticated}
         />
       );
     }
+
+    /**
+     * Now, the imported <AuthContext/> component should wrap 
+     * all the components that would need to use the context
+     * variables/functions in our app.
+     * 
+     * In this case, the <Person/> and the <Cockpit/> 
+     * components need to use the context variable/functions,
+     * and so, we'll wrap that part of the returned JSX from
+     * this App component, inside <AuthContext.Provider/>
+     * component. Because we're providing the context to the
+     * components that are wrapped inside the <AuthContext/>
+     * component.
+     * 
+     * The <AuthContext.Provider/> component, takes in a 
+     * `value` prop, in which we pass in the new values to the 
+     * context, depending on what we're trying to provide the
+     * context for. If the `value` prop isn't described, then
+     * the default context's definition will be taken as the 
+     * value of the context.
+     * 
+     * In this case, both <Cockpit/> and the <Persons/> 
+     * components can access the context object's variables or
+     * functions. In case of <Persons/> component, since 
+     * <Person/> is the child component of <Persons/> 
+     * component, we can also use the context directly inside
+     * the <Person/> component, which is what we want.
+     */
 
     return (
       <Aux>
@@ -137,20 +138,32 @@ class App extends Component {
         >
           {this.state.showCockpit ? "Remove Cockpit" : "Show Cockpit"}
         </button>
-        {
-          this.state.showCockpit ?   
+        <AuthContext.Provider value={{
+          authenticated: this.state.authenticated,
+          login: this.loginHandler
+        }}>
+          {this.state.showCockpit ? (
             <Cockpit
               title={this.props.title}
               showPersons={this.state.showPersons}
               personsLength={this.state.persons.length}
               clicked={this.togglePersonsHandler}
               login={this.loginHandler}
-            /> : null
-        }
-        {persons}
+            />
+          ) : null}
+          {persons}
+        </AuthContext.Provider>
       </Aux>
     );
   }
 }
 
 export default withClass(App, AppStyleClasses.App);
+
+/**
+ * The one thing that doesn't change when using the Context API
+ * is that, we still maintain the info to be passed, inside the
+ * state of the component, because, react will only re-render
+ * when the state/props in some component down the component 
+ * tree changes.
+ */

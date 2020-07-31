@@ -103,3 +103,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
     3. `Refs` in functional components using `useRef()` hook: [Commit Details](https://github.com/Ch-sriram/react/commit/9088c3ac9007c341cbc85b816ac57ec500ad6afa)
 14. Context API in React
     1. Problems with `prop` chaining &mdash; Why use the concept of Context? [Commit Details](https://github.com/Ch-sriram/react/commit/be6a373389a4942902f261a988f46aefb5601122)
+    2. Using the Context API using `React.createContext()`: [Commit Details]()

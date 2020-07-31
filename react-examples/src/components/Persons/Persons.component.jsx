@@ -18,6 +18,16 @@ class Persons extends PureComponent {
     console.log("[Persons.js] componentWillUnmount");
   }
 
+  /**
+   * We need not consume the context that we wrapped the 
+   * <Persons/> component with, in here. We can directly 
+   * consume it inside the <Person/> component.
+   * 
+   * And also, we don't need to send in the `isAuth` prop
+   * to the <Person/> component, and also, we need not take
+   * in `isAuthenticated` prop from the <App/> component.
+   */
+
   render() {
     console.log("[Persons.jsx] rendering...");
     return this.props.persons.map((person, index) => {
@@ -28,7 +38,6 @@ class Persons extends PureComponent {
           name={person.name}
           age={person.age}
           changed={(event) => this.props.nameChanged(event, person.id)}
-          isAuth={this.props.isAuthenticated}
         />
       );
     });
