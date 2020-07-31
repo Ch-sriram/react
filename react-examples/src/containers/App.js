@@ -11,6 +11,38 @@ import Aux from '../hoc/Auxiliary/Auxiliary.hoc';
 // Required Styles
 import AppStyleClasses from './App.module.css';
 
+/**
+ * Assume that, for the <Person/> component, we want to add 
+ * in a dummy authentication whose handler is written inside
+ * the <App/> component, and it is invoked from the <Cockpit/>
+ * component. The <Cockpit/> component receives the 
+ * loginHandler() function's reference as a `prop` from App
+ * component.
+ * 
+ * Now, the loginHandler() event handler, which is invoked from
+ * the <Cockpit/> component, will simply change some state 
+ * object, let's say we have a new state variable called 
+ * `authenticated`, which is initially false.
+ * 
+ * Inside the loginHandler() function, we can call setState and
+ * set `authenticated` to true, and this loginHandler()'s 
+ * reference is sent to the <Cockpit/> component as a property
+ * called `login`.
+ * 
+ * Now, we also want to get the information whether every 
+ * <Person/> component is authenticated or not. And since the
+ * state of the authentication status, which is `authenticated`
+ * is stored at <App/> component, and also, since the App
+ * component only has access to the <Persons/> component, we 
+ * can send in the state value of `authenticated` as a property
+ * to the <Persons/> component (let's say `isAuthenticated` 
+ * prop). Inside the <Persons/> component, we can pass the 
+ * `isAuthenticated` property to each <Person/> as (say) 
+ * `isAuth` property. And inside the <Person/> component, we
+ * can print information on each <Person/> whether it is 
+ * "Authenticated" or "Not Authenticated".
+ */
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +58,8 @@ class App extends Component {
     otherState: "This has some value",
     showPersons: false,
     showCockpit: true,
-    inputKeyPressCounter: 0
+    inputKeyPressCounter: 0,
+    authenticated: false
   }
 
   static getDerivedStateFromProps = (props, state) => {
@@ -72,6 +105,12 @@ class App extends Component {
     this.setState({ showPersons: !this.state.showPersons });
   };
 
+  loginHandler = () => {
+    this.setState(prevState => {
+      return { authenticated: !prevState.authenticated };      
+    });
+  }
+
   render() {
     console.log("[App.js] rendering...");
     let persons = null;
@@ -82,6 +121,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           nameChanged={this.nameChangedHandler}
+          isAuthenticated={this.state.authenticated}
         />
       );
     }
@@ -104,6 +144,7 @@ class App extends Component {
               showPersons={this.state.showPersons}
               personsLength={this.state.persons.length}
               clicked={this.togglePersonsHandler}
+              login={this.loginHandler}
             /> : null
         }
         {persons}
