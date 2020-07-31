@@ -13,7 +13,7 @@ import AppStyleClasses from './App.module.css';
 
 class App extends Component {
   constructor(props) {
-    super(props); // w/o this line, the app won't get compiled.
+    super(props);
     console.log("[App.js] constructor");
   }
 
@@ -54,52 +54,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    // THIS WAY OF SETTING STATE WHERE THE STATE DEPENDS ON
-    // THE PREVIOUS STATE is INCORRECT, although it might work
-    // for a really small app like ours.
-    // this.setState({
-    //   persons,
-    //   inputKeyPressCounter: this.state.inputKeyPressCounter + 1
-    // });
-
-    /**
-     * The way of setting state above, where one part of the 
-     * new state depends on some guaranteed updated value in 
-     * the previous state, in that case, this approach can 
-     * get us into trouble by introducing inconsistent state.
-     * 
-     * This happens because React, behind-the-scenes, doesn't
-     * immediately trigger a an update of the state of the 
-     * respective component and the re-render cycle.
-     * 
-     * Instead, it's internally scheduled by React and so, 
-     * React will perform the state update(s) and re-render 
-     * cycle when it has the available resources to do it after
-     * it follows its internal scheduling for state updation 
-     * and re-render cycles.
-     * 
-     * In simple apps like this one, the way prescribed above
-     * where we set the state as shown, may work, but in a big
-     * app, something like the aforementioned way of setting
-     * the state won't work, and so, we have to set the state
-     * using the previous state as follows:
-     * 
-     * NOTE that setState() takes in a function with 2 args, 
-     * 1st arg is `prevState` and the 2nd arg is `props`.
-     */
-
     this.setState((prevState, props) => {
       return {
         persons,
         inputKeyPressCounter: prevState.inputKeyPressCounter + 1
       };
     });
-
-    /** 
-     * The aforementioned way of updating the state is safe
-     * when the current state itself is dependent on the 
-     * previous state.
-     */
   };
 
   deletePersonHandler = (personIndex) => {
