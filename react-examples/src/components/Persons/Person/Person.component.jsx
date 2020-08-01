@@ -8,31 +8,70 @@ import Aux from '../../../hoc/Auxiliary/Auxiliary.hoc';
 import withClass from '../../../hoc/WithClass/withClass.closureHOC';
 import AuthContext from '../../../context/auth/auth.context';
 
+/**
+ * With the usage of the Context API in class-based components,
+ * we can see that when we wrap the respective child 
+ * component(s) with the Context Object, which is 
+ * <AuthContext/> in our case, it is a little difficult to 
+ * read and understand, and the most important point, we cannot
+ * use that JSX component wrapper inside the lifecycle methods
+ * of the class-based components.
+ * 
+ * In case, if we want to use that Component object, which is a
+ * JSX element in our lifecycle methods, then we cannot do so, 
+ * and so in React v16.6, we were introduced to use context, in
+ * another way, which is a special static property named 
+ * `contextType` (and it has to be named `contextType`, and it
+ * also has to be a static property, which means that it can
+ * accessed from outside, w/o the need of instantiating an 
+ * object based on a certain class).
+ * 
+ * For the `contextType` static property, we simply assign it
+ * the Context Object that we imported, as a reference, as 
+ * follows: `static contextType = AuthContext;`
+ * 
+ * This allows React to automatically connect our class-based
+ * component, to the context, behind the scenes, and it gives
+ * us access to use a new property called `this.context` which
+ * allows us the access to our context defined inside the 
+ * App component's <AuthContext.Provider value={{...}} />
+ * `value` prop defined above.
+ * 
+ * And so, we get rid of wrapping the components which need to
+ * use the Context object, inside <AuthContext.Consumer/> JSX
+ * element. We can simply use the `this.context` property in
+ * the respective component where the aforementioned static 
+ * `contextType` property is connected appropriately, to refer
+ * to the context which is required by the component.
+ */
+
 class Person extends PureComponent {
   inputElementRef = React.createRef();
 
+  /** CONNECTING `contextType` static property to Context */
+  static contextType = AuthContext;
+
+  // Using `this.context` to refer to the Context object
   componentDidMount() {
     this.inputElementRef.current.focus();
+    console.log(this.context.authenticated);
   }
-
-  /**
-   * Wherever we need to use the context object, we have to 
-   * always consume it, so we'll consume it here as shown below.
-   * 
-   * Here, we can see that the content wrapped inside 
-   * <AuthContext.Consumer/> is executing a function
-   * which takes in an argument, which is the `context` 
-   * variable, through which, we can directly access the 
-   * context variable or the context function.
-   */
   
   render() {
     console.log("[Person.jsx] rendering...");
+
+    /**
+     * Instead of wrapping the the context required elements 
+     * with <AuthContext.Consumer />, we can simply use
+     * `this.context` here, to access the context.
+     */
     return (
       <Aux>
-        <AuthContext.Consumer>
-          {context => context.authenticated ? <p>Authenticated</p> : <p>Please Log In</p>}
-        </AuthContext.Consumer>
+        {
+          this.context.authenticated ?
+            <p>Authenticated</p> :
+            <p>Please Log In</p>
+        }
         <p onClick={this.props.click}>
           I'm {this.props.name} and I'm {this.props.age} years old!
         </p>
