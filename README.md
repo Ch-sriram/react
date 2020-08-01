@@ -104,4 +104,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 14. Context API in React
     1. Problems with `prop` chaining &mdash; Why use the concept of Context? [Commit Details](https://github.com/Ch-sriram/react/commit/be6a373389a4942902f261a988f46aefb5601122)
     2. Using the Context API using `React.createContext()`: [Commit Details](https://github.com/Ch-sriram/react/commit/04cbc679a15782256a93233bd77a54b38ce8be4f)
-    3. Alternative way of using Context API in class-based components using `contextType` & Using functional components in functional components using `useContext()` hook: [Commit Details]()
+    3. Alternative way of using Context API in class-based components using `contextType` & Using functional components in functional components using `useContext()` hook: [Commit Details](https://github.com/Ch-sriram/react/commit/0e889f3bf143bdd16deafa0e370bc2b36f07a386)
