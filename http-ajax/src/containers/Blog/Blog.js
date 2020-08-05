@@ -14,15 +14,15 @@ class Blog extends Component {
    * Check the console for the data we fetch from the request
    * made to the endpoint.
    */
-//   componentDidMount() {
-//     axios.get("https://jsonplaceholder.typicode.com/posts")
-//       .then(response => {
-//         console.log(response);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }
+  componentDidMount() {
+    axios.get("https://jsonplaceholder.typicode.com/posts")
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
