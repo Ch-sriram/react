@@ -113,3 +113,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 1. Creating an HTTP Request to GET Data: [Commit Details](https://github.com/Ch-sriram/react/commit/49f4acd91f0733b3d7ad6fd6e26833d0c3cf25d4)
 2. Rendering Fetched Data to the View: [Commit Details](https://github.com/Ch-sriram/react/commit/c6dd030681debfbd65e24305986db453a21d67f7)
 3. Transforming the Fetched Data to Limit the Components on the View: [Commit Details](https://github.com/Ch-sriram/react/commit/297ed57540e900b361b8288d10912a706a5241d0)
+4. Making a Post Selectable: [Commit Details](https://github.com/Ch-sriram/react/commit/605b2fa308c400499249b723774e82a0f70b2e69)
