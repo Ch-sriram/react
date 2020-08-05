@@ -108,5 +108,6 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ### Reaching out to the Web (HTTP/AJAX)
 
-Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.com/axios/axios)**
-1. 
+Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.com/axios/axios)** | API Endpoint: [#1](https://jsonplaceholder.typicode.com/posts)
+
+1. Creating an HTTP Request to GET Data: [Commit Details]()
