@@ -7,30 +7,31 @@ import NewPost from "../../components/NewPost/NewPost";
 import "./Blog.css";
 
 class Blog extends Component {
-  /**
-   * Almost every HTTP Request is made inside the
-   * componentDidMount() Lifecycle Method.
-   * 
-   * Check the console for the data we fetch from the request
-   * made to the endpoint.
-   */
+  state = {
+    posts: [],
+  };
+
   componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/posts")
-      .then(response => {
-        console.log(response);
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        this.setState({ posts: response.data });
+        // console.log(response);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   render() {
+    const posts = this.state.posts.map((post) => (
+      <Post key={post.id} title={post.title} />
+    ));
+    
     return (
       <div>
         <section className="Posts">
-          <Post />
-          <Post />
-          <Post />
+          {posts}
         </section>
         <section>
           <FullPost />
