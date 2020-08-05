@@ -110,4 +110,4 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.com/axios/axios)** | API Endpoint: [#1](https://jsonplaceholder.typicode.com/posts)
 
-1. Creating an HTTP Request to GET Data: [Commit Details]()
+1. Creating an HTTP Request to GET Data: [Commit Details](https://github.com/Ch-sriram/react/commit/49f4acd91f0733b3d7ad6fd6e26833d0c3cf25d4)
