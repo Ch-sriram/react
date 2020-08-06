@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-
+import axios from 'axios';
 import "./NewPost.css";
+
+/**
+ * Till now, we saw ho to GET data using axios.get() method,
+ * now, we will see how to POST data to a dummy backend using
+ * axios.post(url, data, dataConfig) method. 
+ * NOTE that the data is automatically stringified from JSON 
+ * to string and so on...
+ */
 
 class NewPost extends Component {
   state = {
@@ -8,6 +16,19 @@ class NewPost extends Component {
     content: "",
     author: "Max",
   };
+
+  postDataHandler = () => {
+    const data = {
+      title: this.state.title,
+      body: this.state.content,
+      author: this.state.author
+    }
+
+    // The Dummy Backend will just 
+    axios.post("https://jsonplaceholder.typicode.com/posts", data)
+      .then(response => { console.log(response); })
+      .catch(err => { console.log(err); });
+  }
 
   render() {
     return (
@@ -32,8 +53,9 @@ class NewPost extends Component {
         >
           <option value="Max">Max</option>
           <option value="Manu">Manu</option>
+          <option value="Sriram">Sriram</option>
         </select>
-        <button>Add Post</button>
+        <button onClick={this.postDataHandler}>Add Post</button>
       </div>
     );
   }

@@ -108,10 +108,11 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ### Reaching out to the Web (HTTP/AJAX)
 
-Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.com/axios/axios)** | API Endpoint: [#1](https://jsonplaceholder.typicode.com/posts)
+Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.com/axios/axios)** | API Endpoints: [/posts](https://jsonplaceholder.typicode.com/posts), [/posts/user_id](https://jsonplaceholder.typicode.com/posts/1)
 
-1. Creating an HTTP Request to GET Data: [Commit Details](https://github.com/Ch-sriram/react/commit/49f4acd91f0733b3d7ad6fd6e26833d0c3cf25d4)
+1. Creating an HTTP Request to GET Data using `axios.get(url)` method: [Commit Details](https://github.com/Ch-sriram/react/commit/49f4acd91f0733b3d7ad6fd6e26833d0c3cf25d4)
 2. Rendering Fetched Data to the View: [Commit Details](https://github.com/Ch-sriram/react/commit/c6dd030681debfbd65e24305986db453a21d67f7)
 3. Transforming the Fetched Data to Limit the Components on the View: [Commit Details](https://github.com/Ch-sriram/react/commit/297ed57540e900b361b8288d10912a706a5241d0)
 4. Making a Post Selectable: [Commit Details](https://github.com/Ch-sriram/react/commit/605b2fa308c400499249b723774e82a0f70b2e69)
-5. Fetching Data on Update (w/o Creating Infinite Loops): [Commit Details](https://github.com/Ch-sriram/react/commit/2b8b792c78972b1f75d831240b39cb9c2a21aa07)
+5. Fetching Data on Update (w/o Creating Infinite Loops) in `componentDidUpdate()` lifecycle method: [Commit Details](https://github.com/Ch-sriram/react/commit/2b8b792c78972b1f75d831240b39cb9c2a21aa07)
+6. POSTing Data to the Server using `axios.post(url, data, dataConfig)` method: [Commit Details]()
