@@ -118,3 +118,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 6. POSTing Data to the Server using `axios.post(url, data, dataConfig)` method: [Commit Details](https://github.com/Ch-sriram/react/commit/16d5eb060d1f24ff6d8851bc09b6ebd999af7de3)
 7. Sending a DELETE Request using `axios.delete(url)` method: [Commit Details](https://github.com/Ch-sriram/react/commit/4597b3f198bd10f30692c34526c15657cbe3619f)
 8. Handling Errors Locally using `.catch(err)` method: [Commit Details](https://github.com/Ch-sriram/react/commit/1c8a87cc2b8549731c35fd4f36b9a9277f673e7a)
+9. Adding Interceptors using `axios.interceptor` to Execute Code Globally: [Commit Details]()
