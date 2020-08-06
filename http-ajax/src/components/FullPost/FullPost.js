@@ -3,15 +3,14 @@ import axios from "axios";
 import "./FullPost.css";
 
 /**
- * Now, if we send an HTTP Request once we get a valid ID of
- * the post we select, what kind of lifecycle hook shall we
- * use here?
- *
- * Since we are talking about updating components, this means,
- * we will use the componentDidUpdate() lifecycle method
- * because that's the lifecycle method which will be called
- * when a component gets updated. We do have to be careful
- * about not going into an infinite loop because of setState().
+ * For jsonplaceholder's API call to delete a certain data
+ * item, we simply use `axios.delete(url)` to delete the 
+ * resource mentioned in the URL.
+ * 
+ * jsonplaceholder actually doesn't delete anything, because 
+ * that website is a dummy website, and so, it simply returns
+ * a response with empty response.data field, which means that
+ * the delete() call was successful.
  */
 
 class FullPost extends Component {
@@ -31,6 +30,12 @@ class FullPost extends Component {
     }
   }
 
+  deletePostHandler = () => {
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${this.props.id}`)
+      .then(response => { console.log(response); })
+      .catch(err => { console.log(err); });
+  }
+
   render() {
     let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
     
@@ -44,7 +49,7 @@ class FullPost extends Component {
           <h1>{this.state.loadedPost.title}</h1>
           <p>{this.state.loadedPost.content}</p>
           <div className="Edit">
-            <button className="Delete">Delete</button>
+            <button onClick={this.deletePostHandler} className="Delete">Delete</button>
           </div>
         </div>
       );
