@@ -114,4 +114,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 2. Rendering Fetched Data to the View: [Commit Details](https://github.com/Ch-sriram/react/commit/c6dd030681debfbd65e24305986db453a21d67f7)
 3. Transforming the Fetched Data to Limit the Components on the View: [Commit Details](https://github.com/Ch-sriram/react/commit/297ed57540e900b361b8288d10912a706a5241d0)
 4. Making a Post Selectable: [Commit Details](https://github.com/Ch-sriram/react/commit/605b2fa308c400499249b723774e82a0f70b2e69)
-5. Fetching Data on Update (w/o Creating Infinite Loops): [Commit Details]()
+5. Fetching Data on Update (w/o Creating Infinite Loops): [Commit Details](https://github.com/Ch-sriram/react/commit/2b8b792c78972b1f75d831240b39cb9c2a21aa07)
