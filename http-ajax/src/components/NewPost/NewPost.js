@@ -25,7 +25,7 @@ class NewPost extends Component {
     }
 
     // The Dummy Backend will just 
-    axios.post("https://jsonplaceholder.typicode.com/posts", data)
+    axios.post("/posts", data)
       .then(response => { console.log(response); })
       .catch(err => { console.log(err); });
   }
