@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from '../../axios'; // this is our own axiosInstance that we created earlier inside axios.js
 
 import Post from "../../components/Post/Post";
 import FullPost from "../../components/FullPost/FullPost";
