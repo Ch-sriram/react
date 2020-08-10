@@ -2,14 +2,6 @@ import React, { Component } from "react";
 import axios from 'axios';
 import "./NewPost.css";
 
-/**
- * Till now, we saw ho to GET data using axios.get() method,
- * now, we will see how to POST data to a dummy backend using
- * axios.post(url, data, dataConfig) method. 
- * NOTE that the data is automatically stringified from JSON 
- * to string and so on...
- */
-
 class NewPost extends Component {
   state = {
     title: "",
@@ -24,7 +16,6 @@ class NewPost extends Component {
       author: this.state.author
     }
 
-    // The Dummy Backend will just 
     axios.post("/posts", data)
       .then(response => { console.log(response); })
       .catch(err => { console.log(err); });

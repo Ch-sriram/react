@@ -2,12 +2,12 @@
 import React, { Component } from "react";
 import { Route } from 'react-router-dom';
 
-// CUSTOM COMPONENTS
-import Post from "../../components/Post/Post";
-import FullPost from "./FullPost/FullPost";
-import NewPost from "./NewPost/NewPost";
+// STYLING
 import "./Blog.css";
+
+// CUSTOM COMPONENTS
 import Posts from '../../containers/Blog/Posts/Posts';
+import NewPost from './NewPost/NewPost';
 
 /** REMAINING OLD STATE
  * 
@@ -25,16 +25,6 @@ import Posts from '../../containers/Blog/Posts/Posts';
    </section>
  */
 
-/**
- * Instead of rendering the components directly using the 
- * `render` prop, we will use the `component` prop inside the 
- * <Route /> Component to give the `component` prop a reference
- * to the component we want to render at that exact specified
- * route in the `path` prop of the <Route /> Component.
- * 
- * The example is shown below.
- */
-
 class Blog extends Component {
   render() {
     return (
@@ -47,23 +37,36 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {/*<Route path="/" exact render={() => <h1>Home</h1>}/>
-        <Route path="/" render={() => <h1>Home 2</h1>}/>*/}
-        
-        {/**
-          Instead of rendering the component using the `render`
-          prop, we can render using the `component` prop as
-          shown below:
-        */}
+        {
+          /**
+           * Only issue we've right now is that, every time we
+           * click on the links we defined above, which are 
+           * "Home" & "New Post", what we are doing is, we are 
+           * re-loading our entire application each time we 
+           * click the links. 
+           * 
+           * This might not seem like a problem here, but 
+           * theoretically, a reload means, we are reloading 
+           * the entire JS related to the website, again, which
+           * is just a massive waste of time, and because of 
+           * this, our previous application state is also lost,
+           * which we don't want.
+           * 
+           * As long as the user is navigating around inside 
+           * the same HTML page, we never want to reload the 
+           * entire page again, we just want to re-render the 
+           * page in the parts where we need to render the 
+           * components, so that it just looks like a totally
+           * new page, without even rendering anything onto the
+           * page.
+           * 
+           * Therefore, next time, we will see how to stay 
+           * inside the same page and not reload the entire
+           * page again when trying to route to a new component
+           */
+        }
         <Route path="/" exact component={Posts} />
-
-        {/**
-          If we still want to use the `render` prop to render
-          the component we need onto the specified route inside
-          the path we want to render to, we'd use the `render`
-          prop as shown below:
-        */}
-        <Route path="/" exact render={() => <Posts />} />
+        <Route path="/new-post" component={NewPost} />
       </div>
     );
   }
