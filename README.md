@@ -127,4 +127,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 1. Setting Up Route Links in `<Blog />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/b34b7005fb8bbee9ca9ef7b1cb4d475ce8f1b9f8)
 2. Setting Up The Router Package `npm i --save react-router react-router-dom`: [Commit Details](https://github.com/Ch-sriram/react/commit/64ef82a4d09d2b0561861764c73a717fd754f4e4)
 3. Preparing the Project for Routing &mdash; Making `<NewPost />`, `<FullPost />` & `<Posts />` Components as a Container for Proper Routing: [Commit Details](https://github.com/Ch-sriram/react/commit/e8d0a46e2892af940f600481cba861393dca051b)
-4. Setting Up and Rendering Routes using `path`, `exact` & `render` attributes inside the `<Route />` Component: [Commit Details]()
+4. Setting Up and Rendering Routes using `path`, `exact` & `render` attributes inside the `<Route />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/0ae8809410db1d704c99ab3b61a7a6d8e906b0f2)
