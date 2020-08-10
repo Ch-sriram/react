@@ -26,15 +26,13 @@ import Posts from '../../containers/Blog/Posts/Posts';
  */
 
 /**
- * Instead of hard-coding the components to be rendered onto 
- * the home "/" route, we can render the components dynamically
- * using the <Route /> component, in which we define the `path`
- * and `render` props. For a certain `path` we define, we can 
- * also define the `exact` prop to be true/false depending on
- * how we want to render the components, whether we want to 
- * render the components on the specified path exactly, or we 
- * might not want to render the components on the specified 
- * path exactly. 
+ * Instead of rendering the components directly using the 
+ * `render` prop, we will use the `component` prop inside the 
+ * <Route /> Component to give the `component` prop a reference
+ * to the component we want to render at that exact specified
+ * route in the `path` prop of the <Route /> Component.
+ * 
+ * The example is shown below.
  */
 
 class Blog extends Component {
@@ -49,23 +47,26 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Route path="/" exact render={() => <h1>Home</h1>}/>
-        <Route path="/" render={() => <h1>Home 2</h1>}/>
+        {/*<Route path="/" exact render={() => <h1>Home</h1>}/>
+        <Route path="/" render={() => <h1>Home 2</h1>}/>*/}
+        
+        {/**
+          Instead of rendering the component using the `render`
+          prop, we can render using the `component` prop as
+          shown below:
+        */}
+        <Route path="/" exact component={Posts} />
+
+        {/**
+          If we still want to use the `render` prop to render
+          the component we need onto the specified route inside
+          the path we want to render to, we'd use the `render`
+          prop as shown below:
+        */}
+        <Route path="/" exact render={() => <Posts />} />
       </div>
     );
   }
 }
-
-/**
- * Line #52's `render` prop will run every time the "/" path
- * is searched for in the browser, but Line #53's `render` prop
- * will run for every route, iff that route is not setup 
- * previously. For example, on the route "/new-post", we will
- * see the output `<h1>Home 2</h1>`, but not the output, 
- * `<h1>Home</h1>`, because `<h1>Home</h1>` (being rendered in
- * Line #52) will only be rendered when the specified path is 
- * "/", because we've already mentioned the `exact` prop to be 
- * true for that <Route /> Component.
- */
 
 export default Blog;
