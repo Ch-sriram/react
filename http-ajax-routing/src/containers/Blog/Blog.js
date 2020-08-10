@@ -1,13 +1,15 @@
+// LIBRARY IMPORTS
 import React, { Component } from "react";
+import { Route } from 'react-router-dom';
 
-
+// CUSTOM COMPONENTS
 import Post from "../../components/Post/Post";
 import FullPost from "./FullPost/FullPost";
 import NewPost from "./NewPost/NewPost";
 import "./Blog.css";
 import Posts from '../../containers/Blog/Posts/Posts';
 
-/**
+/** REMAINING OLD STATE
  * 
     selectedPostID: null,
     error: false,
@@ -23,6 +25,18 @@ import Posts from '../../containers/Blog/Posts/Posts';
    </section>
  */
 
+/**
+ * Instead of hard-coding the components to be rendered onto 
+ * the home "/" route, we can render the components dynamically
+ * using the <Route /> component, in which we define the `path`
+ * and `render` props. For a certain `path` we define, we can 
+ * also define the `exact` prop to be true/false depending on
+ * how we want to render the components, whether we want to 
+ * render the components on the specified path exactly, or we 
+ * might not want to render the components on the specified 
+ * path exactly. 
+ */
+
 class Blog extends Component {
   render() {
     return (
@@ -35,10 +49,23 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Posts />
+        <Route path="/" exact render={() => <h1>Home</h1>}/>
+        <Route path="/" render={() => <h1>Home 2</h1>}/>
       </div>
     );
   }
 }
+
+/**
+ * Line #52's `render` prop will run every time the "/" path
+ * is searched for in the browser, but Line #53's `render` prop
+ * will run for every route, iff that route is not setup 
+ * previously. For example, on the route "/new-post", we will
+ * see the output `<h1>Home 2</h1>`, but not the output, 
+ * `<h1>Home</h1>`, because `<h1>Home</h1>` (being rendered in
+ * Line #52) will only be rendered when the specified path is 
+ * "/", because we've already mentioned the `exact` prop to be 
+ * true for that <Route /> Component.
+ */
 
 export default Blog;
