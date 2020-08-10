@@ -1,6 +1,6 @@
 // LIBRARY IMPORTS
 import React, { Component } from "react";
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 // STYLING
 import "./Blog.css";
@@ -32,44 +32,51 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/new-post">New Post</a></li>
+              {
+              /**
+               * Now, this <Link to="/"> Component below will
+               * not reload the entire page, whereas, it will
+               * just render the component which is given in
+               * the path using the `to` prop.
+               * 
+               * The `to` prop can also be a more complex 
+               * element, which can be an entire JS object, 
+               * that takes in a config which can be as 
+               * follows:
+                  * {
+                  *  pathname: '/new-post',
+                  *  hash: '#submit',
+                  *  search: `?quick-submit=true',
+                  * }
+               * where, `pathname` is the route address,
+               *        `hash` is used for going to a specified
+               *               id inside the route we mentioned
+               *               above in `pathname`.
+               *        `search` is for query parameters to the
+               *                 link in the address bar.
+               * 
+               * Example shown below.
+               */
+              }
+              <li><Link to="/">Home</Link></li>
+              <li><Link to={{
+                pathname: '/new-post',
+                hash: '#submit',
+                search: '?quick-submit=true',
+              }}>New Post</Link></li>
             </ul>
           </nav>
         </header>
-        {
-          /**
-           * Only issue we've right now is that, every time we
-           * click on the links we defined above, which are 
-           * "Home" & "New Post", what we are doing is, we are 
-           * re-loading our entire application each time we 
-           * click the links. 
-           * 
-           * This might not seem like a problem here, but 
-           * theoretically, a reload means, we are reloading 
-           * the entire JS related to the website, again, which
-           * is just a massive waste of time, and because of 
-           * this, our previous application state is also lost,
-           * which we don't want.
-           * 
-           * As long as the user is navigating around inside 
-           * the same HTML page, we never want to reload the 
-           * entire page again, we just want to re-render the 
-           * page in the parts where we need to render the 
-           * components, so that it just looks like a totally
-           * new page, without even rendering anything onto the
-           * page.
-           * 
-           * Therefore, next time, we will see how to stay 
-           * inside the same page and not reload the entire
-           * page again when trying to route to a new component
-           */
-        }
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPost} />
       </div>
     );
   }
 }
+
+/**
+ * Now our app won't reload every time we click on the links
+ * aforementioned in the "Home" and "New Post" links.
+ */
 
 export default Blog;

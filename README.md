@@ -129,4 +129,6 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 3. Preparing the Project for Routing &mdash; Making `<NewPost />`, `<FullPost />` & `<Posts />` Components as a Container for Proper Routing: [Commit Details](https://github.com/Ch-sriram/react/commit/e8d0a46e2892af940f600481cba861393dca051b)
 4. Setting Up and Rendering Routes using `path`, `exact` & `render` attributes inside the `<Route />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/0ae8809410db1d704c99ab3b61a7a6d8e906b0f2)
 5. Rendering Components for Routes using `render` and `component` prop inside the `<Route />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/9c39b5454c672cc7d8a1868190958d9ca9dca688)
-6. Switching between Pages using Links (*Inefficient Way to Re-route* &mdash; Entire Page Reloads): [Commit Details](https://github.com/Ch-sriram/react/commit/c5ab53754f934db1ea3fd2dba86d4e6cf4f7e7e5)
+6. Switching between Pages using Links
+   1. *Inefficient Way to Re-route* &mdash; Entire Page Reloads using `<a href="/">Home</a>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/c5ab53754f934db1ea3fd2dba86d4e6cf4f7e7e5)
+   2. Efficient Way to Re-route &mdash; The Page Doesn't Reload using `<Link to="/">Home</Link>` Component: [Commit Details]()
