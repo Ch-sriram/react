@@ -125,4 +125,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 ### SPA's using Routing
 
 1. Setting Up Route Links in `<Blog />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/b34b7005fb8bbee9ca9ef7b1cb4d475ce8f1b9f8)
-2. Setting Up The Router Package `npm i --save react-router react-router-dom`: [Commit Details]()
+2. Setting Up The Router Package `npm i --save react-router react-router-dom`: [Commit Details](https://github.com/Ch-sriram/react/commit/64ef82a4d09d2b0561861764c73a717fd754f4e4)
