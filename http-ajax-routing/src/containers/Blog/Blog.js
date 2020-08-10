@@ -51,8 +51,31 @@ class Blog extends Component {
       ));
     }
 
+    /**
+     * Even if click on the links inside the actual app, we 
+     * will always be re-directed to the home route which is 
+     * "/" route, and it happens because of the way our
+     * dev-server/production is setup, because for every 
+     * request, our server doesn't have different files, it 
+     * only has a single file, which is index.html, and for 
+     * every request, it sends back one single file, which is
+     * the index.html file, not different files, and so, 
+     * routing is all about parsing the URL at the client-side.
+     * 
+     * Here, URL means, the route we mentioned in the links 
+     * below. Example: "/" or "/new-post".
+     */
+
     return (
-      <div>
+      <div className="Blog">
+        <header>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/new-post">New Post</a></li>
+            </ul>
+          </nav>
+        </header>
         <section className="Posts">{posts}</section>
         <section>
           <FullPost id={this.state.selectedPostID} />
