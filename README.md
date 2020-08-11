@@ -138,3 +138,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 10. Styling the Active Route using `<NavLink to="<route>" exact activeClassName="<class-name>" activeStyle={<style-object>}/>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/d226ec6c421c88c5e6818e2c85e531661d48582d)
 11. Detecting Dynamic Routes using `<Route to="/:id" />` & Passing Route Parameters: [Commit Details](https://github.com/Ch-sriram/react/commit/8157484eae2c439ec84f841eb508ece07883f598)
 12. Extracting Route Parameters using `this.props.match.params`: [Commit Details](https://github.com/Ch-sriram/react/commit/d2bfc5b210bc010f94e18a33361a9462c358eee4)
+13. Using Unique Route Names to Load a Single Route: [Commit Details]()

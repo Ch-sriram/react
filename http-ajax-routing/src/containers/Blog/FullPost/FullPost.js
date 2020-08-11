@@ -7,24 +7,7 @@ class FullPost extends Component {
     loadedPost: null,
   }
 
-  // Now we are not Updating this component, we are rendering
-  // this component to the DOM whenever we need it and 
-  // un-mounting it whenever we don't need it, and so, we need 
-  // to use componentDidMount() lifecycle method, instead of 
-  // componentDidUpdate() method.
   componentDidMount() {
-    console.log(this.props); // will have the route params.
-    
-    /**
-     * `this.props.match.params.id` exists because in Blog.js,
-     * we set the <Route /> for <FullPost /> as "/:id", and so, 
-     * we can find `id` field inside the 
-     * `this.props.match.params` field.
-     * 
-     * If we mentioned the route to be "/:num", then we would've
-     * had to access it as follows: `this.props.match.params.num`
-     */
-    
     if (this.props.match.params.id
     && (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id))
     ) {

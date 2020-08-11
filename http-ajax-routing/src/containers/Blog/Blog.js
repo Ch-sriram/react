@@ -38,50 +38,24 @@ class Blog extends Component {
         </header>
         {
         /**
-         * For every <Post /> Component we click on, we should
-         * be able to render the entire <FullPost /> Component
-         * related to the clicked <Post />.
+         * All routes mentioned below will be rendered if they
+         * match the `path`, and so, this is the reason why
+         * components related to "/new-post" and "/:id" are 
+         * rendered even when the "/new-post" path is active.
          * 
-         * Which is why, we set a specific Route for the 
-         * <FullPost /> to be loaded whenever the path matches
-         * some kind of an `id`, which in this case is `post.id`.
-         * handled inside the <Posts /> Component.
-         * 
-         * Therefore, we add the route for "/:id", which is 
-         * telling to the react-router that this route is a 
-         * dynamic route. Anything that's prefixed with "/" and
-         * has some string after it, will render the component 
-         * mentioned respectively.
-         * 
-         * But that would also make the "/new-post" route render
-         * the component we mention inside the route for "/:id"
-         * because now, "/new-post" is also a route which 
-         * matches the rule of the route mentioned as "/:id". 
-         * 
-         * To avoid this confusion, we can render the <Route /> 
-         * for the "/new-post" path before the <Route /> for the
-         * "/:id" path, as shown below.
+         * We can fix it by naming our `path` for <FullPost />
+         * component to be "/posts/:id" here, and then fixing 
+         * each <Post /> component to be routed to "/posts/id" 
+         * in Posts.js file. Route-renaming solution shown 
+         * below.
          */
         }
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPost} />
-        <Route path="/:id" exact component={FullPost} />
-        
-        {// The following ordering of Routes won't work properly
-          // <Route path="/" exact component={Posts} />
-          // <Route path="/:id" exact component={FullPost} />
-          // <Route path="/new-post" component={NewPost} />
-        }
+        <Route path="/posts/:id" exact component={FullPost} />
       </div>
     );
   }
 }
 
 export default Blog;
-
-/**
- * Now, whenever we click even on the "New Post" Link to go to
- * the "/new-post" route, we still get the <FullPost /> being
- * rendered below the <NewPost /> component in the "/new-post"
- * route. And we will rectify that, next.
- */
