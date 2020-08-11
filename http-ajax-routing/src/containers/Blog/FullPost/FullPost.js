@@ -2,27 +2,33 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./FullPost.css";
 
-/**
- * For jsonplaceholder's API call to delete a certain data
- * item, we simply use `axios.delete(url)` to delete the 
- * resource mentioned in the URL.
- * 
- * jsonplaceholder actually doesn't delete anything, because 
- * that website is a dummy website, and so, it simply returns
- * a response with empty response.data field, which means that
- * the delete() call was successful.
- */
-
 class FullPost extends Component {
   state = {
     loadedPost: null,
   }
 
-  componentDidUpdate() {
-    if (this.props.id
+  // Now we are not Updating this component, we are rendering
+  // this component to the DOM whenever we need it and 
+  // un-mounting it whenever we don't need it, and so, we need 
+  // to use componentDidMount() lifecycle method, instead of 
+  // componentDidUpdate() method.
+  componentDidMount() {
+    console.log(this.props); // will have the route params.
+    
+    /**
+     * `this.props.match.params.id` exists because in Blog.js,
+     * we set the <Route /> for <FullPost /> as "/:id", and so, 
+     * we can find `id` field inside the 
+     * `this.props.match.params` field.
+     * 
+     * If we mentioned the route to be "/:num", then we would've
+     * had to access it as follows: `this.props.match.params.num`
+     */
+    
+    if (this.props.match.params.id
     && (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id))
     ) {
-      axios.get(`/posts/${this.props.id}`)
+      axios.get(`/posts/${this.props.match.params.id}`)
         .then(response => {
           console.log(response);
           this.setState({ loadedPost: response.data });

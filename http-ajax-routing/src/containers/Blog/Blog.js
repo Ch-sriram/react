@@ -78,3 +78,10 @@ class Blog extends Component {
 }
 
 export default Blog;
+
+/**
+ * Now, whenever we click even on the "New Post" Link to go to
+ * the "/new-post" route, we still get the <FullPost /> being
+ * rendered below the <NewPost /> component in the "/new-post"
+ * route. And we will rectify that, next.
+ */
