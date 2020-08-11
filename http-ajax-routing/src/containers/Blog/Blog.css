@@ -14,8 +14,19 @@
 .Blog a {
     text-decoration: none;
     color: black;
+    transition: border .2s;
 }
 
-.Blog a:hover, .Blog a:active {
-    color: #FA923F;
+.Blog a:hover, 
+.Blog a:active, 
+.Blog a.active {
+    color: #FA6000;
+    padding-bottom: 5px;
+    border-bottom: 5px solid #FA923F;
+}
+
+.Blog a.my-active {
+    color: #FF5FFF;
+    padding-bottom: 5px;
+    border-bottom: 5px solid #FA1FFF;
 }
