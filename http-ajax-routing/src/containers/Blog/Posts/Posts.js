@@ -40,25 +40,6 @@ class Posts extends Component {
 
     if (!this.state.error) {
       posts = this.state.posts.map((post) => (
-        /**
-         * Since we have used the <Post /> Component here, we
-         * would expect that we'll be able to use the routing
-         * information from <Posts /> Component, to the <Post />
-         * Component. But that's not the case here.
-         *
-         * To use the routing information, we have to either
-         * send in the props inside this <Posts /> Component as
-         * a prop to each of the <Post /> Component, i.e., as
-         * shown below using `{...this.props}`,
-         * 
-         * OR, we can use a HOC called withRouter, which can
-         * be imported from 'react-router-dom' in the 
-         * <Post /> Component, and before export the <Post /> 
-         * Component, we will wrap the default export in the
-         * withRouter() HOC, so that now, every <Post /> 
-         * Component will implicitly get the Routing Information
-         * without us sending the Routing Props as shown earlier.
-         */
         <Post
           key={post.id}
           title={post.title}

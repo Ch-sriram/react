@@ -17,6 +17,4 @@ const post = (props) => {
   )
 };
 
-// This <Post /> Component is now Route Aware, i.e., it contains
-// information about the nearest loaded route.
 export default withRouter(post);

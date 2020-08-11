@@ -24,6 +24,22 @@ class Blog extends Component {
     return (
       <div className="Blog">
         <header>
+          {
+          /**
+           * Every time we set a path using the `pathname` object
+           * or using the `to` prop inside the <Link /> 
+           * Component, we always set the path to be absolute.
+           * 
+           * To turn the path we set into a relative path, we've
+           * to use the props which contain the Route Information
+           * and in there, we'll find the `url` from:
+           *  `this.props.match.url`, to which we can access the
+           * "/new-post" or any other path we want to add.
+           * 
+           * We can do it as follows:
+           *  pathname: `${this.props.match.url}/new-post`
+           */
+          }
           <nav>
             <ul>
               <li><Link to="/">Home</Link></li>
@@ -35,16 +51,6 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {
-        /**
-         * Now, we will get the route information in the props
-         * of the <Posts /> and <NewPost /> Components only.
-         * 
-         * Any Component rendered inside the <Posts /> and the 
-         * <NewPost /> wouldn't get the routing information in 
-         * their props.
-         */
-        }
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPost} />
       </div>
