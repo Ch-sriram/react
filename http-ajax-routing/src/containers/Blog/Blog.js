@@ -2,12 +2,13 @@
 import React, { Component } from "react";
 import { Route, NavLink } from 'react-router-dom';
 
-// STYLING
+// STYLING IMPORTS
 import "./Blog.css";
 
 // CUSTOM COMPONENTS
 import Posts from '../../containers/Blog/Posts/Posts';
 import NewPost from './NewPost/NewPost';
+import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
   componentDidMount() {
@@ -18,71 +19,15 @@ class Blog extends Component {
     return (
       <div className="Blog">
         <header>
-          {
-          /**
-           * Using <NavLink /> Component, we can use some extra
-           * props which allow us to define some styling for the
-           * active link, i.e., the link that's actually clicked.
-           * 
-           * Now, when we can style the links in Blog.css file, 
-           * for their respective class/id/element along with the
-           * .active class, to change the styling when the link
-           * is actually active, i.e., the contents of the route
-           * related to that link are being displayed on the 
-           * page/view.
-           * 
-           * Now, when we click on the "New Post" link, even the
-           * "Home" link is styled as if it is having the .active
-           * class, but it is actually having the .active class,
-           * and that's because the <NavLink /> applies the 
-           * .active class to every link that has the route 
-           * prefixed with the path "/". We need to get rid of 
-           * this behaviour by giving the `exact` prop to the 
-           * <NavLink /> component related to "Home" Link as 
-           * shown below.
-           */
-          }
           <nav>
             <ul>
-              <li><NavLink
-                to="/"
-                exact
-                /**
-                 * Sometimes, we might not want the default 
-                 * class, which is .active, to be the class name,
-                 * when we click the link. We might want to have
-                 * our own class name applied to the active link,
-                 * and that can be done as shown below:
-                 */
+              <li><NavLink to="/" exact
                 activeClassName="my-active"
-                /**
-                 * Because of the prop above, we have to add 
-                 * styling for the "Home" route separately to 
-                 * style it when it is active i.e., when the "/"
-                 * route (i.e., "Home") is active, the .my-active
-                 * class is the one attached to the respective 
-                 * <NavLink /> Component for the "Home" link, and
-                 * so, we style using the .my-active class inside
-                 * the Blog.css file.
-                 */
-
-                /**
-                 * We can also directly style the <NavLink />
-                 * directly in here, using inline styling, using
-                 * the activeStyle prop as shown below:
-                 */
                 activeStyle={{
                   color: '#FA923F',
                   textDecoration: 'underline'
                 }}
               >Home</NavLink></li>
-              {
-              /**
-               * Here, we don't need the `exact` prop as, there
-               * is no other link that prefixes '/new-post' 
-               * route.
-               */
-              }
               <li><NavLink to={{
                 pathname: '/new-post',
                 hash: '#submit',
@@ -91,8 +36,42 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
+        {
+        /**
+         * For every <Post /> Component we click on, we should
+         * be able to render the entire <FullPost /> Component
+         * related to the clicked <Post />.
+         * 
+         * Which is why, we set a specific Route for the 
+         * <FullPost /> to be loaded whenever the path matches
+         * some kind of an `id`, which in this case is `post.id`.
+         * handled inside the <Posts /> Component.
+         * 
+         * Therefore, we add the route for "/:id", which is 
+         * telling to the react-router that this route is a 
+         * dynamic route. Anything that's prefixed with "/" and
+         * has some string after it, will render the component 
+         * mentioned respectively.
+         * 
+         * But that would also make the "/new-post" route render
+         * the component we mention inside the route for "/:id"
+         * because now, "/new-post" is also a route which 
+         * matches the rule of the route mentioned as "/:id". 
+         * 
+         * To avoid this confusion, we can render the <Route /> 
+         * for the "/new-post" path before the <Route /> for the
+         * "/:id" path, as shown below.
+         */
+        }
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPost} />
+        <Route path="/:id" exact component={FullPost} />
+        
+        {// The following ordering of Routes won't work properly
+          // <Route path="/" exact component={Posts} />
+          // <Route path="/:id" exact component={FullPost} />
+          // <Route path="/new-post" component={NewPost} />
+        }
       </div>
     );
   }

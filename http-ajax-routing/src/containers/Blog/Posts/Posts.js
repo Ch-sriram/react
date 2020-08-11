@@ -1,6 +1,7 @@
 // LIBRARY IMPORTS
 import React, { Component } from 'react';
 import axios from '../../../axios'; // this is our own axiosInstance that we created earlier inside axios.js
+import { Link } from 'react-router-dom';
 
 // STYLE IMPORTS
 import './Posts.css';
@@ -39,14 +40,27 @@ class Posts extends Component {
     let posts = <p style={{ textAlign: "center" }}>Something Went Wrong!</p>;
 
     if (!this.state.error) {
-      posts = this.state.posts.map((post) => (
-        <Post
-          key={post.id}
-          title={post.title}
-          author={post.author}
-          clicked={() => this.postSelectedHandler(post.id)}
-          // {...this.props}
-        />
+      posts = this.state.posts.map(post => (
+        /**
+         * We will make every <Post /> Component a link, so that
+         * whenever it is clicked, we can use our react-router
+         * to route to a specific route as mentioned inside the 
+         * `to` prop inside the <Link /> Component seen below.
+         * 
+         * We also add the `key` prop to the <Link /> component
+         * now because it is the outermost component which is 
+         * being generated as a list of components to be 
+         * rendered onto the view, and so, every sequence of 
+         * similar components needs to have a unique `key` prop 
+         * according to rules in React.
+         */
+        <Link to={`/${post.id}`} key={post.id}>
+          <Post
+            title={post.title}
+            author={post.author}
+            clicked={() => this.postSelectedHandler(post.id)}
+          />
+        </Link>
       ));
     }
 
@@ -55,3 +69,15 @@ class Posts extends Component {
 };
 
 export default Posts;
+
+/**
+ * Now whenever we click on any <Post /> generated at the "/" 
+ * (Home) route, we can actually see that the related ID to that
+ * <Post /> (i.e., `post.id`) is appended as a route in the 
+ * address bar. 
+ * 
+ * Although, we just need to use that ID inside the route 
+ * mentioned in the address bar and then display the <FullPost />
+ * related to the <Post /> we clicked (which can be done by 
+ * extracting the route parameters).
+ */
