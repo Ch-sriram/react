@@ -135,4 +135,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 7. Using the Props (Routing Info) Sent to the Components Rendered from the `<Route />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/7d5a80f3669e37434f5915977cd3df6c8ad0d7fd)
 8. The `withRouter()` HOC & Route Props: [Commit Details](https://github.com/Ch-sriram/react/commit/f89ef0cbf6a77288b36bf0542c5b8dee95ca67b7)
 9. Absolute vs. Relative Paths: [Commit Details](https://github.com/Ch-sriram/react/commit/f1cb5c5df16561fba48a0731e17b32e204822a60)
-10. Styling the Active Route using `<NavLink to="<route>" exact activeClassName="<class-name>" activeStyle={<style-object>}/>` Component: [Commit Details]()
+10. Styling the Active Route using `<NavLink to="<route>" exact activeClassName="<class-name>" activeStyle={<style-object>}/>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/d226ec6c421c88c5e6818e2c85e531661d48582d)
