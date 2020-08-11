@@ -26,38 +26,16 @@ import NewPost from './NewPost/NewPost';
  */
 
 class Blog extends Component {
+  componentDidMount() {
+    console.log("[Blog.js]...", this.props);
+  }
+
   render() {
     return (
       <div className="Blog">
         <header>
           <nav>
             <ul>
-              {
-              /**
-               * Now, this <Link to="/"> Component below will
-               * not reload the entire page, whereas, it will
-               * just render the component which is given in
-               * the path using the `to` prop.
-               * 
-               * The `to` prop can also be a more complex 
-               * element, which can be an entire JS object, 
-               * that takes in a config which can be as 
-               * follows:
-                  * {
-                  *  pathname: '/new-post',
-                  *  hash: '#submit',
-                  *  search: `?quick-submit=true',
-                  * }
-               * where, `pathname` is the route address,
-               *        `hash` is used for going to a specified
-               *               id inside the route we mentioned
-               *               above in `pathname`.
-               *        `search` is for query parameters to the
-               *                 link in the address bar.
-               * 
-               * Example shown below.
-               */
-              }
               <li><Link to="/">Home</Link></li>
               <li><Link to={{
                 pathname: '/new-post',
@@ -67,16 +45,34 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
+        {
+        /**
+         * Here, <Posts /> and <NewPost /> Components will 
+         * receive props which are sent in by the <Route />
+         * Component, which contains useful information about 
+         * the Route like the `match`, `history`, `location`, 
+         * etc. This information is automatically passed in by 
+         * react-router.
+         * 
+         * The `history` object has certain methods we can use to
+         * push(), goBack(), goForward(), replace() the 
+         * respective page and so on...
+         * 
+         * The `match` field contains the information about 
+         * whether the route isExact or not, `path` & `url` info.
+         * There's one more field which is `params`, which is an
+         * object we'll discuss about later.
+         * 
+         * The `location` field contains the fields like `hash`,
+         * `key`, `pathname` (which is the route wi give) and the
+         * `search` field, which is the URL Search Query we give.
+         */
+        }
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPost} />
       </div>
     );
   }
 }
-
-/**
- * Now our app won't reload every time we click on the links
- * aforementioned in the "Home" and "New Post" links.
- */
 
 export default Blog;
