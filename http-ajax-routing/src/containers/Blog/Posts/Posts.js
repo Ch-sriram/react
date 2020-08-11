@@ -1,7 +1,7 @@
 // LIBRARY IMPORTS
 import React, { Component } from 'react';
 import axios from '../../../axios'; // this is our own axiosInstance that we created earlier inside axios.js
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // STYLE IMPORTS
 import './Posts.css';
@@ -32,22 +32,38 @@ class Posts extends Component {
       });
   }
 
+  /**
+   * Instead of using the <Link /> Component, we can make use
+   * of the react-router's props we receive because this 
+   * component is rendered using the <Route /> component, and
+   * so, we will get the `match`, `history` and the `location`
+   * props.
+   * 
+   * We can use the `history` prop to goBack(), goForward(),
+   * replace() or push() a Component onto the view, to be shown
+   * when the <Post /> component is clicked.
+   * 
+   * We will handle that below, in the postSelectedHandler(id)
+   * method as shown below:
+   */
   postSelectedHandler = (id) => {
-    this.setState({ selectedPostID: id });
+    // this.props.history.push("/" + id);
+    this.props.history.push({ pathname: `/${id}` }); // same as above
   };
 
   render() {
     let posts = <p style={{ textAlign: "center" }}>Something Went Wrong!</p>;
 
     if (!this.state.error) {
-      posts = this.state.posts.map(post => (
-        <Link to={`/${post.id}`} key={post.id}>
-          <Post
-            title={post.title}
-            author={post.author}
-            clicked={() => this.postSelectedHandler(post.id)}
-          />
-        </Link>
+      posts = this.state.posts.map((post) => (
+        // <Link to={`/${post.id}`} key={post.id}>
+        <Post
+          key={post.id}
+          title={post.title}
+          author={post.author}
+          clicked={() => this.postSelectedHandler(post.id)}
+        />
+        // </Link>
       ));
     }
 
