@@ -15,16 +15,6 @@ import NewPost from './NewPost/NewPost';
     error: false,
  */
 
-/** The following comes inside div with className="Blog" after
- * <Posts /> component.
- * <section>
-    <FullPost id={this.state.selectedPostID} />
-   </section>
-   <section>
-    <NewPost />
-   </section>
- */
-
 class Blog extends Component {
   componentDidMount() {
     console.log("[Blog.js]...", this.props);
@@ -47,25 +37,12 @@ class Blog extends Component {
         </header>
         {
         /**
-         * Here, <Posts /> and <NewPost /> Components will 
-         * receive props which are sent in by the <Route />
-         * Component, which contains useful information about 
-         * the Route like the `match`, `history`, `location`, 
-         * etc. This information is automatically passed in by 
-         * react-router.
+         * Now, we will get the route information in the props
+         * of the <Posts /> and <NewPost /> Components only.
          * 
-         * The `history` object has certain methods we can use to
-         * push(), goBack(), goForward(), replace() the 
-         * respective page and so on...
-         * 
-         * The `match` field contains the information about 
-         * whether the route isExact or not, `path` & `url` info.
-         * There's one more field which is `params`, which is an
-         * object we'll discuss about later.
-         * 
-         * The `location` field contains the fields like `hash`,
-         * `key`, `pathname` (which is the route wi give) and the
-         * `search` field, which is the URL Search Query we give.
+         * Any Component rendered inside the <Posts /> and the 
+         * <NewPost /> wouldn't get the routing information in 
+         * their props.
          */
         }
         <Route path="/" exact component={Posts} />

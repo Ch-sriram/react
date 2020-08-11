@@ -133,3 +133,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
    1. *Inefficient Way to Re-route* &mdash; Entire Page Reloads using `<a href="/">Home</a>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/c5ab53754f934db1ea3fd2dba86d4e6cf4f7e7e5)
    2. Efficient Way to Re-route &mdash; The Page Doesn't Reload using `<Link to="/">Home</Link>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/1c46d5e9d96d8878e56aab1efe447ebe0f5aa905)
 7. Using the Props (Routing Info) Sent to the Components Rendered from the `<Route />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/7d5a80f3669e37434f5915977cd3df6c8ad0d7fd)
+8. The `withRouter()` HOC & Route Props: [Commit Details]()
