@@ -152,5 +152,6 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     4. Using `this.props.history.push()/replace()` to Redirect: [Commit Details](https://github.com/Ch-sriram/react/commit/c34bd8846f6916159ef4a6ca58849dab760ae060)
     5. Working with Navigation Guards: [Commit Details](https://github.com/Ch-sriram/react/commit/69cffe5d7ceceae4c7e3d1db90287978c1ea0740)
     6. Handling the **404 Not Found** Case using `path`less `<Route />`: [Commit Details](https://github.com/Ch-sriram/react/commit/643d0c2cc9a19a00207d34ce586c16609e1dae04)
-    7. **Lazy Loading / Code Splitting** 😴 &mdash; 💥Important💥
+    7. **Lazy Loading / Code Splitting** 😴 &mdash; 💥**Important**💥
        1. Loading Routes Lazily Using Asynchronous Dynamic `import()` method inside our own custom-made HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/20387d909c7a69c80736eec746c2d07314314bdc)
+       2. Lazy Loading Components Asynchronously with `React.lazy()` method & `<React.Suspense fallback={<div>Loading...</div>} />` Component: [Commit Details]()
