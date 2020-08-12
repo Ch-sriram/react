@@ -14,7 +14,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 
 ## Table of Contents
 
-### React Basics [Making Monsters Rolodex Project]
+### React Basics [Making Monsters Rolodex Project] ⚛ + 👹
 
 1. How to use `create-react-app` to initialize a react project: **[Tutorial here](https://create-react-app.dev/docs/getting-started/)** | **[Files that are added after first init](https://github.com/Ch-sriram/react/commit/2d7171fc2ed9630763add888d05055dd2c1b84cd)**
 2. First Change in the React App: [Changes Made](https://github.com/Ch-sriram/react/commit/e4e33f5a09623ccadb2a2c81040f2a2cfc78edae)
@@ -28,7 +28,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 10. Writing our own methods inside the App component & why are life-cycle defined normally like a function and not as an arrow function: [Changes Made](https://github.com/Ch-sriram/react/commit/0a7c9b5976d59cc669f9df698e9c8090ceda63cf)
 11. Deploying a static app on GitHub Pages & Finishing Touches: **[Deploying Static Websites to GitHub Pages](https://github.com/Ch-sriram/react/wiki/Steps-for-Hosting-a-Static-Website-on-Github-Pages)**, **[Changes Made](https://github.com/Ch-sriram/react/commit/3250b1f3e7777041ff7f5eeb39ea6cb27fd724d9)** & **[Monsters Rolodex App Live Here](https://ch-sriram.github.io/monsters-rolodex/)**
 
-### React Core Concepts
+### React Core Concepts ⚛❓
 
 1. What does `create-react-app` command actually does? An in-depth understanding of `React` & `ReactDOM`: **[Commit Changes Here](https://github.com/Ch-sriram/react/commit/cec0bbd55d40359ad89cdb36431ad515683b080b)** & **[Basic File Structure for React Apps](https://github.com/Ch-sriram/react/wiki/Internal-details-of-%60create-react-app%60)**
 2. Wrapping all the basics in one example &mdash; `props`, `props.children`, `setState()`, `state`, `React.Component`, `event-handling`, etc: [Commit Changes](https://github.com/Ch-sriram/react/commit/502f6498ae510a2f4f9587360ca5f7103162268c)
@@ -38,7 +38,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 6. Styling Components - Inline Styling using JSX & Importing External Style Scripts: [Commit Details](https://github.com/Ch-sriram/react/commit/a99514cdf74aebffa8afbad61a5f6115965f6143)
 7. Overall wrap-up of all the basics: **[Assignment Solution on CodeSandBox](https://codesandbox.io/s/modest-wu-n9k5w?file=/src/components/user-input/user-input.component.jsx)**
 
-### Working with Lists & Conditionals
+### Working with Lists & Conditionals 📜
 
 1. Rendering Content Conditionally
    1. Using the ternary operator: [Commit Details](https://github.com/Ch-sriram/react/commit/5dc2b1ad364b6f8923eff44af488a93a5472684d)
@@ -52,14 +52,14 @@ In this repository, I've implemented (or implementing) all the concepts related 
    2. Making Lists Flexible w. `<input>` element inside the component: [Commit Details](https://github.com/Ch-sriram/react/commit/dd55f73a1ef6a0d44cc1b6a3bb33df31b357a47e)
 5. Section wrap-up & Assignment: [My Solution @CodeSandBox](https://codesandbox.io/s/staging-morning-offcj?file=/src/App.js) & [Instructor's Solution @CodeSandBox](https://codesandbox.io/s/blissful-rosalind-fu2gm?file=/src/App.js)
 
-### Styling React Components & Elements
+### Styling React Components & Elements 🩰🎀👚
 
 1. Setting Styles Dynamically: [Commit Details](https://github.com/Ch-sriram/react/commit/059ada885e7f271fbb75699f6c9d6cd474659971)
 2. Setting Class Names Dynamically: [Commit Details](https://github.com/Ch-sriram/react/commit/c90a8f0b7d98099ceca69ad49345cbbbd7655da4)
 3. Adding & Using **Radium** &mdash; `npm i --save radium`
    1. Implementing pseudo-classes like `:hover`: [Commit Details](https://github.com/Ch-sriram/react/commit/38a692d77d9a570af38d8a09f3749532ded7b50e)
    2. Implementing Media Queries `@media` using `{StyleRoot} from 'radium'`: [Commit Details](https://github.com/Ch-sriram/react/commit/74f0f476ae0005ddb5758b0211ac72d2be325e3a)
-4. Adding & Using **[Styled Component](https://styled-components.com/)** &mdash; `npm i --save styled-components`
+4. Adding & Using **[Styled Component](https://styled-components.com/)** &mdash; `npm i --save styled-components` 💄
    1. Styling components using **[Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates)** with `styled-components` library: [Commit Details](https://github.com/Ch-sriram/react/commit/8ef490f993bd392b6476629545d2b0fc7e5eb32c)
    2. How `styled-components` library generates the CSS required for the respective component: [Commit Details](https://github.com/Ch-sriram/react/commit/d9129cd0692a88d143b3c76adb995b0033090da0)
    3. Dynamic styling with `props` inside a tagged template string: [Commit Details](https://github.com/Ch-sriram/react/commit/55bceb0995517afb22f04d569f308fb69d9d041b)
@@ -67,9 +67,9 @@ In this repository, I've implemented (or implementing) all the concepts related 
    1. Why do we need CSS Modules? [Commit Details](https://github.com/Ch-sriram/react/commit/bb869417d81ec0bf0eaa55ec6458165ad76a1080)
    2. Using CSS Modules: **[SETTINGS_README.md](https://github.com/Ch-sriram/react/blob/dev/react-examples/CSS_MODULES_SETTINGS_REACT_SCRIPTS_V1.md)** & [Commit Details](https://github.com/Ch-sriram/react/commit/d5f38daabc91f707bee2246bfb060ea8cbe59e76)
    3. Media Queries using CSS Modules: [Commit Details](https://github.com/Ch-sriram/react/commit/b430521e24e2caf066a59e0c98805b9b77caecb6)
-6. Using `ErrorBoundaries` if an Error occurs in the react app, using `componentDidCatch(err, info)` method: [Commit Details](https://github.com/Ch-sriram/react/commit/9fe997867620c2cd2f0ddd5e675c40b125a4d33b)
+6. Using `ErrorBoundaries` if an Error occurs in the react app, using `componentDidCatch(err, info)` method: [Commit Details](https://github.com/Ch-sriram/react/commit/9fe997867620c2cd2f0ddd5e675c40b125a4d33b) 🚫✅
 
-### Deep Dive Into Components & React Internals
+### Deep Dive Into Components & React Internals 🏊🏾‍♂️⚛
 
 1. A Better Project Directory Structure: [Commit Details](https://github.com/Ch-sriram/react/commit/e22fac77ab7417f37594b68f1aa1217b794d19e1)
 2. Splitting an App into Components for cleaner structure/readability: [Commit Details](https://github.com/Ch-sriram/react/commit/13c56fe01c5b4b754951e1a1a839a0135f01c124)
@@ -106,7 +106,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
     2. Using the Context API using `React.createContext()`: [Commit Details](https://github.com/Ch-sriram/react/commit/04cbc679a15782256a93233bd77a54b38ce8be4f)
     3. Alternative way of using Context API in class-based components using `contextType` & Using functional components in functional components using `useContext()` hook: [Commit Details](https://github.com/Ch-sriram/react/commit/0e889f3bf143bdd16deafa0e370bc2b36f07a386)
 
-### Reaching out to the Web (HTTP/AJAX)
+### Reaching out to the Web (HTTP/AJAX) 🔁
 
 Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.com/axios/axios)** | API Endpoints: [/posts](https://jsonplaceholder.typicode.com/posts), [/posts/user_id](https://jsonplaceholder.typicode.com/posts/1)
 
@@ -122,7 +122,7 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 10. Setting a Default Global Configuration for Axios using `axios.defaults`: [Commit Details](https://github.com/Ch-sriram/react/commit/df370241d1f2ee2e54445986832521390b089108)
 11. Creating and Using Axios Instance using `axios.create()` method: [Commit Details](https://github.com/Ch-sriram/react/commit/ce49f467fa69bb47660339882fb9307dd9db12e0)
 
-### Single Page Applications with Routing &mdash; `react-router`
+### Single Page Applications with Routing &mdash; `react-router` 🔀
 
 1. Setting Up Route Links in `<Blog />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/b34b7005fb8bbee9ca9ef7b1cb4d475ce8f1b9f8)
 2. Setting Up The Router Package **`npm i --save react-router react-router-dom`**: [Commit Details](https://github.com/Ch-sriram/react/commit/64ef82a4d09d2b0561861764c73a717fd754f4e4)
@@ -145,10 +145,12 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     1. Introduction & Usage: [Commit Details](https://github.com/Ch-sriram/react/commit/f9a93a7b773756f31cc02772588746c4285c7e91)
     2. Naming Routes Logically & Relative URLs in Nested Routes using `this.props.match.url`: [Commit Details](https://github.com/Ch-sriram/react/commit/5faaa2d3b40ecd75bb6a816e3c386b0d54e6bb0c)
     3. Creating Dynamic Nested Routes by Defining Proper Lifecycle Methods: [Commit Details](https://github.com/Ch-sriram/react/commit/f9b4e7deaed3486751da3aca5216130a5b75ade4)
-17. Redirecting Requests
+17. **Redirecting Requests**
     1. Redirecting using the `<Route />` Component (*Not Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/883bd3d5797ccdbc38ee9b18f10b139cffc8e73a)
     2. Redirecting using the `<Redirect from="<route-name>" to="<route-name>" />` Component inside a `<Switch />` Component (*Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/7b26dc4e27547c24ce63d11be0df4fa4566a0900)
     3. Conditional Redirects using `<Redirect to="<route-name>"/>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/585d6b6fa3e3e6821c17a4901587d7b566775420)
     4. Using `this.props.history.push()/replace()` to Redirect: [Commit Details](https://github.com/Ch-sriram/react/commit/c34bd8846f6916159ef4a6ca58849dab760ae060)
     5. Working with Navigation Guards: [Commit Details](https://github.com/Ch-sriram/react/commit/69cffe5d7ceceae4c7e3d1db90287978c1ea0740)
     6. Handling the **404 Not Found** Case using `path`less `<Route />`: [Commit Details](https://github.com/Ch-sriram/react/commit/643d0c2cc9a19a00207d34ce586c16609e1dae04)
+    7. **Lazy Loading / Code Splitting** 😴 &mdash; 💥Important💥
+       1. Loading Routes Lazily Using Asynchronous Dynamic `import()` method inside our own custom-made HOC: [Commit Details]()
