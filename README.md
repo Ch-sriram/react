@@ -146,4 +146,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     2. Naming Routes Logically & Relative URLs in Nested Routes using `this.props.match.url`: [Commit Details](https://github.com/Ch-sriram/react/commit/5faaa2d3b40ecd75bb6a816e3c386b0d54e6bb0c)
     3. Creating Dynamic Nested Routes by Defining Proper Lifecycle Methods: [Commit Details](https://github.com/Ch-sriram/react/commit/f9b4e7deaed3486751da3aca5216130a5b75ade4)
 17. Redirecting Requests
-    1. Redirecting using the `<Route />` Component (*Note Recommended*): [Commit Details]()
+    1. Redirecting using the `<Route />` Component (*Note Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/883bd3d5797ccdbc38ee9b18f10b139cffc8e73a)
