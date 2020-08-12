@@ -122,7 +122,7 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 10. Setting a Default Global Configuration for Axios using `axios.defaults`: [Commit Details](https://github.com/Ch-sriram/react/commit/df370241d1f2ee2e54445986832521390b089108)
 11. Creating and Using Axios Instance using `axios.create()` method: [Commit Details](https://github.com/Ch-sriram/react/commit/ce49f467fa69bb47660339882fb9307dd9db12e0)
 
-### SPA's using Routing
+### Single Page Applications with Routing &mdash; `react-router`
 
 1. Setting Up Route Links in `<Blog />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/b34b7005fb8bbee9ca9ef7b1cb4d475ce8f1b9f8)
 2. Setting Up The Router Package `npm i --save react-router react-router-dom`: [Commit Details](https://github.com/Ch-sriram/react/commit/64ef82a4d09d2b0561861764c73a717fd754f4e4)
