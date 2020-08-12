@@ -1,5 +1,9 @@
+// LIBRARY IMPORTS
 import React, { Component } from "react";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+
+// STYLING IMPORTS
 import "./NewPost.css";
 
 class NewPost extends Component {
@@ -7,6 +11,7 @@ class NewPost extends Component {
     title: "",
     content: "",
     author: "Max",
+    submitted: false
   };
 
   componentDidMount() {
@@ -21,13 +26,45 @@ class NewPost extends Component {
     }
 
     axios.post("/posts", data)
-      .then(response => { console.log(response); })
-      .catch(err => { console.log(err); });
+      .then(response => {
+        console.log(response);
+        this.setState({ submitted: true });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
+    /**
+     * Note that we can only define the `to` prop for the 
+     * <Redirect /> component.
+     */
+    const redirect = this.state.submitted ? <Redirect to="/posts" /> : null;
     return (
       <div className="NewPost">
+        {/*<Redirect to="/posts"/>*/}
+        {
+        /**
+         * In line #44, we are redirecting without any 
+         * conditional checking. If we redirect as seen in line
+         * #44, we would never be able to post a post to the 
+         * respective API Endpoint. Whenever we click on the
+         * "New Post" link, we will be automatically redirected
+         * to the "/posts" route, which is not what we want.
+         * 
+         * We want to be able to post a New Post when we go
+         * to the "/new-post" route using the "New Post" link,
+         * and then we should redirect to the "/posts" route.
+         * 
+         * For that, we can maintain `submitted` state and set
+         * it to true when we have posted a new post to the 
+         * API Endpoint.
+         * 
+         * Depending on the state - `submitted`'s value, 
+         * we'll either render the <Redirect /> component
+         * or render null, as shown below.
+         */
+        }
+        {redirect}
         <h1>Add a Post</h1>
         <label>Title</label>
         <input

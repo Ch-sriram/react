@@ -49,24 +49,22 @@ class Blog extends Component {
         </header>
         {
         /**
-         * For re-routing, we have a special component 
-         * provided by react-router-dom, which is known as 
-         * the <Redirect /> component.
+         * The <Redirect /> component doesn't render the 
+         * component, it simply finds the route mentioned in
+         * the `to` prop and then literally redirects the 
+         * rendering work to the <Route /> component.
+         */
+        }
+        {
+        /**
+         * Now, whenever we make a post request by posting a 
+         * new post from the "New Post" link inside the
+         * "/new-post" route, we want to redirect after posting
+         * a new post, to the "/posts" route. 
          * 
-         * When we specify the <Redirect /> Component inside
-         * the <Switch /> Component, we can specify an extra
-         * prop for redirection which is the `from` prop, using
-         * which, we can mention the route from which we'll 
-         * redirect. 
-         * 
-         * Example: We want to redirect to "/posts", even 
-         * when we visit "/" route. And so, for that, we give
-         * the <Redirect /> component with from="/" and 
-         * to="/posts" props respectively. 
-         * 
-         * NOTE: Using the `from` prop for the <Redirect />
-         * component only can be given when the <Redirect />
-         * component is given inside the <Switch /> component.
+         * For that, we have to do some conditional routing
+         * which can be seen inside the <NewPost /> component
+         * inside the NewPost.js file.
          */
         }
         <Switch>
