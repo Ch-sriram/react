@@ -36,7 +36,7 @@ class Posts extends Component {
 
   postSelectedHandler = (id) => {
     // this.props.history.push("/posts/" + id);
-    this.props.history.push({ pathname: `${this.props.match.url}/${id}` }); // same as above
+    this.props.history.push({ pathname: `/posts/${id}` }); // same as above
   };
 
   render() {
@@ -58,31 +58,6 @@ class Posts extends Component {
     console.log(this.props.match.url);
 
     return (
-      /**
-       * Now, even though a <FullPost /> is rendered in the 
-       * same route where the <Posts /> are rendered below it,
-       * we will now face a problem where the <FullPost /> is 
-       * only rendered once, when we click one of the <Post />
-       * inside the <Posts />, and after that, we won't be able
-       * to load any more <FullPost /> components below the
-       * <Posts /> component at the same route, because in the
-       * the <FullPost /> component (inside FullPost.js), we 
-       * didn't mention the behaviour for componentDidUpdate()
-       * lifecycle method, we only mentioned the behaviour for
-       * componentDidMount() lifecycle method, and so, whenever
-       * we click on a <Post /> component for the first time, 
-       * the <FullPost /> related to that <Post /> component is
-       * loaded below the <Posts /> component, because 
-       * <FullPost /> has been mounted for the first time, 
-       * but after that, no matter how many times we try to 
-       * load another <FullPost /> related to some other 
-       * <Post />, we won't be able to load it, because we 
-       * didn't define the behaviour for componentDidUpdate()
-       * lifecycle method for the <FullPost /> component.
-       * 
-       * And so, we have to make changes inside the 
-       * <FullPost /> component for that.
-       */
       <React.Fragment>
         <section className="Posts">{posts}</section>
         <Route path={`${this.props.match.url}/:id`} exact component={FullPost} />
