@@ -151,4 +151,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     3. Conditional Redirects using `<Redirect to="<route-name>"/>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/585d6b6fa3e3e6821c17a4901587d7b566775420)
     4. Using `this.props.history.push()/replace()` to Redirect: [Commit Details](https://github.com/Ch-sriram/react/commit/c34bd8846f6916159ef4a6ca58849dab760ae060)
     5. Working with Navigation Guards: [Commit Details](https://github.com/Ch-sriram/react/commit/69cffe5d7ceceae4c7e3d1db90287978c1ea0740)
-    6. Handling the **404 Not Found** Case using `path`less `<Route />`: [Commit Details]()
+    6. Handling the **404 Not Found** Case using `path`less `<Route />`: [Commit Details](https://github.com/Ch-sriram/react/commit/643d0c2cc9a19a00207d34ce586c16609e1dae04)
