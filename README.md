@@ -143,4 +143,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 15. Navigating to Specified Routes Programmatically, using `this.props.history.push()` method, instead of using the `<Link />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/1d439091176088876eda785d811593d5ddf96eeb)
 16. **Understanding Nested Routes**
     1. Introduction & Usage: [Commit Details](https://github.com/Ch-sriram/react/commit/f9a93a7b773756f31cc02772588746c4285c7e91)
-    2. Naming Routes Logically & Relative URLs in Nested Routes using `this.props.match.url`: [Commit Details]()
+    2. Naming Routes Logically & Relative URLs in Nested Routes using `this.props.match.url`: [Commit Details](https://github.com/Ch-sriram/react/commit/5faaa2d3b40ecd75bb6a816e3c386b0d54e6bb0c)
