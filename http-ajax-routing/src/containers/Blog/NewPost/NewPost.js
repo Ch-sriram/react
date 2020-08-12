@@ -15,6 +15,7 @@ class NewPost extends Component {
   };
 
   componentDidMount() {
+    // if !auth => this.props.history.replace('/posts');
     console.log("[NewPost.js]...", this.props);
   }
 
@@ -36,27 +37,6 @@ class NewPost extends Component {
       })
       .catch(err => console.log(err));
   }
-
-  /**
-   * Instead of rendering the <Redirect /> component 
-   * conditionally by checking the state of `submitted`, we 
-   * can simply use the route parameters that are available as
-   * props to this <NewPost /> component.
-   * 
-   * In `this.props`, we can access `history.push()` or 
-   * `history.replace()` method to directly route to the 
-   * required route. The <Redirect /> component internally 
-   * does what the `history.replace()` method does, i.e., 
-   * it replaces the current route's page, with the mentioned
-   * route's page, and because of that, when we go back, we 
-   * won't see the route we were on, because we replaced the
-   * route, not push it onto the internal webpage stack of the
-   * browser.
-   * 
-   * The code for replacing/pushing the new route after posting
-   * a new post can be added inside the .then() method, defined
-   * at line #29.
-   */
 
   render() {
     // const redirect = this.state.submitted ? <Redirect to="/posts" /> : null;
