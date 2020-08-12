@@ -35,8 +35,8 @@ class Posts extends Component {
   }
 
   postSelectedHandler = (id) => {
-    // this.props.history.push("/" + id);
-    this.props.history.push({ pathname: `/${id}` }); // same as above
+    // this.props.history.push("/posts/" + id);
+    this.props.history.push({ pathname: `${this.props.match.url}/${id}` }); // same as above
   };
 
   render() {
@@ -44,7 +44,7 @@ class Posts extends Component {
 
     if (!this.state.error) {
       posts = this.state.posts.map((post) => (
-        // <Link to={`/${post.id}`} key={post.id}>
+        // <Link to={`/posts/${post.id}`} key={post.id}>
         <Post
           key={post.id}
           title={post.title}
@@ -55,10 +55,12 @@ class Posts extends Component {
       ));
     }
 
+    console.log(this.props.match.url);
+
     return (
       <React.Fragment>
         <section className="Posts">{posts}</section>
-        <Route path="/:id" exact component={FullPost} />
+        <Route path={`${this.props.match.url}/:id`} exact component={FullPost} />
       </React.Fragment>
     );
   }

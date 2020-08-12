@@ -22,7 +22,7 @@ class Blog extends Component {
             <ul>
               <li>
                 <NavLink
-                  to="/"
+                  to="/posts/"
                   exact
                   activeClassName="my-active"
                   activeStyle={{
@@ -47,67 +47,32 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {/**
-         * Till now, we have generated a <FullPost /> in its
-         * own route inside the browser, instead of rendering
-         * the <FullPost /> below the selected <Post />
-         * component itself inside the "/" route itself.
-         *
-         * What we can do is, we can add the route to render
-         * the <FullPost /> component inside the <Posts />
-         * component which itself is inside the <Blog />
-         * component as a <Route /> component.
-         *
-         * So this here, will be Nested Routing, i.e.,
-         * <Route /> component, inside another component,
-         * which is rendered from a <Route /> component.
-         *
-         * Now, if we want to load the selected/clicked post
-         * beneath the generated list of <Post /> components
-         * in the "/" route, for that, we need to move the
-         * "/:id" route's component, to be rendered inside the
-         * <Posts /> component, as seen in Post.js file.
-         */}
-        {
-          // <Switch>
-          //   <Route path="/" exact component={Posts} />
-          //   <Route path="/new-post" component={NewPost} />
-          // </Switch>
-        }
-
-        {/**
-         * With the Routing setup made above, whenever we click
-         * on any of the <Post /> inside the <Posts />
-         * component rendered at the "/" route, we will see
-         * that the <FullPost /> related to that particular
-         * component won't be rendered at the same route, and
-         * that happens because we've the `exact` prop as true
-         * for the "/" route.
-         *
-         * Which also means that, the "/:id" route won't be
-         * activated whenever we click on a <Post /> inside
-         * the <Posts /> component.
-         *
-         * So we need to remove the `exact` prop from the "/"
-         * route, and then also re-arrange the <Route />
-         * components, as now, if the `exact` is false for "/"
-         * route, it will also consume "/new-post" route, and
-         * so, that would be counter-productive.
-         *
-         * So the correct Route config is shown below:
-         */}
-        <Switch>
-          <Route path="/new-post" component={NewPost} />
-          <Route path="/" component={Posts} />
-        </Switch>
         {
         /**
-         * This in itself is nested routing, as we can see it
-         * in action, when we open the App now, to see that
-         * a selected <Post /> now renders as <FullPost/>
-         * below the <Posts /> component.
+         * Now, if we change the `path` of the route for 
+         * "/" to "/posts", then this will break the `path`
+         * setting for the nested <Route /> components, as 
+         * their `path` props are not defined in relation to
+         * the `path` of their parent <Route />, but they're
+         * defined in absolute terms, which is not what we 
+         * want. And so, we change the path here from "/" to
+         * "/posts" to render the <Posts /> component. 
+         * 
+         * And inside the Posts.js file, where we render the
+         * <FullPost /> component depending on the click on a
+         * single <Post /> component using a <Route />, for
+         * which, we allot the `path` dynamically, using the
+         * `url` information sent down to the <Posts /> 
+         * component in its `props`, which can be accessed 
+         * using `this.props.match.url`, which will in this 
+         * case be same as "/posts", because the parent route
+         * for that nested route is "/posts"
          */
         }
+        <Switch>
+          <Route path="/new-post" component={NewPost} />
+          <Route path="/posts" component={Posts} />
+        </Switch>
       </div>
     );
   }
