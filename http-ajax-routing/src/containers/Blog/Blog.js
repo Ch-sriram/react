@@ -47,26 +47,6 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {
-        /**
-         * The <Redirect /> component doesn't render the 
-         * component, it simply finds the route mentioned in
-         * the `to` prop and then literally redirects the 
-         * rendering work to the <Route /> component.
-         */
-        }
-        {
-        /**
-         * Now, whenever we make a post request by posting a 
-         * new post from the "New Post" link inside the
-         * "/new-post" route, we want to redirect after posting
-         * a new post, to the "/posts" route. 
-         * 
-         * For that, we have to do some conditional routing
-         * which can be seen inside the <NewPost /> component
-         * inside the NewPost.js file.
-         */
-        }
         <Switch>
           <Route path="/new-post" component={NewPost} />
           <Route path="/posts" component={Posts} />

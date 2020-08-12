@@ -1,7 +1,7 @@
 // LIBRARY IMPORTS
 import React, { Component } from "react";
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 // STYLING IMPORTS
 import "./NewPost.css";
@@ -11,7 +11,7 @@ class NewPost extends Component {
     title: "",
     content: "",
     author: "Max",
-    submitted: false
+    // submitted: false
   };
 
   componentDidMount() {
@@ -28,43 +28,41 @@ class NewPost extends Component {
     axios.post("/posts", data)
       .then(response => {
         console.log(response);
-        this.setState({ submitted: true });
+        // this.setState({ submitted: true });
+
+        /* 2 WAYS to re-route */
+        // this.props.history.push("/posts"); // go back, and we'll be able to see the "/new-post" route
+        this.props.history.replace("/push");  // go back, and we'll simply see the "/posts" route only
       })
       .catch(err => console.log(err));
   }
 
+  /**
+   * Instead of rendering the <Redirect /> component 
+   * conditionally by checking the state of `submitted`, we 
+   * can simply use the route parameters that are available as
+   * props to this <NewPost /> component.
+   * 
+   * In `this.props`, we can access `history.push()` or 
+   * `history.replace()` method to directly route to the 
+   * required route. The <Redirect /> component internally 
+   * does what the `history.replace()` method does, i.e., 
+   * it replaces the current route's page, with the mentioned
+   * route's page, and because of that, when we go back, we 
+   * won't see the route we were on, because we replaced the
+   * route, not push it onto the internal webpage stack of the
+   * browser.
+   * 
+   * The code for replacing/pushing the new route after posting
+   * a new post can be added inside the .then() method, defined
+   * at line #29.
+   */
+
   render() {
-    /**
-     * Note that we can only define the `to` prop for the 
-     * <Redirect /> component.
-     */
-    const redirect = this.state.submitted ? <Redirect to="/posts" /> : null;
+    // const redirect = this.state.submitted ? <Redirect to="/posts" /> : null;
     return (
       <div className="NewPost">
-        {/*<Redirect to="/posts"/>*/}
-        {
-        /**
-         * In line #44, we are redirecting without any 
-         * conditional checking. If we redirect as seen in line
-         * #44, we would never be able to post a post to the 
-         * respective API Endpoint. Whenever we click on the
-         * "New Post" link, we will be automatically redirected
-         * to the "/posts" route, which is not what we want.
-         * 
-         * We want to be able to post a New Post when we go
-         * to the "/new-post" route using the "New Post" link,
-         * and then we should redirect to the "/posts" route.
-         * 
-         * For that, we can maintain `submitted` state and set
-         * it to true when we have posted a new post to the 
-         * API Endpoint.
-         * 
-         * Depending on the state - `submitted`'s value, 
-         * we'll either render the <Redirect /> component
-         * or render null, as shown below.
-         */
-        }
-        {redirect}
+        {/*redirect*/}
         <h1>Add a Post</h1>
         <label>Title</label>
         <input
