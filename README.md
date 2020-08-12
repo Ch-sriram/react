@@ -153,4 +153,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     5. Working with Navigation Guards: [Commit Details](https://github.com/Ch-sriram/react/commit/69cffe5d7ceceae4c7e3d1db90287978c1ea0740)
     6. Handling the **404 Not Found** Case using `path`less `<Route />`: [Commit Details](https://github.com/Ch-sriram/react/commit/643d0c2cc9a19a00207d34ce586c16609e1dae04)
     7. **Lazy Loading / Code Splitting** 😴 &mdash; 💥Important💥
-       1. Loading Routes Lazily Using Asynchronous Dynamic `import()` method inside our own custom-made HOC: [Commit Details]()
+       1. Loading Routes Lazily Using Asynchronous Dynamic `import()` method inside our own custom-made HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/20387d909c7a69c80736eec746c2d07314314bdc)
