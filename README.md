@@ -147,4 +147,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     3. Creating Dynamic Nested Routes by Defining Proper Lifecycle Methods: [Commit Details](https://github.com/Ch-sriram/react/commit/f9b4e7deaed3486751da3aca5216130a5b75ade4)
 17. Redirecting Requests
     1. Redirecting using the `<Route />` Component (*Not Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/883bd3d5797ccdbc38ee9b18f10b139cffc8e73a)
-    2. Redirecting using the `<Redirect />`Component (*Recommended*): [Commit Details]()
+    2. Redirecting using the `<Redirect />`Component (*Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/7b26dc4e27547c24ce63d11be0df4fa4566a0900)
