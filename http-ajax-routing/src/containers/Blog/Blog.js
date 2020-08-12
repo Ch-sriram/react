@@ -51,36 +51,50 @@ class Blog extends Component {
         </header>
         {
         /**
-         * Every JS framework/library offers some solution to
-         * Guard Navigation to Routes with some kind of a 
-         * construct. In React, we can simply use the inbuilt 
-         * state or some other state indicator to simply 
-         * render a Route or not, depending on the state. 
+         * To handle a 404 (Bad Request / Not Found) Error, 
+         * we can do what we did below, i.e., Use a route to 
+         * handle all general routes that start with "/", and
+         * redirect them to a specified working route (like
+         * "/posts") as shown below using the <Redirect /> 
+         * component.
+         */
+        }
+        {
+          // <Switch>
+          //   {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
+          //   <Route path="/posts" component={Posts} />
+          //   <Redirect from="/" to="/posts" />
+          //   {/*<Route path="/" component={Posts} />*/}
+          // </Switch>
+        }
+
+        {
+        /**
+         * But to handle 404 Error, we have another way, which
+         * is to use a pathless <Route /> component, which is
+         * placed at the end inside the <Switch /> component.
          * 
-         * Let's just say, for argument sake, that we have a 
-         * `auth` state which is false for now. Depending on 
-         * the truth value of `auth`, we would either render
-         * or not render the "/new-post" route as shown below.
+         * This pathless <Route /> will just have a `render` or
+         * `component` prop, which simply renders 
+         * "404 Not Found" text onto the view, whenever someone
+         * tries to access a path that's not defined for our 
+         * application. It is done as shown below.
          */
         }
         <Switch>
           {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
           <Route path="/posts" component={Posts} />
-          <Redirect from="/" to="/posts" />
+          <Route render={() => <h1 style={{textAlign: 'center'}}>404 Not Found</h1>} />
+          {/*<Redirect from="/" to="/posts" />*/}
           {/*<Route path="/" component={Posts} />*/}
         </Switch>
         {
         /**
-         * Sometimes, we might not want to handle the `auth` 
-         * to render the <NewPost /> component (in this case)
-         * at this level (i.e., inside the <Blog /> component),
-         * but maybe at the component level itself (i.e., at 
-         * the <NewPost /> component itself). In that case, we
-         * can handle the authentication details at the 
-         * lifecycle method of the <NewPost /> component, 
-         * inside the componentDidMount() lifecycle method,
-         * demonstrated as a comment inside the <NewPost /> 
-         * component (i.e., inside, NewPost.js file).
+         * The pathless <Route /> component in line #87 will
+         * catch any route that hasn't been handled by the 
+         * previous <Route /> component(s) (where the 
+         * <Route /> components also include the `path` 
+         * information).
          */
         }
       </div>
@@ -89,3 +103,10 @@ class Blog extends Component {
 }
 
 export default Blog;
+
+/**
+ * Now if we click on "New Post" link, we will see the message
+ * "404 Not Found" rendered onto the view. Even, for any other
+ * route which hasn't been handled, we will see the same 
+ * message, which is "404 Not Found".
+ */
