@@ -8,12 +8,18 @@ import Blog from './containers/Blog/Blog';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/my-app">
         <div className="App">
           <Blog />
         </div>
       </BrowserRouter>
     );
+    /**
+     * Now, every route configure in this app will have the 
+     * prefix of "/my-app" before its respective route.
+     * 
+     * By default, the `basename` is always set to "/".
+     */
   }
 }
 
