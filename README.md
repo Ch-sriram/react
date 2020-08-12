@@ -148,4 +148,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 17. Redirecting Requests
     1. Redirecting using the `<Route />` Component (*Not Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/883bd3d5797ccdbc38ee9b18f10b139cffc8e73a)
     2. Redirecting using the `<Redirect from="<route-name>" to="<route-name>" />` Component inside a `<Switch />` Component (*Recommended*): [Commit Details](https://github.com/Ch-sriram/react/commit/7b26dc4e27547c24ce63d11be0df4fa4566a0900)
-    3. Conditional Redirects using `<Redirect to="<route-name>"/>` Component: [Commit Details]()
+    3. Conditional Redirects using `<Redirect to="<route-name>"/>` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/585d6b6fa3e3e6821c17a4901587d7b566775420)
