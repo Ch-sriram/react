@@ -155,5 +155,5 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     7. **Lazy Loading / Code Splitting** 😴 &mdash; 💥**Important**💥
        1. Loading Routes Lazily Using Asynchronous Dynamic `import()` method inside our own custom-made HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/20387d909c7a69c80736eec746c2d07314314bdc)
        2. Lazy Loading Components Asynchronously with `React.lazy()` method & `<React.Suspense fallback={<div>Loading...</div>} />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/a3479819461fbdf295298c873455d58e4890d520)
-       3. Resolving Errors in `<NewPost />` Due to Lazy Loading &mdash; Wrapping `<NewPost />` with `withRouter()` HOC: [Commit Details]()
+       3. Resolving Errors in `<NewPost />` Due to Lazy Loading &mdash; Wrapping `<NewPost />` with `withRouter()` HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/4a61e837e39141865cfc8ae22475a176866e159f)
     8. Setting a `basename` prop for the `<BrowserRouter />` Component for Proper Routing & Server Deployment: [Commit Details](https://github.com/Ch-sriram/react/commit/9b38edf6b7e15fd88fa0bf55c41faf8606f41d7a)
