@@ -1,7 +1,7 @@
 // LIBRARY IMPORTS
 import React, { Component } from "react";
 import axios from 'axios';
-// import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // STYLING IMPORTS
 import "./NewPost.css";
@@ -33,7 +33,7 @@ class NewPost extends Component {
 
         /* 2 WAYS to re-route */
         // this.props.history.push("/posts"); // go back, and we'll be able to see the "/new-post" route
-        this.props.history.replace("/push");  // go back, and we'll simply see the "/posts" route only
+        this.props.history.replace("/posts");  // go back, and we'll simply see the "/posts" route only
       })
       .catch(err => console.log(err));
   }
@@ -71,4 +71,4 @@ class NewPost extends Component {
   }
 }
 
-export default NewPost;
+export default withRouter(NewPost);
