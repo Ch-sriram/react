@@ -158,3 +158,7 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
        3. Resolving Errors in `<NewPost />` Due to Lazy Loading &mdash; Wrapping `<NewPost />` with `withRouter()` HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/4a61e837e39141865cfc8ae22475a176866e159f)
     8. Setting a `basename` prop for the `<BrowserRouter />` Component for Proper Routing & Server Deployment: [Commit Details](https://github.com/Ch-sriram/react/commit/9b38edf6b7e15fd88fa0bf55c41faf8606f41d7a)
 18. Assignment Solution: **[My Solution @CodeSandBox](https://codesandbox.io/s/kind-mountain-0k5lv?file=/src/App.js)**, **[Instructor's Solution @CodeSandBox &mdash; v1](https://codesandbox.io/s/hopeful-wiles-ck7rw?file=/src/App.js)**
+
+### State Management Using Redux ♻⚛
+
+1. **Understanding the Redux Flow**: **[Read @CodeSandBox](https://nw1ru.csb.app/)** | **[Image - Direct Link](https://i.ibb.co/nb0dCn0/Redux-Flow-Architecture.png)**
