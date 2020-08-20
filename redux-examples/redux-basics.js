@@ -40,27 +40,6 @@ const store = createStore(rootReducer);  // param1: reducer
 console.log(store.getState());  // { counter: 0 }
 
 // SUBSCRIPTION
-/**
- * SUBSCRIPTIONs make sure that we don't have to call 
- * `store.getState()` to get the current state's snapshot 
- * inside the STORE, but also to inform the user, whenever we
- * need to do something with the new state, because something
- * in the old state, changed. Now, instead of guessing when
- * a particular action is executed and reduced in the store,
- * and then manually add our `console.log(store.getState())`
- * statement, we can instead simply add a SUBSCRIPTION that 
- * automatically gets called whenever an ACTION is Dispatched
- * and reduced by the REDUCER.
- * 
- * NOTE: SUBSCRIPTIONS should always be defined before the 
- * ACTION DISPATCHERS.
- * 
- * `store.subscribe()` method doesn't take any arguments.
- * We can return anything, or we can simply log the current
- * state as shown below. The SUBSCRIPTION is triggered whenever
- * an ACTION get DISPATCHED & reduced using the REDUCER.
- */
-
 store.subscribe(() => {
   console.log("[Subscription]", store.getState());
 });
