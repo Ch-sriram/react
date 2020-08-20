@@ -161,4 +161,8 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 
 ### State Management Using Redux ♻⚛
 
+**Dependency Installations: `npm i --save redux` | `npm i --save react-redux`**
+
 1. **Understanding the Redux Flow**: **[Read @CodeSandBox](https://nw1ru.csb.app/)** | **[Image - Direct Link](https://i.ibb.co/nb0dCn0/Redux-Flow-Architecture.png)**
+2. State Management With Redux Using Pure JS on Node Runtime &mdash; **`node <file-name>.js`**
+   1. Setting Up **`Reducer`** & **`Store`**: [Commit Details]()
