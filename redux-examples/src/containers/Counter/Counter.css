@@ -1,0 +1,36 @@
+ul {
+  display: block;
+  box-sizing: border-box;
+  list-style-type: none;
+  padding: 0;
+}
+
+hr {
+  display: block;
+  width: 95%;
+  border-top: none;
+  border-bottom: 1px double rgba(241,181,132,.8);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  color: rgba(0, 0, 0, .6);
+  font-weight: 500;
+  padding: 10px 15px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+  background: linear-gradient(
+                to right bottom,
+                rgba(241,181,132,.6),
+                rgba(240, 113, 9,.9)
+              );
+  transition: all .2s ease;
+}
+
+button:active {
+  transform: translateY(5px);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, .6);
+}

@@ -5,12 +5,7 @@ import { connect } from "react-redux";
 // STYLING & CUSTOM COMPONENT IMPORTS
 import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
-
-/**
- * ASSIGNMENT 
- * ----------
- * Dispatch ACTIONS for DECREMENT, SUBTRACT 5 & ADD by 5.
- */
+import './Counter.css';
 
 class Counter extends Component {
   state = {
@@ -63,6 +58,15 @@ class Counter extends Component {
           label="Subtract 5"
           clicked={this.props.onSubtractCounter}
         />
+        <hr />
+        <button onClick={this.props.onStoreResult}>Store Result</button>
+        <ul>
+          {this.props.storedResults.map(storedResult => (
+            <li key={storedResult.id} onClick={this.props.onDeleteResult}>
+              {storedResult.value}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
@@ -77,12 +81,14 @@ const mapDispatchToProps = dispatch => {
     onIncrementCounter: () => dispatch({ type: "INCREMENT" }),
     onDecrementCounter: () => dispatch({ type: "DECREMENT" }),
     onAddCounter: () => dispatch({type: "ADD", value: 5}),
-    onSubtractCounter: () => dispatch({type: "SUBTRACT", value: 5}),
+    onSubtractCounter: () => dispatch({ type: "SUBTRACT", value: 5 }),
+    onStoreResult: () => dispatch({ type: "STORE_RESULT" }),
+    onDeleteResult: () => dispatch({ type: "DELETE_RESULT" }),
   };
 };
 
 const mapStateToProps = state => {
-  return { ctr: state.counter };
+  return { ctr: state.counter, storedResults: state.results, };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
