@@ -173,4 +173,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
    2. Connecting Redux **`STORE`** to React using `<Provider />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/73565b0333f41b05132cd6d7ae1a630840c3f3fa)
    3. Dispatching **`ACTIONs`** from within a React Component: [Commit Details](https://github.com/Ch-sriram/react/commit/084ebfea2ff011e37db2f7232d5e1792f6a4865a) | **[Assignment Solution @CodeSandBox](https://codesandbox.io/s/angry-galileo-85ptp?file=/src/containers/Counter/Counter.js)** | **[Commit Details for Assignment](https://github.com/Ch-sriram/react/commit/3503e30759d57a3ab8998386c5aa2022d79fbe6c)**
 4. Handling Redux **`STORE`**
-   1. Updating State Immutably: [Commit Details]()
+   1. Updating State Immutably: [Commit Details](https://github.com/Ch-sriram/react/commit/95ce922e1d36a5941d983796b0ef1e97d3b40fd0)
