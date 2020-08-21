@@ -61,7 +61,7 @@ class Counter extends Component {
         <CounterOutput value={this.props.ctr} />
         <CounterControl
           label="Increment"
-          clicked={() => this.counterChangedHandler("inc")}
+          clicked={this.props.onIncrementCounter}
         />
         <CounterControl
           label="Decrement"
@@ -104,47 +104,54 @@ class Counter extends Component {
  *     over the application, but a given individual container
  *     may only DISPATCH a couple of ACTIONs)
  *
- * 1 =>
- * The part of the state we want to get is defined below as
- * `mapStateToProps` constant (NOTE that it is defined after
- * the container is defined, in this case, our <Counter />
- * component/container).
+ * 2 =>
+ * To Dispatch the ACTIONs, we, by convention, pass in a second
+ * param to the first set of params being sent to the `connect`
+ * closure HOC. The second param we send, is by convention
+ * known as `mapDispatchToProps` constant, which is a function
+ * which takes (by convention, `dispatch` as an argument) in
+ * another function known as `dispatch` which is connected to
+ * STORE's state, and will call `store.dispatch()` on the
+ * STORE behind the scenes.
  *
- * `mapStateToProps` stores a function which expects a state
- * stored in Redux as the input parameter, and returns a JS
- * Object of the mapping of the prop names and slices of the
- * state stored in the Redux STORE. The `mapStateToProps`
- * function will eventually be executed by `connect` from
- * 'react-redux' package, as we'll pass it as the first param
- * to the first set of parameters to the `connect` closure HOC.
+ * The `mapDispatchToProps` method, takes in the `dispatch`
+ * function as the param and returns an object in which each
+ * field has property to which the value is an anonymous
+ * function, which returns a call to the `dispatch()` function
+ * passed to `mapDispatchToProps` method. Note that we can name
+ * our property anyway we want.
+ *
+ * The `dispatch()` function inside the anonymous function
+ * takes in a JS Object in which we have to definitely define
+ * the name of the `task`, and then, if we have any `payload`,
+ * in that case, we can also define the `payload` (i.e., any
+ * data related to the action).
+ *
+ * The entire example of `mapDispatchToProps` is shown below.
  */
 
-// The `state` passed on here, will be given to us by
-// 'react-redux', which ofcourse will reach out to the required
-// state store inside the Redux STORE.
+const mapDispatchToProps = dispatch => {
+  /**
+   * NOTE that we have to handle the INCREMENT action in the
+   * [store/reducer.js] file. Open that file to understand.
+   */
+  return {
+    onIncrementCounter: () => dispatch({ type: "INCREMENT" }), // we use this onIncrementCounter property/method as a prop in line #64
+  };
+};
+
 const mapStateToProps = state => {
   return { ctr: state.counter };
 };
 
-/**
- * Now, we can use `ctr` as a prop inside this container, which
- * is the `counter` inside the Redux Store, which is handled by
- * the REDUCER implemented at [store/reducer.js].
- * 
- * The actual Redux STORE is available inside [index.js] 
- * module. Now, if we send mapStateToProps as the first param
- * inside the first set of params to the `connect` closure HOC,
- * we will out <Counter /> container/component back, which will
- * have access to the `ctr` stored in the Redux STORE, as a 
- * prop. We can now access the `ctr` from inside the Redux 
- * STORE, using `this.props.ctr`, which is accessed above in
- * line #61.
- */
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
-export default connect(mapStateToProps)(Counter);
+// In case of the component being a dumb component.
+// export default connect(null, mapDispatchToProps)(Counter);
 
 /**
- * Now, to actually make sure that the state change inside
- * the Redux STORE is reflected in the UI, we will DISPATCH
- * the ACTIONs.
+ * For now, the 'INCREMENT' ACTION bound to the "Increment" 
+ * Button in view, is the only button that's functioning, rest
+ * all aren't functioning for now, as now, we've shifted state 
+ * management to Redux from React.
  */

@@ -170,4 +170,5 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
    3. Adding **`Subscriptions`**: [Commit Details](https://github.com/Ch-sriram/react/commit/1893a829d83081b0303fdbf7089ebbcfdcd8436c)
 3. Integrating Redux into React ⚛🔌♻
    1. Setting Up Redux Before Connecting to React: [Commit Details](https://github.com/Ch-sriram/react/commit/f5fbd789c7955a909e96ae771a7dcbe4d2a05fe0)
-   2. Connecting Redux `STORE` to React using `<Provider />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/73565b0333f41b05132cd6d7ae1a630840c3f3fa)
+   2. Connecting Redux **`STORE`** to React using `<Provider />` Component: [Commit Details](https://github.com/Ch-sriram/react/commit/73565b0333f41b05132cd6d7ae1a630840c3f3fa)
+   3. Dispatching **`ACTION`**s from within a React Component: [Commit Details]()
