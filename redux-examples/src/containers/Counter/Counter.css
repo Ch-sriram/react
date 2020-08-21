@@ -5,6 +5,33 @@ ul {
   padding: 0;
 }
 
+ul li {
+  box-sizing: border-box;
+  display: block;
+  padding: 2px;
+  margin: 10px auto;
+  width: 15%;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
+  cursor: pointer;
+  transition: transform .1s ease-in-out;
+}
+
+ul li:hover {
+  background-color: rgb(247, 68, 68);
+  border: 1px solid #333;
+  box-shadow: 0 3px 10px rgb(255, 17, 17);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* The piece of code below, slows down the deletion process */
+/* ul li:active {
+  transform: translateY(3px) scale(0.8);
+  box-shadow: 0 2px 2px rgb(255, 17, 17);
+} */
+
 hr {
   display: block;
   width: 95%;
