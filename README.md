@@ -175,3 +175,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 4. Handling Redux **`STORE`**
    1. Updating State Immutably: [Commit Details](https://github.com/Ch-sriram/react/commit/95ce922e1d36a5941d983796b0ef1e97d3b40fd0)
    2. Updating Arrays in the State Immutably: [Commit Details](https://github.com/Ch-sriram/react/commit/f03d888b21948131a842f0240fc71afb3eb4a756)
+5. Outsourcing **`ACTION`** Types: [Commit Details]()
