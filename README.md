@@ -176,4 +176,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
    1. Updating State Immutably: [Commit Details](https://github.com/Ch-sriram/react/commit/95ce922e1d36a5941d983796b0ef1e97d3b40fd0)
    2. Updating Arrays in the State Immutably: [Commit Details](https://github.com/Ch-sriram/react/commit/f03d888b21948131a842f0240fc71afb3eb4a756)
 5. Outsourcing **`ACTION`** Types: [Commit Details](https://github.com/Ch-sriram/react/commit/5d9e9976388d82f53d67bf984130e8788376069a)
-6. Combining Multiple Reducers: [Commit Details](https://github.com/Ch-sriram/react/commit/a9b41770ebb6d013e4cb7b9758989cc4bf4d4743)
+6. Combining Multiple **`REDUCERS`**: [Commit Details](https://github.com/Ch-sriram/react/commit/a9b41770ebb6d013e4cb7b9758989cc4bf4d4743)
