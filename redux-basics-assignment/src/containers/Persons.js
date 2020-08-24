@@ -5,6 +5,13 @@ import Person from "../components/Person/Person";
 import AddPerson from "../components/AddPerson/AddPerson";
 import * as actionTypes from "../store/actions";
 
+/**
+ * In this example, we are combining the local UI state which
+ * works in tandem with the state managed inside the redux 
+ * STORE. The local UI state is passed as payload to the 
+ * dispatched ACTIONs.
+ */
+
 class Persons extends Component {
   render() {
     return (
@@ -31,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddedPerson: () => dispatch({ type: actionTypes.ADD_PERSON }),
+    onAddedPerson: (name, age) => dispatch({ type: actionTypes.ADD_PERSON, personData: {name, age} }),
     onRemovedPerson: (id) =>
       dispatch({ type: actionTypes.REMOVE_PERSON, personId: id }),
   };

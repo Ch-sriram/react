@@ -178,3 +178,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 5. Outsourcing **`ACTION`** Types: [Commit Details](https://github.com/Ch-sriram/react/commit/5d9e9976388d82f53d67bf984130e8788376069a)
 6. Combining Multiple **`REDUCERS`**: [Commit Details](https://github.com/Ch-sriram/react/commit/a9b41770ebb6d013e4cb7b9758989cc4bf4d4743)
 7. **Redux Basics Assignment**: **[Solution @CodeSandBox](https://codesandbox.io/s/patient-thunder-12hlx?file=/src/App.js)** & [Commit Details](https://github.com/Ch-sriram/react/commit/aabf655b7495bc8c1d0e2bcf4619364b1ab9d543)
+8. Combining Local UI **`state`** & Redux **`STORE`**: [Commit Details]()
