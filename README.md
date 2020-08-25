@@ -183,4 +183,5 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 
 ### State Management Using Redux (Advanced Concepts) ♻⚛
 
-1. What is **`MIDDLEWARE`** && Adding **`Middleware`** In Practice using `applyMiddleware()` function: **[Read @CodeSandBox](https://e1x2d.csb.app/)**, [Commit Details](https://github.com/Ch-sriram/react/commit/2b7c3f0518da67b71387d698dd319545ad060826)
+1. What is **`MIDDLEWARE`** && Adding **`Middleware`** In Practice using `applyMiddleware()` function: **[Read @CodeSandBox](https://e1x2d.csb.app/)** & [Commit Details](https://github.com/Ch-sriram/react/commit/2b7c3f0518da67b71387d698dd319545ad060826)
+2. Using the **[Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension)**: **[Setting Up Redux STORE for Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup)** & [Commit Details]()
