@@ -1,46 +1,13 @@
 // LIBRARY IMPORTS
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 // STYLING & CUSTOM COMPONENT IMPORTS
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-/**
- * As our app grows bigger, we might've to handle more ACTIONs,
- * and so we might've to use multiple Reducers. We know that we
- * only have One REDUCER in Redux (i.e., all ACTIONs are 
- * funneled through a single REDUCER during runtime), but 
- * 'redux' package gives us a utility method we can use to 
- * combine multiple REDUCERS into a SINGLE REDUCER, so that we
- * still follow the pattern of having only One REDUCER behind
- * the scenes, but for us, as a developer that we can split-up
- * our code logically so that we don't have a SINGLE REDUCER
- * which has a lot of lines of code - which becomes really hard
- * to code up.
- * 
- * We'll always have to add more ACTION types that we've to 
- * handle inside the REDUCER, but we can always split them up
- * by what kind of feature they're being used on.
- * 
- * For example, in our Counter project, we can handle the 
- * ACTIONs for Counter (viz. INCREMENT, DECREMENT, ADD & 
- * SUBTRACT) in a separate REDUCER, and the remaining ACTIONs 
- * that deal with state.results[] (viz. STORE_RESULT, 
- * DELETE_RESULT) in a separate REDUCER.
- * 
- * And so, we'll handle the ACTIONs related to state.counter 
- * in [reducers/counter.js] and ACTIONs related to state.
- * results in [reducers/results.js] separately.
- * 
- * We'll import both the REDUCERS and then combine them in a 
- * single rootReducer using the combineReducers method from 
- * 'redux'. 
- */
-
 import counterReducer from "./store/reducers/counter";
 import resultsReducer from "./store/reducers/results";
 
@@ -49,13 +16,81 @@ const rootReducer = combineReducers({
   ctr: counterReducer, res: resultsReducer,
 });
 
-// Now, wherever we have to access the state inside the STORE,
-// for `counter`, we have to access it using 
-// `state.ctr.counter` & to access `results[]`, we have to 
-// access `state.res.results` from wherever we refer to the 
-// state inside the Redux STORE.
+/**
+ * Middleware in Redux is just a piece of code (specifically a
+ * function. For now, we will add our own Middleware, later
+ * we'll add Middleware provided by other providers) that 
+ * executes before an ACTION gets reduced by a REDUCER, and
+ * executes after the ACTION is Dispatched.
+ * 
+ * For now, we'll create a simple middleware which simply logs
+ * each ACTION we dispatch. For that, we'll create a middleware
+ * known as `logger` (which is just a constant, we can name it
+ * whatever we want to name it). The `logger` here, takes a 
+ * function and the function takes in `store` as an input 
+ * parameter (this is the case because we'll soon use a 
+ * specific method provided by Redux connect our own 
+ * middleware to he `store`, and this method provided by Redux
+ * will eventually execute our middleware function [which is 
+ * `logger` in this case] and give us the required `store`).
+ * 
+ * The function body of the middleware function - `logger`
+ * returns another function which receives an input parameter
+ * known as `next` (which is to be named and used as `next` by
+ * convention). And now the function that takes in `next` as 
+ * the input param, returns another function which receives the
+ * `action` that we dispatched in Redux. 
+ * 
+ * Inside the function that receives the input parameter 
+ * `action`, we can now print the information of the 
+ * respective `action` in question. Inside the same mentioned
+ * function, we'll execute the `next()` method which takes in 
+ * the `action` as the argument making it - `next(action);`, 
+ * which will let the respective `action` continue to the 
+ * REDUCER (NOTE: we can change the contents of `action` as 
+ * we want, before we send the `action` to the REDUCER, but we
+ * should do it with caution, without causing any unexpected
+ * behaviour). In the same function, we can store the return 
+ * value of the call `next(action);` in another constant say 
+ * `result`, which we can ultimately return at the end.
+ * 
+ * In between returning the `result` and storing the return
+ * value of `next(action);`, we can log the value of the
+ * updated state using `store.getState()`.
+ */
 
-const store = createStore(rootReducer);
+ // OUR MIDDLEWARE
+const logger = store => {
+  return next => {
+    return action => {
+      console.log("[Middleware] Dispatching", action);
+      const result = next(action);
+      console.log("[Middleware] next state", store.getState());
+      return result;
+    }
+  }
+};
+
+/**
+ * The 2nd argument to the createStore() method is also known 
+ * as Enhancer (which is a middleware in our example).
+ * 
+ * Now we've to apply the Middleware that we defined above, to
+ * our Redux STORE that's defined below using the
+ * `applyMiddleware()` function from the 'redux' package, which
+ * we send in as the 2nd param for the createStore() function 
+ * as shown below. To the applyMiddleware() function, we pass 
+ * in the instance of the middleware (`logger` in our case).
+ * 
+ * NOTE: to applyMiddleware() function, we can always pass a 
+ * list of middleware instances, which will be executed in the 
+ * order of the middleware instances inside the list of 
+ * middleware instances. Also, the list of middleware instances
+ * when passing, need to be spread, instead of being passed as 
+ * a list.
+ */
+
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 ReactDOM.render(
   <Provider store={store}>

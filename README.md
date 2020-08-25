@@ -159,7 +159,7 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
     8. Setting a `basename` prop for the `<BrowserRouter />` Component for Proper Routing & Server Deployment: [Commit Details](https://github.com/Ch-sriram/react/commit/9b38edf6b7e15fd88fa0bf55c41faf8606f41d7a)
 18. Assignment Solution: **[My Solution @CodeSandBox](https://codesandbox.io/s/kind-mountain-0k5lv?file=/src/App.js)**, **[Instructor's Solution @CodeSandBox &mdash; v1](https://codesandbox.io/s/hopeful-wiles-ck7rw?file=/src/App.js)**
 
-### State Management Using Redux ♻⚛
+### State Management Using Redux (Basic Concepts) ♻⚛
 
 **Dependency Installations: `npm i --save redux` | `npm i --save react-redux`**
 
@@ -179,3 +179,8 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 6. Combining Multiple **`REDUCERS`**: [Commit Details](https://github.com/Ch-sriram/react/commit/a9b41770ebb6d013e4cb7b9758989cc4bf4d4743)
 7. **Redux Basics Assignment**: **[Solution @CodeSandBox](https://codesandbox.io/s/patient-thunder-12hlx?file=/src/App.js)** & [Commit Details](https://github.com/Ch-sriram/react/commit/aabf655b7495bc8c1d0e2bcf4619364b1ab9d543)
 8. Combining Local UI **`state`** & Redux **`STORE`**: [Commit Details](https://github.com/Ch-sriram/react/commit/fcd34668a30e6681087bdd6177f480728f78f68c)
+
+
+### State Management Using Redux (Advanced Concepts) ♻⚛
+
+1. What is **`MIDDLEWARE`** && Adding **`Middleware`** In Practice using `applyMiddleware()` function: **[Read @CodeSandBox](https://e1x2d.csb.app/)**, [Commit Details]()
