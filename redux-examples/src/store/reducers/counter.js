@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actions";
+import * as actionTypes from "../actions/actionTypes";
 
 // we'll handle only `counter` here
 const initialState = { counter: 0, };

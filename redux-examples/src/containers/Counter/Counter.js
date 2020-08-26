@@ -7,11 +7,8 @@ import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
 import './Counter.css';
 
-/**
- * We can use the ACTION CREATORS we defined in 
- * [store/actions/actions.js] 
- */
-import * as actionCreators from "../../store/actions/actions";
+// We can use the ACTION CREATORS we defined in [store/actions/index.js] 
+import * as actionCreators from "../../store/actions/index";
 
 class Counter extends Component {
   state = {
