@@ -188,3 +188,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 4. Handling Asynchronous Code using **[`redux-thunk`](https://github.com/reduxjs/redux-thunk)** &mdash; **`npm i --save redux-thunk`**: [Commit Details](https://github.com/Ch-sriram/react/commit/35759d6fabdf474b2a451f5cfebd959fbe8fd467)
 5. Restructuring **`ACTIONS`**: [Commit Details](https://github.com/Ch-sriram/react/commit/cf8c0dbdb42dea88c022fb6959a876d7f6275d18)
 6. Where to Put Data Transforming Logic? [Commit Details](https://github.com/Ch-sriram/react/commit/a771737aaa42d3070825b0786c0fae2dffc63445)
+7. Using **`ACTION Creators`** & `getState()`: [Commit Details]()
