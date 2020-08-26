@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions";
+import * as actionTypes from "../actions/actions";
 
 // handling only `results[]` here
 const initialState = { results: [] };

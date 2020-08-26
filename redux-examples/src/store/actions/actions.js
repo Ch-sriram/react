@@ -18,4 +18,19 @@ export const INCREMENT     = "INCREMENT",
              SUBTRACT      = "SUBTRACT",
              STORE_RESULT  = "STORE_RESULT",
              DELETE_RESULT = "DELETE_RESULT";
-             
+
+
+// ACTION CREATORS (Convention: same name as ACTIONS defined 
+// above, but we use camel casing): A function which returns 
+// the object with `type` and `payload`. `payload` is received
+// as a function parameter.
+
+// These are simple ACTION CREATORS
+export const increment = () => ({ type: INCREMENT });
+export const decrement = () => ({ type: DECREMENT });
+
+// These are ACTION CREATORS with `payload` passed into them
+export const add = val => ({ type: ADD, value: val });
+export const subtract = val => ({ type: SUBTRACT, value: val });
+export const storeResult = ctr => ({ type: STORE_RESULT, counter: ctr });
+export const deleteResult = resID => ({ type: DELETE_RESULT, resultElementID: resID });
