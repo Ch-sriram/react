@@ -1,8 +1,11 @@
 // LIBRARY IMPORTS
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+
+// INSTALLING & USING `redux-thunk`: https://github.com/reduxjs/redux-thunk#installation
+import thunk from 'redux-thunk';
 
 // STYLING & CUSTOM COMPONENT IMPORTS
 import './index.css';
@@ -10,7 +13,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import counterReducer from "./store/reducers/counter";
 import resultsReducer from "./store/reducers/results";
-
 
 const rootReducer = combineReducers({
   ctr: counterReducer, res: resultsReducer,
@@ -28,14 +30,10 @@ const logger = store => {
   }
 };
 
-/**
- * In order for the Redux STORE to be visible inside the 
- * browser using the Redux DevTools, we need to setup the Redux
- * STORE wrt the Redux DevTools Extension installed in the 
- * respective browser. Which can be done as follows:
- */
+// REDUX SETTINGS for REDUX DEVTOOLS
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk))); // added redux-thunk middleware
 ReactDOM.render(
   <Provider store={store}>
     <App />

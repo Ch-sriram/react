@@ -185,3 +185,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 1. What is **`MIDDLEWARE`** && Adding **`Middleware`** In Practice using `applyMiddleware()` function: **[Read @CodeSandBox](https://e1x2d.csb.app/)** & [Commit Details](https://github.com/Ch-sriram/react/commit/2b7c3f0518da67b71387d698dd319545ad060826)
 2. Using the **[Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension)**: **[Setting Up Redux STORE for Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup)** & [Commit Details](https://github.com/Ch-sriram/react/commit/11b0b77cc0dbf1776e142f7501eed9d32092a82d)
 3. Introduction & Usage of **`ACTION Creators`**: [Commit Details](https://github.com/Ch-sriram/react/commit/486ed0118bdd8479b168e03103d9e6fe3417d948)
+4. Handling Asynchronous Code using **[`redux-thunk`](https://github.com/reduxjs/redux-thunk)** &mdash; **`npm i --save redux-thunk`**: [Commit Details]()
