@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
           // to access state.counter, we've to get it through
           // the `action` object while dispatching this ACTION.
           // value: state.counter,
-          value: action.counter,
+          value: action.counter * 2,
         }),
       };
 
