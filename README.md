@@ -191,4 +191,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 7. Using **`ACTION Creators`** & `getState()`: [Commit Details](https://github.com/Ch-sriram/react/commit/87687d247d3bbd03afb64997e89e19499028f5c1)
 8. Using Utility Functions
    1. Inside the **`Counter REDUCER`**: [Commit Details](https://github.com/Ch-sriram/react/commit/b85404dc374ee3a722ba6ee38b1e4c583cf4209e)
-   2. Inside the **`Results REDUCER`**: [Commit Details]()
+   2. Inside the **`Results REDUCER`**: [Commit Details](https://github.com/Ch-sriram/react/commit/59d1684d70d57c98bf9554a1989cdf2ee3bd61bd)
