@@ -189,4 +189,6 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 5. Restructuring **`ACTIONS`**: [Commit Details](https://github.com/Ch-sriram/react/commit/cf8c0dbdb42dea88c022fb6959a876d7f6275d18)
 6. Where to Put Data Transforming Logic? [Commit Details](https://github.com/Ch-sriram/react/commit/a771737aaa42d3070825b0786c0fae2dffc63445)
 7. Using **`ACTION Creators`** & `getState()`: [Commit Details](https://github.com/Ch-sriram/react/commit/87687d247d3bbd03afb64997e89e19499028f5c1)
-8. Using Utility Functions: [Commit Details](https://github.com/Ch-sriram/react/commit/b85404dc374ee3a722ba6ee38b1e4c583cf4209e)
+8. Using Utility Functions
+   1. Inside the **`Counter REDUCER`**: [Commit Details](https://github.com/Ch-sriram/react/commit/b85404dc374ee3a722ba6ee38b1e4c583cf4209e)
+   2. Inside the **`Results REDUCER`**: [Commit Details]()
