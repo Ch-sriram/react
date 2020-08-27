@@ -192,4 +192,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 8. Using Utility Functions
    1. Inside the **`Counter REDUCER`**: [Commit Details](https://github.com/Ch-sriram/react/commit/b85404dc374ee3a722ba6ee38b1e4c583cf4209e)
    2. Inside the **`Results REDUCER`**: [Commit Details](https://github.com/Ch-sriram/react/commit/59d1684d70d57c98bf9554a1989cdf2ee3bd61bd)
-9. A Leaner Switch Case Statement: [Commit Details]()
+9. A Leaner Switch Case Statement: [Commit Details](https://github.com/Ch-sriram/react/commit/d386c0acf1f0adb8e4170491d234f5dd4211cbb9)
