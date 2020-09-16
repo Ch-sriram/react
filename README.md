@@ -11,6 +11,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
 ## Child Repositories & Deployments
 
 - Monsters Rolodex: **[GitHub Repo](https://github.com/Ch-sriram/monsters-rolodex)** & **[Live Deployment](https://ch-sriram.github.io/monsters-rolodex/)**
+- Build My Burger: **[GitHub Repo](https://github.com/Ch-sriram/burger-builder)** & **[Live Deployment](https://burger-builder-ram.web.app/)**
 
 ## Table of Contents
 
