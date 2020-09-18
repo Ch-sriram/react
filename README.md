@@ -199,4 +199,4 @@ Required Dependency: **`npm i --save axios`** | **[`axios` DOCS](https://github.
 
 1. How Webpack Works: [Commit Details](https://github.com/Ch-sriram/react/commit/98838e3fac2528306016cdbdc4bd5d1bca7b35b3)
 2. Basic Webpack Workflow Requirements: [Commit Details](https://github.com/Ch-sriram/react/commit/58be99dba31eef248bb95cd770d80f883a147b3c)
-3. Webpack Project Setup using `npm` &mdash; `npm i --save-dev webpack webpack-dev-server`: [Commit Details](https://github.com/Ch-sriram/react/commit/102828d59413aa3da238a10a9f8788cc0be43ba2)
+3. Webpack Project Setup using `npm` &mdash; **`npm i --save-dev webpack webpack-dev-server`**: [Commit Details](https://github.com/Ch-sriram/react/commit/102828d59413aa3da238a10a9f8788cc0be43ba2)
