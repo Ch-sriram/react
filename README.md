@@ -96,7 +96,7 @@ In this repository, I've implemented (or implementing) all the concepts related 
     1. Introduction to HOC: [Commit Details](https://github.com/Ch-sriram/react/commit/8a9645adc5ba6f86d24aaee6f988eae9a5f99ef7)
     2. Another form of HOC using Closure: [Commit Details](https://github.com/Ch-sriram/react/commit/208eda2591e9ade27f53878b107fddb6f139c05f)
     3. Passing Unknown `props` to HOC's using Closure: [Commit Details](https://github.com/Ch-sriram/react/commit/7f4ef6602745352ed89eba16e2ff97f44889f409)
-11. Setting State Correctly: [Commit Details](https://github.com/Ch-sriram/react/commit/754d0e2224ca28708ca4c8cff59bad73aa4cbda9)
+11. Setting State Correctly using `setState((prevState, props) => ({...prevState, }));`: [Commit Details](https://github.com/Ch-sriram/react/commit/754d0e2224ca28708ca4c8cff59bad73aa4cbda9)
 12. Using `PropTypes` &mdash; `npm i --save prop-types`: [Commit Details](https://github.com/Ch-sriram/react/commit/6daf605d993d4f12e6884362ae15c55f7556a67d)
 13. `Refs` in React
     1. Why Refs? Introduction & Usage of `Refs` in class-based components (before React v16.3): [Commit Details](https://github.com/Ch-sriram/react/commit/f37d509963e34ba119da4b42366cc3e3c5fa14b9)
